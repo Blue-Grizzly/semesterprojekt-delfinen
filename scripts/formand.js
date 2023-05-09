@@ -48,5 +48,4 @@ async function createMemberClicked(event) {
     event.preventDefault();
     document.querySelector("#form-create-member").reset();
     document.querySelector("#dialog-create-member").close();
-
  }
