@@ -1,10 +1,75 @@
+//helping functions
+import { updateMemberTable } from "./kasser.js";
+
 function prepareData(dataObject) {
-  const medlemArray = [];
-  for (const key in dataObject) {
-    const medlemObject = dataObject[key];
-    characterObject.id = key;
-    medlemArray.push(medlemObject);
+    const memberArray = [];
+    for (const key in dataObject) {
+      const memberObject = dataObject[key];
+      memberObject.id = key;
+      memberArray.push(memberObject);
+    }
+    return memberArray;
   }
-  console.log(medlemArray);
-  return medlemArray;
+  
+function checkMembership(member){
+    if(member.active === true){
+        if(member.motionist === true){
+            return `Motionist`;
+        } else{
+            return `Konkurrence`;
+        }
+    } else{ 
+    return `Passiv`;
 }
+
+
+}
+
+function checkAgeGroup(member){
+    if(member.age >= 18){
+      if(member.age >=60){
+        return `SeniorPlus`;
+      }else{
+        return `Senior`;
+      }
+    } else{
+        return `Junior`;
+    }
+
+}
+
+
+function filterPaidMembers(memberList){
+  return memberList.filter((member) => member.debt === 0);
+}
+
+function filterUnpaidMembers(memberList){
+  return memberList.filter((member) => member.debt !== 0);
+}
+
+function totalIncome(list){
+  let incomeTotal;
+      for(const member of list){
+      const memberGroup = checkAgeGroup(member).toUpperCase(); 
+        if(memberGroup === "SENIOR"){
+          incomeTotal =+ 1600;
+        } else if(memberGroup === "SENIORPLUS"){
+          incomeTotal =+ 1200;
+        } else{
+          incomeTotal =+ 1000;
+        }
+      }
+  return incomeTotal;
+}   
+
+
+function totalDebt(list){
+  let debtTotal;
+      for(const member of list){
+         debtTotal =+ member.debt;
+      }
+  return debtTotal;
+}    
+
+
+  export {prepareData, checkMembership, checkAgeGroup, filterPaidMembers, filterUnpaidMembers, totalDebt, totalIncome};
