@@ -1,5 +1,7 @@
 // Træner Oversigt(Abed)
 
+import { getMembers } from "./rest-service.js";
+
 window.addEventListener("load", initApp);
 
 async function initApp() {
@@ -8,13 +10,7 @@ async function initApp() {
   showMembers(members);
 }
 
-async function getMembers() {
-  const response = await fetch(
-    "https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app/medlemmer.json"
-  );
-  const data = await response.json();
-  return data;
-}
+
 
 function showMembers(members) {
   for (const member of members) {
