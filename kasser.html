@@ -12,15 +12,20 @@
         <h2>Kasser</h2>
         <button id="nav-betalt">Betalt</button>
         <button id="nav-restance">Restance</button>
+        <button id="nav-all">Alle</button>
     </header>
 
-    <table id="overview-table-kasser">
+    <table>
         <tr>
             <th>Navn</th>
             <th>Restance</th>
             <th>Medlemsskab</th>
         </tr>
+        <tbody id="overview-table-kasser"></tbody>
     </table>
-    
+
+    <h3>Total forventet indkomst <span id="total-income"></span></h3>
+    <h3>Total restance <span id="total-debt"></span></h3>
+    <script src="scripts/kasser.js" type="module"></script>
 </body>
 </html>
