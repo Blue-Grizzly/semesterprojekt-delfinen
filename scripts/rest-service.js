@@ -47,4 +47,4 @@ async function deleteMember(memberObject) {
   return response;
 }
 
-export {getMembers, updateMember, deleteMember};
+export {getMembers, createMember, updateMember, deleteMember};
