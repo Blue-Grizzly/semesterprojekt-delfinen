@@ -1,5 +1,5 @@
 import { getMembers } from "./rest-service.js";
-import {checkAgeGroup, checkMembership, filterPaidMembers, filterUnpaidMembers} from "./helpers.js"
+import {checkAgeGroup, filterPaidMembers, filterUnpaidMembers, totalIncome, totalDebt} from "./helpers.js"
 
 
 window.addEventListener("load", initApp);
@@ -7,11 +7,13 @@ window.addEventListener("load", initApp);
 let memberList;
 
 async function initApp(){
-    document.querySelector("#nav-betalt").addEventListener("click", filterPaidMembers);        
-    document.querySelector("#nav-restance").addEventListener("click", filterUnpaidMembers);
-    document.querySelector("#nav-restance").addEventListener("click", updateMemberTable);                
     memberList = await getMembers();
     updateMemberTable(memberList);
+    document.querySelector("#nav-betalt").addEventListener("click", filterPaidMembers);        
+    document.querySelector("#nav-restance").addEventListener("click", filterUnpaidMembers);
+    document.querySelector("#nav-restance").addEventListener("click", updateMemberTable);     
+    document.querySelector("#total-debt").textContent = totalDebt(memberList);           
+    document.querySelector("#total-income").textContent = totalIncome(memberList);           
 
 }
 
@@ -33,18 +35,16 @@ function updateMemberTable(members){
 
 
 function showMember(member){
-    const membership = checkMembership(member);
     const memberGroup = checkAgeGroup(member);
     document.querySelector("#overview-table-kasser").insertAdjacentHTML("beforeend", /*html*/ `
     <tr>
         <td>${member.name}</td>
         <td>${member.debt}</td>
-        <td>${memberGroup} ${membership}</td>
+        <td>${memberGroup}</td>
     </tr>
 
     `);
  
 
 }
-
 

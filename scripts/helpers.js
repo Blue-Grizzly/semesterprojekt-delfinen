@@ -27,7 +27,11 @@ function checkMembership(member){
 
 function checkAgeGroup(member){
     if(member.age >= 18){
+      if(member.age >=60){
+        return `SeniorPlus`;
+      }else{
         return `Senior`;
+      }
     } else{
         return `Junior`;
     }
@@ -45,6 +49,29 @@ function filterUnpaidMembers(){
   updateMemberTable(filteredList);
 }
 
+function totalIncome(list){
+  let incomeTotal;
+      for(const member of list){
+      const memberGroup = checkAgeGroup(member).toUpperCase(); 
+        if(memberGroup === "SENIOR"){
+          incomeTotal =+ 1600;
+        } else if(memberGroup === "SENIORPLUS"){
+          incomeTotal =+ 1200;
+        } else{
+          incomeTotal =+ 1000;
+        }
+      }
+  return incomeTotal;
+}   
 
 
-  export {prepareData, checkMembership, checkAgeGroup, filterPaidMembers, filterUnpaidMembers};
+function totalDebt(list){
+  let debtTotal;
+      for(const member of list){
+         debtTotal =+ member.debt;
+      }
+  return debtTotal;
+}    
+
+
+  export {prepareData, checkMembership, checkAgeGroup, filterPaidMembers, filterUnpaidMembers, totalDebt, totalIncome};
