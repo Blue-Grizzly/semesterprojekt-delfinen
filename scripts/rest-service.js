@@ -8,8 +8,33 @@ async function getMembers() {
     const response = await fetch(`${endpoint}/medlemmer.json`);
     const data = await response.json();
     return prepareData(data);
-  }
+}
   
+async function updateMember(id, active, age, debt, email, konkurrence, name, tlf) {
+  const memberToUpdate = {
+    active: active,
+    age: age,
+    debt: debt,
+    email: email,
+    konkurrence: konkurrence,
+    name: name,
+    tlf: tlf,
+};
+  const json = JSON.stringify(memberToUpdate);
+  const response = await fetch(`${endpoint}/medlemmer/${id}.json`, {
+    method: "PUT",
+    body: json,
+  });
+  return response;
+}
 
 
-export {getMembers};
+async function deleteMember(memberObject) {
+  const id = memberObject.id;
+  const response = await fetch(`${endpoint}/medlemmer/${id}.json`, {
+    method: "DELETE",
+  });
+  return response;
+}
+
+export {getMembers, updateMember, deleteMember};
