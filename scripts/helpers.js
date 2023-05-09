@@ -1,5 +1,4 @@
 //helping functions
-import { updateMemberTable } from "./kasser.js";
 
 function prepareData(dataObject) {
     const memberArray = [];
