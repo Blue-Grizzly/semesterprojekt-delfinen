@@ -38,7 +38,6 @@ async function updateMember(id, active, age, debt, email, konkurrence, name, tlf
   return response;
 }
 
-
 async function deleteMember(memberObject) {
   const id = memberObject.id;
   const response = await fetch(`${endpoint}/medlemmer/${id}.json`, {
