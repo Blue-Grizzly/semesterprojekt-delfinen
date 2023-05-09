@@ -4,9 +4,129 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delfinen</title>
+    <link rel="stylesheet" href="formand.css">
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <title>Svømmeklubben Delfinen</title>
 </head>
 <body>
-    
+    <header>Svømmeklubben Delfinen</header>
+<div id="medlemsliste">
+    <h1>Medlemsliste</h1>
+    <form>
+        
+    </form>
+</div>
+<div id="nytmedlem">
+    <h1>Nyt medlem</h1>
+    <form>
+        
+    </form>
+</div>
+
+<dialog id="member-modal">
+  <h3 id="member-name"></h3>
+  <p>Aktiv: <span id="member-active"></span></p>
+  <p>Alder: <span id="member-age"></span></p>
+  <p>Gæld: <span id="member-debt"></span></p>
+  <p>E-mail: <span id="member-email"></span></p>
+  <p>Konkurrence: <span id="member-competition"></span></p>
+  <p>Motionist: <span id="member-exerciser"></span></p>
+  <p>Navn: <span id="member-name"></span></p>
+  <p>Tlf: <span id="member-phone-number"></span></p>
+  <form method="dialog">
+    <button>Luk</button>
+  </form>
+</dialog>
+
+  <dialog id="dialog-create-member">
+    <div class="create-dialog-container">
+      <h2 class="create-member-head">Opret nyt medlem</h2>
+      <form id="form-create-member" method="dialog" class="create-dialog-form">
+        
+
+        <label for="active">Aktiv <input type="text" name="active" id="active" placeholder="Er medlemmet aktiv?" size="50"/>
+        </label>
+
+        <label for="age">Alder <input type="text" name="age" id="age" placeholder="Medlemmets alder" size="50"/>
+        </label>
+
+        <label for="restance">Restance <input type="text" name="restance" id="restance" placeholder="Har personen gæld?" size="50"/>
+        </label>
+
+        <label for="e-mail">E-mail <input type="text" name="e-mail" id="e-mail" placeholder="Medlemmets e-mail" size="50" required/>
+        </label>
+
+        <label for="competition">Konkurrence <input type="text" name="competition" id="competition" placeholder="Vil medlemmet konkurrere?" size="50" required/>
+        </label>
+
+        <label for="exerciser">Motionist <input type="text" name="exerciser" id="exerciser" placeholder="Vil medlemmet være motionist?" size="50" required/>
+        </label>
+
+        <label for="name">Navn <input type="text" name="name" id="memberName" placeholder="Medlemmets navn" size="50" required/>
+        </label>
+
+        <label for="tlf-number">Navn <input type="text" name="tlf-number" id="tlf-number" placeholder="Tlf.:" size="50" required/>
+        </label>
+
+        <button class="btn-cancel">Luk</button>
+        <p class="error-message hide">Error Message Placeholder</p>
+        <button>Opret Medlem</button>
+      </form>
+  </div>
+</dialog>
+
+<dialog id="dialog-delete-member">
+    <h2>Vil du gerne fjerne dette medlem?</h2>
+    <p id="dialog-delete-member-title">Navn på medlemmet</p>
+    <form method="dialog" id="form-delete-member">
+    <button type="button" class="btn-cancel" id="cancelDelete">No</button>
+    <button>Yes</button>
+    </form>
+</dialog>
+
+<dialog id="dialog-delete-feedback">
+    <p id="dialog-delete-feedback-message">Medlem slettet</p>
+</dialog>
+
+<dialog id="dialog-update-member">
+    <h2>Opdater Medlem</h2>
+    <form id="form-update-member" method="dialog">
+        <label for="active">Aktiv:</label>
+        <input type="text" name="active" />
+
+        <label for="age">Alder:</label>
+        <input type="text" name="age" />
+
+        <label for="restance">Restance:</label>
+        <input type="text" name="restance" />
+
+        <label for="email">E-mail:</label>
+        <input type="text" name="email" />
+
+        <label for="competition">Konkurrence:</label>
+        <input type="text" name="competition" />
+
+        <label for="exerciser">Motionist:</label>
+        <input type="text" name="exerciser" />
+
+        <label for="name">Navn:</label>
+        <input type="text" name="name" />
+
+        <label for="tlf-number">Tlf:</label>
+        <input type="text" name="tlf-number" />
+
+        <button class="btn-cancel">Luk</button>
+        <button>Opdater</button>
+    </form>
+</dialog>
+
+<dialog id="dialog-failed-to-update">
+    <p>Medlem blev ikke opdateret</p>
+    <button class="btn-cancel">Luk</button>
+</dialog>
+
+    <script src="app.js"></script>
 </body>
 </html>
+
+
