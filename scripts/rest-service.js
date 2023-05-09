@@ -10,8 +10,8 @@ async function getMembers() {
     return prepareData(data);
 }
   
-  async function createMember(name, age, debt, competition, email, tlf, active) {
-    const newMember = {name, age, debt, competition, email, tlf, active};
+  async function createMember(name, age, debt, konkurrence, email, tlf, active) {
+    const newMember = {name, age, debt, konkurrence, email, tlf, active};
     const json = JSON.stringify(newMember);
     const response = await fetch(`${endpoint}/medlemmer.json`, {
       method: "POST",

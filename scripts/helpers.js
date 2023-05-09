@@ -47,26 +47,37 @@ function filterUnpaidMembers(memberList){
 }
 
 function totalIncome(list){
-  let incomeTotal;
-      for(const member of list){
-      const memberGroup = checkAgeGroup(member).toUpperCase(); 
-        if(memberGroup === "SENIOR"){
-          incomeTotal =+ 1600;
-        } else if(memberGroup === "SENIORPLUS"){
-          incomeTotal =+ 1200;
-        } else{
-          incomeTotal =+ 1000;
-        }
-      }
+  console.log(list);
+  let incomeTotal = 0;
+      for(let i=0; i < list.length; i++){
+        const memberGroup = checkAgeGroup(list[i]);
+        console.log(memberGroup)
+      if(list[i].active === true){ 
+          if(memberGroup === "Senior"){
+            incomeTotal += 1600;
+          } else if(memberGroup === "SeniorPlus"){
+            console.log("senior plus")
+            incomeTotal += 1200;
+          } else{
+            console.log("junior")
+            incomeTotal += 1000;
+          }
+      } else{
+        incomeTotal += 500;
+
+    } 
+    console.log(incomeTotal);
+  }
   return incomeTotal;
 }   
 
 
 function totalDebt(list){
-  let debtTotal;
+  let debtTotal = 0;
       for(const member of list){
-         debtTotal =+ member.debt;
+         debtTotal += Number(member.debt);
       }
+    console.log(debtTotal);
   return debtTotal;
 }    
 
