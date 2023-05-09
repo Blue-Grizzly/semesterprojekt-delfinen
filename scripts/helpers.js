@@ -1,14 +1,14 @@
 //helping functions
 
 function prepareData(dataObject) {
-    const memberArray = [];
-    for (const key in dataObject) {
-      const memberObject = dataObject[key];
-      memberObject.id = key;
-      memberArray.push(memberObject);
-    }
-    return memberArray;
-  }
+  const memberArray = [];
+  for (const key in dataObject) {
+  const memberObject = dataObject[key];
+  memberObject.id = key;
+  memberArray.push(memberObject);
+}
+  return memberArray;
+}
   
 function checkMembership(member){
     if(member.active === true){
@@ -19,24 +19,20 @@ function checkMembership(member){
         }
     } else{ 
     return `Passiv`;
-}
-
-
+ }
 }
 
 function checkAgeGroup(member){
-    if(member.age >= 18){
-      if(member.age >=60){
-        return `SeniorPlus`;
-      }else{
-        return `Senior`;
-      }
-    } else{
+  if(member.age >= 18){
+    if(member.age >=60){
+      return `SeniorPlus`;
+    } else {
+      return `Senior`;
+    }
+    } else {
         return `Junior`;
     }
-
 }
-
 
 function filterPaidMembers(memberList){
   return memberList.filter((member) => member.debt === 0);
@@ -61,7 +57,6 @@ function totalIncome(list){
   return incomeTotal;
 }   
 
-
 function totalDebt(list){
   let debtTotal;
       for(const member of list){
@@ -70,5 +65,4 @@ function totalDebt(list){
   return debtTotal;
 }    
 
-
-  export {prepareData, checkMembership, checkAgeGroup, filterPaidMembers, filterUnpaidMembers, totalDebt, totalIncome};
+export {prepareData, checkMembership, checkAgeGroup, filterPaidMembers, filterUnpaidMembers, totalDebt, totalIncome};
