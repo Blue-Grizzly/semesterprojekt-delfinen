@@ -3,6 +3,16 @@
 // login del(Abed)
 window.addEventListener("load", getUserByUsername);
 
+function initApp() {
+  updateMembersGrid();
+  document
+    .querySelector("#form-update-character .btn-cancel")
+    .addEventListener("click", cancelUpdate);
+  document
+    .querySelector("#form-update-character")
+    .addEventListener("submit", updateCharacterClicked);
+}
+
 async function getUserByUsername(username) {
   const response = await fetch(
     "https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app/users.json"
