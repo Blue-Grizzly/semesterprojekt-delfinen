@@ -1,3 +1,88 @@
 body{
     color: black;
 }
+
+header {
+  font-family: cursive;
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  color: #f0f1f4;
+  background-color: #0ce7c6;
+  padding: 20px;
+  width: 100%;
+  border-bottom: 4px solid #f3f4f6;
+  margin-bottom: 0px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+h2 {
+  font-family: cursive;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  color: #dadce0;
+  background-color: #065e91;
+  border-radius: 30px;
+  padding: 20px;
+  width: 100%;
+  border-bottom: 4px solid #427db9;
+  margin-top: -20px;
+}
+
+h1 {
+  font-family: cursive;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: cursive;
+  background-color: #795d5d;
+  background-image: url("https://wallpaperaccess.com/full/1108057.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding-top: 100px;
+}
+
+#login-form {
+  font-weight: bold;
+  background-color: #f7f3f3;
+  border: 10px solid #5b98f4;
+  border-radius: 30px;
+  width: 30%;
+  margin: auto;
+  padding: 50px;
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 350px;
+  height: 30%;
+}
+
+#password,
+#username {
+  border-radius: 50px;
+  width: 200px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#submit {
+  background-color: #4caf50;
+  color: white;
+  padding: 20px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 10px;
+}
