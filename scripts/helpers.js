@@ -1,5 +1,5 @@
 //helping functions
-
+import { updateMemberTable } from "./kasser.js";
 
 function prepareData(dataObject) {
     const memberArray = [];
@@ -39,14 +39,12 @@ function checkAgeGroup(member){
 }
 
 
-function filterPaidMembers(){
-  let filteredList = memberList.filter((member) => member.debt === 0);
-  updateMemberTable(filteredList);
+function filterPaidMembers(memberList){
+  return memberList.filter((member) => member.debt === 0);
 }
 
-function filterUnpaidMembers(){
-  let filteredList = memberList.filter((member) => member.debt !== 0);
-  updateMemberTable(filteredList);
+function filterUnpaidMembers(memberList){
+  return memberList.filter((member) => member.debt !== 0);
 }
 
 function totalIncome(list){

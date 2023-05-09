@@ -9,9 +9,9 @@ let memberList;
 async function initApp(){
     memberList = await getMembers();
     updateMemberTable(memberList);
-    document.querySelector("#nav-betalt").addEventListener("click", filterPaidMembers);        
-    document.querySelector("#nav-restance").addEventListener("click", filterUnpaidMembers);
-    document.querySelector("#nav-restance").addEventListener("click", updateMemberTable);     
+    document.querySelector("#nav-betalt").addEventListener("click", ()=>updateMemberTable(filterPaidMembers(memberList)));        
+    document.querySelector("#nav-restance").addEventListener("click", ()=>updateMemberTable(filterUnpaidMembers(memberList)));
+    document.querySelector("#nav-all").addEventListener("click", ()=>updateMemberTable(memberList));     
     document.querySelector("#total-debt").textContent = totalDebt(memberList);           
     document.querySelector("#total-income").textContent = totalIncome(memberList);           
 
@@ -48,3 +48,4 @@ function showMember(member){
 
 }
 
+export {updateMemberTable};
