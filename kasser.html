@@ -8,6 +8,30 @@
     <link rel="stylesheet" href="kasser.css">
 </head>
 <body>
+
+    <dialog id="dialog-change-restance">
+        <form id="form-change-restance" method="dialog">
+            <p id="dialog-change-restance-title"></p>
+              <select id="active" name="active"  class="hidden">
+            <option value="true">Aktiv</option>
+            <option value="false">Passiv</option>
+        </select>
+        <input type="number" name="age" id="age" placeholder="Medlemmets alder" size="50"  required class="hidden"/>
+        <input type="email" name="email" id="email" placeholder="Medlemmets e-mail" size="50" required  class="hidden"/>
+        <select id="konkurrence" name="konkurrence"  class="hidden">
+            <option value="false">Motionist</option>
+            <option value="true">Konkurrence</option>
+        </select>
+        <input type="text" name="name" id="memberName" placeholder="Medlemmets navn" size="50" required  class="hidden"/>
+        <input type="number" name="tlf" id="tlf" placeholder="Tlf.:" size="50" required maxlength="8"  class="hidden"/>
+        <input type="text" name="age" class="hidden" />
+
+        <label for="debt">Restance:</label>
+        <input type="number" name="debt" id="restance-input">
+        <button>Set Restance</button>
+
+        </form>
+    </dialog>
     <header>
         <h2 class="header1">Svømmeklubben Delfinen</h2>
         <h2 class="header2">Kasser</h2>
