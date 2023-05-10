@@ -53,9 +53,6 @@ async function createResult(
     "https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app/resultater.json",
     {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
       body: JSON.stringify({
         placering: placering,
         dato: dato,
