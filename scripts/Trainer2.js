@@ -3,7 +3,6 @@
 window.addEventListener("load", initApp);
 
 async function initApp() {
-  showCreateForm()
   document.querySelector("#nytresultat").addEventListener("click", showCreateForm);
   const results = await getResults();
   console.log(results);
@@ -101,6 +100,7 @@ async function createResultClicked(event) {
   } else {
     console.log(response.status, response.statusText);
   }
+  showCreateForm();
 }
 
  function createCancelClicked(event) {
