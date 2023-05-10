@@ -6,7 +6,8 @@ function initApp() {
   updateMembersGrid();
   document.querySelector("#nytmedlem").addEventListener("click", showCreateForm);
   document.querySelector("#form-update-character .btn-cancel").addEventListener("click", cancelUpdate);
-  document.querySelector("#form-update-character").addEventListener("submit", updateCharacterClicked);
+  document.querySelector("#form-update-character").addEventListener("submit", updateMemberClicked);
+
 }
 
 function showCreateForm(){

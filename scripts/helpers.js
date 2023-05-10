@@ -75,4 +75,6 @@ function totalDebt(list){
   return debtTotal;
 }    
 
+
+
 export {prepareData, checkMembership, checkAgeGroup, filterPaidMembers, filterUnpaidMembers, totalDebt, totalIncome};
