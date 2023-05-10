@@ -24,7 +24,7 @@ async function createMemberClicked(event) {
     const name = form.name.value;
     const age = form.age.value;
     const debt = form.restance.value;
-    const competition = form.konkurrence.value;
+    const competition = form.competition.value;
     const email = form.email.value;
     const tlf = form.tlf.value;
     const active = form.active.value;
@@ -66,13 +66,13 @@ async function createMemberClicked(event) {
    const age = form.age.value;
    const debt = form.debt.value;
    const email = form.email.value;
-   const konkurrence = form.konkurrence.value;
+   const competition = form.competition.value;
    const name = form.name.value;
    const tlf = form.tlf.value;
 
    const id = form.getAttribute("data-id");
 
-   const response = await updateMember(id, active, age, debt, email, konkurrence, name, tlf);
+   const response = await updateMember(id, active, age, debt, email, competition, name, tlf);
    if (response.ok) {
      document.querySelector("#dialog-update-member").close();
      updateMembersGrid();
@@ -90,7 +90,7 @@ async function createMemberClicked(event) {
    updateForm.age.value = memberObject.age;
    updateForm.debt.value = memberObject.debt;
    updateForm.email.value = memberObject.email;
-   updateForm.konkurrence.value = memberObject.konkurrence;
+   updateForm.competition.value = memberObject.competition;
    updateForm.name.value = memberObject.name;
    updateForm.tlf.value = memberObject.tlf;
 
