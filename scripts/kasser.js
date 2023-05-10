@@ -32,6 +32,14 @@ async function initApp() {
   document
     .querySelector("#form-change-restance")
     .addEventListener("submit", updateRestanceAccept);
+
+    document.querySelector("#cancel-restance-change-button").addEventListener("click", cancelResistanceChange);
+}
+
+function cancelResistanceChange(event){
+  event.preventDefault();
+  document.querySelector("#dialog-change-restance").close();
+
 }
 
 async function refreshTable() {
