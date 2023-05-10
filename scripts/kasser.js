@@ -13,7 +13,8 @@ let memberList;
 
 async function initApp() {
   memberList = await getMembers();
-  updateMemberTable(memberList);
+  refreshTable();
+
   document
     .querySelector("#nav-betalt")
     .addEventListener("click", () =>
@@ -27,18 +28,22 @@ async function initApp() {
   document
     .querySelector("#nav-all")
     .addEventListener("click", () => updateMemberTable(memberList));
-  document.querySelector("#total-debt").textContent = totalDebt(memberList);
-  document.querySelector("#total-income").textContent = totalIncome(memberList);
 
   document
     .querySelector("#form-change-restance")
     .addEventListener("submit", updateRestanceAccept);
 }
 
-function updateMemberTable() {
+async function refreshTable() {
+  memberList = await getMembers();
+  updateMemberTable(memberList);
+  document.querySelector("#total-debt").textContent = totalDebt(memberList);
+  document.querySelector("#total-income").textContent = totalIncome(memberList);
+}
+async function updateMemberTable(members) {
   if (memberList.length > 0) {
     document.querySelector("#overview-table-kasser").innerHTML = "";
-    for (const member of memberList) {
+    for (const member of members) {
       showMember(member);
     }
   } else {
@@ -73,43 +78,39 @@ function showMember(member) {
 
 function updateRestanceClicked(member) {
   const updateForm = document.querySelector("#form-change-restance");
+  // updateForm.reset();
 
-  //sets value of form to that of object
+  //   //sets value of form to that of object
   updateForm.debt.value = member.debt;
-  updateForm.active.value = member.active;
-  updateForm.age.value = member.age;
-  updateForm.email.value = member.email;
-  updateForm.konkurrence.value = member.konkurrence;
-  updateForm.name.value = member.name;
-  updateForm.tlf.value = member.tlf;
+  updateForm.setAttribute("active", member.active);
+  updateForm.setAttribute("age", member.age);
+  updateForm.setAttribute("email", member.email);
+  updateForm.setAttribute("tlf", member.tlf);
+  updateForm.setAttribute("konkurrence", member.konkurrence);
+  updateForm.setAttribute("name", member.name);
   updateForm.setAttribute("data-id", member.id);
 
   document.querySelector("#dialog-change-restance").showModal();
-  console.log("update button clicked");
 
-   document.querySelector(
-     "#dialog-change-restance-title"
-   ).textContent = `Ændre resistance for: ${member.name}`;
-
-  
+  document.querySelector(
+    "#dialog-change-restance-title"
+  ).textContent = `Ændre resistance for: ${member.name}`;
 }
 
-async function updateRestanceAccept(event, member) {
-event.preventDefault();
-
+async function updateRestanceAccept(event) {
+  event.preventDefault();
 
   const form = document.querySelector("#form-change-restance");
 
-  
   const id = form.getAttribute("data-id");
-  const active = member.active.value;
-  const age = member.age.value;
+  const active = form.getAttribute("active");
+  const age = form.getAttribute("age");
   const debt = form.debt.value;
-  const email = member.email.value;
-  const konkurrence = member.konkurrence.value;
-  const name = member.name.value;
-  const tlf = member.tlf.value;
-  
+  const email = form.getAttribute("email");
+  const konkurrence = form.getAttribute("konkurrence");
+  const name = form.getAttribute("name");
+  const tlf = form.getAttribute("email");
+
   const response = await updateRestance(
     id,
     active,
@@ -123,7 +124,7 @@ event.preventDefault();
 
   if (response.ok) {
     document.querySelector("#dialog-change-restance").close();
-    updateMemberTable();
+    refreshTable();
     console.log("update Member debt clicked");
   } else {
     console.log("something went wrong");
