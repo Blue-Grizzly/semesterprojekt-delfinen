@@ -75,6 +75,21 @@ function totalDebt(list){
   return debtTotal;
 }    
 
+function isActive(member) {
+  if (member.active === "true") {
+    return `aktiv`;
+  } else {
+    return `passiv`;
+  }
+}
+
+function isInCompetionen(member) {
+  if (member.competition === "true") {
+    return `konkurrencesvømmer`;
+  } else {
+    return `motionist`;
+  }
+}
 
 
-export {prepareData, checkMembership, checkAgeGroup, filterPaidMembers, filterUnpaidMembers, totalDebt, totalIncome};
+export {prepareData, checkMembership, checkAgeGroup, filterPaidMembers, filterUnpaidMembers, totalDebt, totalIncome, isActive, isInCompetionen};
