@@ -46,4 +46,32 @@ async function deleteMember(memberObject) {
   return response;
 }
 
-export {getMembers, createMember, updateMember, deleteMember};
+
+async function updateRestance(
+  id,
+  active,
+  age,
+  debt,
+  email,
+  konkurrence,
+  name,
+  tlf
+) {
+  const restanceToUpdate = {
+    active: active,
+    age: age,
+    debt: debt,
+    email: email,
+    konkurrence: konkurrence,
+    name: name,
+    tlf: tlf,
+  };
+
+  const response = await fetch(`${endpoint}/medlemmer/${id}.json`, {
+    method: "PUT",
+    body: JSON.stringify(restanceToUpdate),
+  });
+  return response;
+}
+
+export {getMembers, createMember, updateMember, deleteMember, updateRestance};

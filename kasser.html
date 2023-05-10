@@ -4,28 +4,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Svømmeklubben Delfinen</title>
+    <title>Delfinen</title>
+    <link rel="stylesheet" href="kasser.css">
 </head>
 <body>
+
+    <dialog id="dialog-change-restance">
+        <form id="form-change-restance" method="dialog">
+            <p id="dialog-change-restance-title"></p>
+
+          
+        <input type="text "id="active" name="active"  class="hidden">
+        <input type="number" name="age" id="age" placeholder="Medlemmets alder" size="50"   class="hidden"/>
+        <input type="text" name="email" id="email" placeholder="Medlemmets e-mail" size="50"  class="hidden"/>
+        <input type="text" id="konkurrence" name="konkurrence"  class="hidden">
+            
+        <input type="text" name="name" id="memberName" placeholder="Medlemmets navn" size="50"   class="hidden"/>
+        <input type="number" name="tlf" id="tlf" placeholder="Tlf.:" size="50"  maxlength="8"  class="hidden"/>
+        <input type="text" name="age" class="hidden" />
+
+        <label for="debt">Restance:</label>
+        <input type="number" name="debt" id="restance-input">
+        <button>Set Restance</button>
+
+        </form>
+    </dialog>
     <header>
-        <h2>Svømmeklubben Delfinen</h2>
-        <h2>Kasser</h2>
-        <button id="nav-betalt">Betalt</button>
-        <button id="nav-restance">Restance</button>
-        <button id="nav-all">Alle</button>
+        <h2 class="header1">Svømmeklubben Delfinen</h2>
+        <h2 class="header2">Kasser</h2>
+        <button id="nav-betalt" class="button1"><h2>Betalt</h2></button>
+        <button id="nav-restance" class="button2"><h2>Restance</h2></button>
+        <button id="nav-all" class="button3"><h2>Alle</h2></button>
     </header>
 
-    <table>
-        <tr>
-            <th>Navn</th>
-            <th>Restance</th>
-            <th>Medlemsskab</th>
-        </tr>
-        <tbody id="overview-table-kasser"></tbody>
-    </table>
+    <div class="kasser-grid-container">     
+        <table class="grid-item1">
+            <tr>
+                <th>Navn</th>
+                <th>Restance</th>
+                <th>Medlemsskab</th>
+            </tr>
+            <tbody id="overview-table-kasser"></tbody>
+        </table>
 
-    <h3>Total forventet indkomst <span id="total-income"></span></h3>
-    <h3>Total restance <span id="total-debt"></span></h3>
+        <h3 class="grid-item2">Total forventet indkomst: <br><span id="total-income"></span></h3>
+        <h3 class="grid-item3">Total restance: <br><span id="total-debt"></span></h3>
+    </div>
+
+    <footer> Made by: Abed, Jasper Nielsen, Nikolaj Christian Møller & Emil Nissen.</footer>
+
     <script src="scripts/kasser.js" type="module"></script>
 </body>
 </html>

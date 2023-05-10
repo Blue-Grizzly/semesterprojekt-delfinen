@@ -24,3 +24,63 @@ tr:hover {
   background-color: #f5f5f5;
 }
 
+
+/* Style for the background overlay */
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Style for the dialog container */
+.create-dialog-container {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Style for the dialog title */
+.create-result {
+  font-size: 24px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* Style for the form labels */
+.create-dialog-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Style for the form inputs */
+.create-dialog-form input[type="text"],
+.create-dialog-form input[type="date"],
+.create-dialog-form input[type="time"],
+.create-dialog-form textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* Style for the form buttons */
+.create-dialog-form button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Style for the cancel button */
+.btn-cancel {
+  background-color: #f44336;
+}
+
+
+
