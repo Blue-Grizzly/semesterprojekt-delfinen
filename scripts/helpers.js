@@ -1,4 +1,3 @@
-//helping functions
 
 function prepareData(dataObject) {
   const memberArray = [];
@@ -58,7 +57,7 @@ function totalIncome(list){
             console.log("junior")
             incomeTotal += 1000;
           }
-      } else{
+      } else {
         incomeTotal += 500;
 
     } 

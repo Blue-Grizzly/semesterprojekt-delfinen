@@ -1,4 +1,4 @@
-import { createMember } from "./rest-service.js";
+import { getMembers, createMember, updateMember, deleteMember } from "./rest-service.js";
 window.addEventListener("load", initApp);
 
 
@@ -7,7 +7,6 @@ function initApp() {
   document.querySelector("#nytmedlem").addEventListener("click", showCreateForm);
   document.querySelector("#form-update-character .btn-cancel").addEventListener("click", cancelUpdate);
   document.querySelector("#form-update-character").addEventListener("submit", updateCharacterClicked);
-
 }
 
 function showCreateForm(){
@@ -136,4 +135,64 @@ async function createMemberClicked(event) {
  async function updateMembersGrid() {
    memberList = await getMembers();
    showMembers(memberList);
+ }
+
+function showMembers(memberList) {
+  document.querySelector("#medlemmer").innerHTML = "";
+  if (memberList.length !== 0) {
+    for (const member of memberList) {
+      showCharacter(member);
+    }
+  } else {
+    document.querySelector("#medlemmer").insertAdjacentHTML(
+      "beforeend",
+      /*html*/ `
+    <h2 id="search-error-msg"> Ingen medlemmer blev fundet, prøv venligst igen.</h2>
+    `
+    );
+  }
+}
+
+ function showMember(memberObject) {
+   const html = /*html*/ `
+        <article class="grid-item">
+        <div class="clickable">    
+            <p>Aktiv ${memberObject.active}</p>
+            <p>Alder ${memberObject.age}</p>
+            <p>Gæld: ${memberObject.debt}</p>
+            <p>E-mail: ${memberObject.email}</p>
+            <p>Konkurrence: ${memberObject.competition}</p>
+            <p>Navn: ${memberObject.name}</p>
+            <p>Tlf.: ${memberObject.tlf}</p>
+        </div>
+            <div class="btns">
+                <button class="btn-delete">Delete</button>
+                <button class="btn-update">Update</button>
+            </div>
+        </article>
+    `;
+   document.querySelector("#members").insertAdjacentHTML("beforeend", html);
+
+   const gridItem = document.querySelector("#medlemmer article:last-child .clickable");
+
+   gridItem.addEventListener("click", () => {
+     showCharacterModal(memberObject);
+   });
+
+   document.querySelector("#medlemmer article:last-child .btn-delete").addEventListener("click", () => deleteMemberClicked(memberObject));
+   document.querySelector("#medlemmer article:last-child .btn-update").addEventListener("click", () => updateClicked(memberObject));
+ }
+
+ function showMemberModal(memberObject) {
+   const modal = document.querySelector("#member-modal");
+   modal.querySelector("#member-active").src = memberObject.active;
+   modal.querySelector("#member-age").textContent = memberObject.age;
+   modal.querySelector("#member-debt").textContent = memberObject.debt;
+   modal.querySelector("#member-email").textContent = memberObject.email;
+   modal.querySelector("#member-competition").textContent = memberObject.competition;
+   modal.querySelector("#member-name").textContent = memberObject.name;
+   modal.querySelector("#member-tlf").textContent = memberObject.tlf;
+   modal.showModal();
+   modal.querySelector("button").addEventListener("click", () => {modal.close();
+   });
  }
