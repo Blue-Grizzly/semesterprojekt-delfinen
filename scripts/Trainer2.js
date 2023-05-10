@@ -16,6 +16,11 @@ async function getResults() {
 }
 
 function showResults(results) {
+  const table = document.querySelector("#hold1-table");
+
+  // Clear the table
+  table.innerHTML = "";
+
   for (const result of results) {
     const html = `
       <tr>
@@ -28,7 +33,7 @@ function showResults(results) {
         <td>${result.tid}</td>
       </tr>
     `;
-    document.querySelector("#hold1-table").insertAdjacentHTML("beforeend", html);
+    table.insertAdjacentHTML("beforeend", html);
   }
 }
 
@@ -93,11 +98,13 @@ async function createResultClicked(event) {
   if (response.ok) {
     document.querySelector("#dialog-create-result").close();
     form.reset();
-    // event.target.parentNode.close();
+    
+    const results = await getResults(); // Fetch the updated results
+    showResults(results);  
+    
   } else {
     console.log(response.status, response.statusText);
   }
-  showCreateForm();
 }
 
  function createCancelClicked(event) {

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Svømmeklubben Delfinen</title>
     <link rel="stylesheet" href="trainer.css">
     <title>Svømmeklubben Delfinen</title>
 </head>
@@ -25,8 +24,9 @@
         </nav>
     </header>
 
-<h3>Hold 1 Results</h3>
-    <table id="hold1-table">
+  <h3>Hold 1 Results</h3>
+<table>
+    <thead>
         <tr>
             <th>Placering</th>
             <th>Dato</th>
@@ -36,10 +36,14 @@
             <th>Svømmer</th>
             <th>Tid</th>
         </tr>
-    </table>
+    </thead>
+    <tbody id="hold1-table">
+    </tbody>
+</table>
 
- <h3>Hold 2 Results</h3>
-    <table id="hold2-table">
+<h3>Hold 2 Results</h3>
+<table>
+    <thead>
         <tr>
             <th>Placering</th>
             <th>Dato</th>
@@ -49,7 +53,11 @@
             <th>Svømmer</th>
             <th>Tid</th>
         </tr>
-    </table>
+    </thead>
+    <tbody id="hold2-table">
+    </tbody>
+</table>
+
 
     <div id="nytresultat">
     <h1>Nyt Resultater</h1>
