@@ -126,11 +126,6 @@ table.grid-item1{
 }
 
 
-.grid-item1 tbody tr :hover {
-    font-weight: bold;
-    color: var(--dark-blue);
-}
-
 .create-dialog-head{
     margin-bottom: 30px;
     text-align: center;

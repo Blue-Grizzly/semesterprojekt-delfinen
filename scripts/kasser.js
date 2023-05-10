@@ -32,6 +32,14 @@ async function initApp() {
   document
     .querySelector("#form-change-restance")
     .addEventListener("submit", updateRestanceAccept);
+
+    document.querySelector("#cancel-restance-change-button").addEventListener("click", cancelResistanceChange);
+}
+
+function cancelResistanceChange(event){
+  event.preventDefault();
+  document.querySelector("#dialog-change-restance").close();
+
 }
 
 async function refreshTable() {
@@ -64,9 +72,9 @@ function showMember(member) {
     /*html*/ `
     <tr>
         <td>${member.name}</td>
-        <td id="restance">${member.debt}</td>
+        <td id="restance">${member.debt} kr</td>
         <td>${memberGroup}</td>
-        <td><button class="btn-change-restance">Ændre Restance</button></td>
+        <td><button class="btn-change-restance">Ændr Restance</button></td>
     </tr>
 
     `
@@ -94,7 +102,7 @@ function updateRestanceClicked(member) {
 
   document.querySelector(
     "#dialog-change-restance-title"
-  ).textContent = `Ændre resistance for: ${member.name}`;
+  ).textContent = `Ændr resistance for: ${member.name}`;
 }
 
 async function updateRestanceAccept(event) {
@@ -125,9 +133,9 @@ async function updateRestanceAccept(event) {
   if (response.ok) {
     document.querySelector("#dialog-change-restance").close();
     refreshTable();
-    console.log("update Member debt clicked");
+    console.log("Update Member Debt clicked");
   } else {
-    console.log("something went wrong");
+    console.log("Something went wrong");
   }
 }
 
