@@ -3,8 +3,8 @@
 window.addEventListener("load", initApp);
 
 async function initApp() {
-  
-  document.querySelector("#nytmedlem").addEventListener("click", showCreateForm);
+  showCreateForm()
+  document.querySelector("#nytresultat").addEventListener("click", showCreateForm);
   const results = await getResults();
   console.log(results);
   showResults(results);
@@ -32,3 +32,79 @@ function showResults(results) {
     document.querySelector("#hold1-table").insertAdjacentHTML("beforeend", html);
   }
 }
+
+function showCreateForm(){
+    document.querySelector("#dialog-create-result").showModal();
+    document.querySelector("#form-create-result").addEventListener("submit", createResultClicked);
+    document.querySelector("#cancel-create").addEventListener("click", createCancelClicked);
+
+}
+
+
+async function createResult(
+  placering,
+  dato,
+  disciplin,
+  noter,
+  stævne,
+  svømmer,
+  tid
+) {
+  const response = await fetch(
+    "https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app/resultater.json",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        placering: placering,
+        dato: dato,
+        disciplin: disciplin,
+        noter: noter,
+        stævne: stævne,
+        svømmer: svømmer,
+        tid: tid,
+      }),
+    }
+  );
+  return response;
+}
+
+
+
+
+async function createResultClicked(event) {
+  event.preventDefault();
+  const form = document.querySelector("#form-create-result");
+  const placering = form.placering.value;
+  const dato = form.dato.value;
+  const disciplin = form.disciplin.value;
+  const noter = form.noter.value;
+  const stævne = form.stævne.value;
+  const svømmer = form.svømmer.value;
+  const tid = form.tid.value;
+
+  const response = await createResult(
+    placering,
+    dato,
+    disciplin,
+    noter,
+    stævne,
+    svømmer,
+    tid
+  );
+  if (response.ok) {
+    document.querySelector("#dialog-create-result").close();
+    form.reset();
+    // event.target.parentNode.close();
+  } else {
+    console.log(response.status, response.statusText);
+  }
+}
+
+ function createCancelClicked(event) {
+   event.preventDefault();
+   document.querySelector("#form-create-result").reset();
+   document.querySelector("#dialog-create-result").close();
+ }
