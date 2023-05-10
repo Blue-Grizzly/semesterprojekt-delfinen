@@ -1,16 +1,12 @@
 // main script file
 
 // login del(Abed)
-window.addEventListener("load", getUserByUsername);
+window.addEventListener("load", initApp);
 
 function initApp() {
-  updateMembersGrid();
-  document
-    .querySelector("#form-update-character .btn-cancel")
-    .addEventListener("click", cancelUpdate);
-  document
-    .querySelector("#form-update-character")
-    .addEventListener("submit", updateCharacterClicked);
+  document.querySelector("#submit").addEventListener("click", login);
+
+
 }
 
 async function getUserByUsername(username) {
@@ -45,22 +41,22 @@ function redirectToUserPage(userType) {
   }
 }
 
-document.querySelector("#submit").addEventListener("click", async function (event) {
-    event.preventDefault();
+async function login(event) {
+  event.preventDefault();
 
-    const username = document.querySelector("#username").value;
-    const password = document.querySelector("#password").value;
-    console.log(username);
-    console.log(password);
+  const username = document.querySelector("#username").value;
+  const password = document.querySelector("#password").value;
+  console.log(username);
+  console.log(password);
 
-    const user = await getUserByUsername(username);
-    if (user) {
-      if (user.password === password) {
-        redirectToUserPage(user.usertype);
-      } else {
-        alert("Invalid password");
-      }
+  const user = await getUserByUsername(username);
+  if (user) {
+    if (user.password === password) {
+      redirectToUserPage(user.usertype);
     } else {
-      alert("Invalid username");
+      alert("Invalid password");
     }
-  });
+  } else {
+    alert("Invalid username");
+  }
+}

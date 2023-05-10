@@ -1,9 +1,8 @@
 import { getMembers, createMember, updateMember, deleteMember } from "./rest-service.js";
 window.addEventListener("load", initApp);
 
-
-
 let memberList;
+
 
 async function initApp() {
   memberList = await getMembers();
@@ -61,7 +60,7 @@ async function createMemberClicked(event) {
 
  async function updateMemberClicked(event) {
    event.preventDefault();
-   const form = document.querySelector("#form-update-character");
+   const form = document.querySelector("#form-update-member");
 
    const active = form.active.value;
    const age = form.age.value;
@@ -76,7 +75,7 @@ async function createMemberClicked(event) {
    const response = await updateMember(id, active, age, debt, email, konkurrence, name, tlf);
    if (response.ok) {
      document.querySelector("#dialog-update-member").close();
-     updateCharactersGrid();
+     updateMembersGrid();
    } else {
      console.log(response.status, response.statusText);
      showErrorMessage("Noget gik galt, prøv venligst igen");
@@ -119,7 +118,7 @@ async function createMemberClicked(event) {
    const response = await deleteMember(memberObject);
 
    if (response.ok) {
-     updateCharactersGrid();
+     updateMembersGrid();
      showDeleteFeedback();
    } else {
      document.querySelector("#dialog-failed-to-update").showModal();
@@ -172,8 +171,8 @@ function showMembers(memberList) {
             <p>Tlf.: ${memberObject.tlf}</p>
         </div>
             <div class="btns">
-                <button class="btn-delete">Delete</button>
-                <button class="btn-update">Update</button>
+                <button class="btn-delete">Slet</button>
+                <button class="btn-update">Opdater</button>
             </div>
         </article>
     `;
@@ -182,7 +181,7 @@ function showMembers(memberList) {
    const gridItem = document.querySelector("#memberTable article:last-child .clickable");
 
    gridItem.addEventListener("click", () => {
-     showCharacterModal(memberObject);
+     showMemberModal(memberObject);
    });
 
    document.querySelector("#memberTable article:last-child .btn-delete").addEventListener("click", () => deleteMemberClicked(memberObject));
