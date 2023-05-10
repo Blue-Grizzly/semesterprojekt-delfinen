@@ -34,7 +34,7 @@ function checkAgeGroup(member){
 }
 
 function filterPaidMembers(memberList){
-  return memberList.filter((member) => member.debt === 0);
+  return memberList.filter((member) => member.debt == 0);
 }
 
 function filterUnpaidMembers(memberList){
