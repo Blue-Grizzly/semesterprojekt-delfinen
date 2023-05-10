@@ -137,7 +137,7 @@ table.grid-item1{
 }
 
 
-.create-dialog-form{
+.dialog-form{
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: auto;
