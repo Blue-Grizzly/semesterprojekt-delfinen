@@ -86,7 +86,7 @@ function updateRestanceClicked(member) {
   updateForm.setAttribute("age", member.age);
   updateForm.setAttribute("email", member.email);
   updateForm.setAttribute("tlf", member.tlf);
-  updateForm.setAttribute("konkurrence", member.konkurrence);
+  updateForm.setAttribute("competition", member.competition);
   updateForm.setAttribute("name", member.name);
   updateForm.setAttribute("data-id", member.id);
 
