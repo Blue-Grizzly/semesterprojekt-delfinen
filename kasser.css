@@ -126,11 +126,6 @@ table.grid-item1{
 }
 
 
-.grid-item1 tbody tr :hover {
-    font-weight: bold;
-    color: var(--dark-blue);
-}
-
 .create-dialog-head{
     margin-bottom: 30px;
     text-align: center;
@@ -161,8 +156,8 @@ table.grid-item1{
     .label7 { grid-area: 5 / 1 / 6 / 3; }
     .input7 { grid-area: 5 / 2 / 6 / 6; }
 
-    .btn-confirm-create { grid-area: 7 / 3 / 8 / 6; }
-    .btn-cancel-create { grid-area: 7 / 6 / 8 / 9; } 
+    .btn-confirm { grid-area: 7 / 3 / 8 / 6; }
+    .btn-cancel { grid-area: 7 / 6 / 8 / 9; } 
 
 
 #form-create-member label{

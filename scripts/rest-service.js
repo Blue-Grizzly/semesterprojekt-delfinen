@@ -4,14 +4,34 @@ import{prepareData} from "./helpers.js";
 
 const endpoint = "https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app";
 
+async function getUserByUsername(username) {
+  const response = await fetch(
+    "https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app/users.json"
+  );
+  const users = await response.json();
+  console.log("users");
+  console.log(users);
+  if (users) {
+    const keys = Object.keys(users);
+    for (let i = 0; i < keys.length; i++) {
+      const key = keys[i];
+      if (users[key].username === username) {
+        return users[key];
+      }
+    }
+  }
+
+  return null;
+}
+
 async function getMembers() {
     const response = await fetch(`${endpoint}/medlemmer.json`);
     const data = await response.json();
     return prepareData(data);
 }
   
-  async function createMember(name, age, debt, konkurrence, email, tlf, active) {
-    const newMember = {name, age, debt, konkurrence, email, tlf, active};
+  async function createMember(name, age, debt, competition, email, tlf, active) {
+    const newMember = {name, age, debt, competition, email, tlf, active};
     const json = JSON.stringify(newMember);
     const response = await fetch(`${endpoint}/medlemmer.json`, {
       method: "POST",
@@ -20,13 +40,13 @@ async function getMembers() {
     return response;
   }
 
-async function updateMember(id, active, age, debt, email, konkurrence, name, tlf) {
+async function updateMember(id, active, age, debt, email, competition, name, tlf) {
   const memberToUpdate = {
     active: active,
     age: age,
     debt: debt,
     email: email,
-    konkurrence: konkurrence,
+    competition: competition,
     name: name,
     tlf: tlf,
 };
@@ -53,7 +73,7 @@ async function updateRestance(
   age,
   debt,
   email,
-  konkurrence,
+  competition,
   name,
   tlf
 ) {
@@ -62,7 +82,7 @@ async function updateRestance(
     age: age,
     debt: debt,
     email: email,
-    konkurrence: konkurrence,
+    competition: competition,
     name: name,
     tlf: tlf,
   };
@@ -74,4 +94,4 @@ async function updateRestance(
   return response;
 }
 
-export {getMembers, createMember, updateMember, deleteMember, updateRestance};
+export {getMembers, createMember, updateMember, deleteMember, updateRestance, getUserByUsername};

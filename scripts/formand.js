@@ -29,33 +29,33 @@ function showCreateForm() {
 }
 
 async function createMemberClicked(event) {
-  event.preventDefault();
-  const form = document.querySelector("#form-create-member");
-  const name = form.name.value;
-  const age = form.age.value;
-  const debt = form.restance.value;
-  const competition = form.competition.value;
-  const email = form.email.value;
-  const tlf = form.tlf.value;
-  const active = form.active.value;
+    event.preventDefault();
+    const form = document.querySelector("#form-create-member");
+    const name = form.name.value;
+    const age = form.age.value;
+    const debt = form.debt.value;
+    const competition = form.competition.value;
+    const email = form.email.value;
+    const tlf = form.tlf.value;
+    const active = form.active.value;
 
-  const response = await createMember(
-    name,
-    age,
-    debt,
-    competition,
-    email,
-    tlf,
-    active
-  );
-  if (response.ok) {
-    document.querySelector("#dialog-create-member").close();
-    form.reset();
-    // event.target.parentNode.close();
-  } else {
-    console.log(response.status, response.statusText);
+    const response = await createMember(
+        name,
+        age,
+        debt,
+        competition,
+        email,
+        tlf,
+        active
+        );
+    if (response.ok) {
+      document.querySelector("#dialog-create-member").close();
+      form.reset();
+      updateMembersGrid();
+    } else {
+      console.log(response.status, response.statusText);
+    }
   }
-}
 
 function createCancelClicked(event) {
   event.preventDefault();
@@ -105,23 +105,19 @@ async function updateMemberClicked(event) {
 function updateClicked(memberObject) {
   const updateForm = document.querySelector("#form-update-member");
 
-  updateForm.active.value = memberObject.active;
-  updateForm.age.value = memberObject.age;
-  updateForm.debt.value = memberObject.debt;
-  updateForm.email.value = memberObject.email;
-  updateForm.competition.value = memberObject.competition;
-  updateForm.name.value = memberObject.name;
-  updateForm.tlf.value = memberObject.tlf;
+   updateForm.active.value = memberObject.active;
+   updateForm.age.value = memberObject.age;
+   updateForm.debt.value = memberObject.debt;
+   updateForm.email.value = memberObject.email;
+   updateForm.competition.value = memberObject.competition;
+   updateForm.name.value = memberObject.name;
+   updateForm.tlf.value = memberObject.tlf;
+   updateForm.setAttribute("data-id", memberObject.id);
+   document.querySelector("#dialog-update-member").showModal();
+   document.querySelector("#form-update-member").addEventListener("submit", updateMemberClicked);
+   document.querySelector("#cancel-update").addEventListener("click", updateMemberClicked);
 
-  updateForm.setAttribute("data-id", memberObject.id);
-  document.querySelector("#dialog-update-member").showModal();
-  document
-    .querySelector("#form-update-member")
-    .addEventListener("submit", updateMemberClicked);
-  document
-    .querySelector("#cancel-update")
-    .addEventListener("click", updateMemberClicked);
-}
+ }
 
 function deleteMemberClicked(memberObject) {
   console.log(memberObject);
@@ -215,9 +211,9 @@ function showMember(memberObject) {
     "#memberTable article:last-child .clickable"
   );
 
-  gridItem.addEventListener("click", () => {
-    showMemberModal(memberObject);
-  });
+  //  gridItem.addEventListener("click", () => {
+  //    showMemberModal(memberObject);
+  //  });
 
   document
     .querySelector("#memberTable article:last-child .btn-delete")
@@ -227,18 +223,16 @@ function showMember(memberObject) {
     .addEventListener("click", () => updateClicked(memberObject));
 }
 
-function showMemberModal(memberObject) {
-  const modal = document.querySelector("#member-modal");
-  modal.querySelector("#member-active").textContent = memberObject.active;
-  modal.querySelector("#member-age").textContent = memberObject.age;
-  modal.querySelector("#member-debt").textContent = memberObject.debt;
-  modal.querySelector("#member-email").textContent = memberObject.email;
-  modal.querySelector("#member-competition").textContent =
-    memberObject.competition;
-  modal.querySelector("#member-name").textContent = memberObject.name;
-  modal.querySelector("#member-tlf").textContent = memberObject.tlf;
-  modal.showModal();
-  modal.querySelector("button").addEventListener("click", () => {
-    modal.close();
-  });
-}
+//  function showMemberModal(memberObject) {
+//    const modal = document.querySelector("#member-modal");
+//    modal.querySelector("#member-active").textContent = memberObject.active;
+//    modal.querySelector("#member-age").textContent = memberObject.age;
+//    modal.querySelector("#member-debt").textContent = memberObject.debt;
+//    modal.querySelector("#member-email").textContent = memberObject.email;
+//    modal.querySelector("#member-competition").textContent = memberObject.competition;
+//    modal.querySelector("#member-name").textContent = memberObject.name;
+//    modal.querySelector("#member-tlf").textContent = memberObject.tlf;
+//    modal.showModal();
+//    modal.querySelector("button").addEventListener("click", () => {modal.close();
+//    });
+//  }

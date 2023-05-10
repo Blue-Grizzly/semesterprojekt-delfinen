@@ -1,4 +1,5 @@
-// main script file
+import {getUserByUsername} from "./rest-service.js"
+
 
 // login del(Abed)
 window.addEventListener("load", initApp);
@@ -9,25 +10,7 @@ function initApp() {
 
 }
 
-async function getUserByUsername(username) {
-  const response = await fetch(
-    "https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app/users.json"
-  );
-  const users = await response.json();
-  console.log("users");
-  console.log(users);
-  if (users) {
-    const keys = Object.keys(users);
-    for (let i = 0; i < keys.length; i++) {
-      const key = keys[i];
-      if (users[key].username === username) {
-        return users[key];
-      }
-    }
-  }
 
-  return null;
-}
 
 function redirectToUserPage(userType) {
   if (userType === "admin") {
