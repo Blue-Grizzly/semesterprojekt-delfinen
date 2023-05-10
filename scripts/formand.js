@@ -2,11 +2,13 @@ import { createMember } from "./rest-service.js";
 window.addEventListener("load", initApp);
 
 
-function initApp(){
-    document.querySelector("#nytmedlem").addEventListener("click", showCreateForm);
+function initApp() {
+  updateMembersGrid();
+  document.querySelector("#nytmedlem").addEventListener("click", showCreateForm);
+  document.querySelector("#form-update-character .btn-cancel").addEventListener("click", cancelUpdate);
+  document.querySelector("#form-update-character").addEventListener("submit", updateCharacterClicked);
 
 }
-
 
 function showCreateForm(){
     document.querySelector("#dialog-create-member").showModal();
