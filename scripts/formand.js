@@ -1,12 +1,12 @@
 import { getMembers, createMember, updateMember, deleteMember } from "./rest-service.js";
 window.addEventListener("load", initApp);
 
+let memberList;
 
 function initApp() {
   updateMembersGrid();
   document.querySelector("#nytmedlem").addEventListener("click", showCreateForm);
-  document.querySelector("#form-update-character .btn-cancel").addEventListener("click", cancelUpdate);
-  document.querySelector("#form-update-character").addEventListener("submit", updateCharacterClicked);
+ 
 }
 
 function showCreateForm(){
@@ -58,7 +58,7 @@ async function createMemberClicked(event) {
 
  async function updateMemberClicked(event) {
    event.preventDefault();
-   const form = document.querySelector("#form-update-character");
+   const form = document.querySelector("#form-update-member");
 
    const active = form.active.value;
    const age = form.age.value;
@@ -73,7 +73,7 @@ async function createMemberClicked(event) {
    const response = await updateMember(id, active, age, debt, email, konkurrence, name, tlf);
    if (response.ok) {
      document.querySelector("#dialog-update-member").close();
-     updateCharactersGrid();
+     updateMembersGrid();
    } else {
      console.log(response.status, response.statusText);
      showErrorMessage("Noget gik galt, prøv venligst igen");
@@ -101,7 +101,7 @@ async function createMemberClicked(event) {
    document.querySelector("#dialog-delete-member-title").textContent = memberObject.name;
    document.querySelector("#dialog-delete-member").showModal();
    document.querySelector("#form-delete-member").addEventListener("submit", () => deleteMemberConfirm(memberObject));
-   document.querySelector("#cancelDelete").addEventListener("click", event => cancelMemberCharacter(event));
+   document.querySelector("#cancelDelete").addEventListener("click", event => cancelDeleteMember(event));
  }
 
  function cancelDeleteMember(event) {
@@ -113,7 +113,7 @@ async function createMemberClicked(event) {
    const response = await deleteMember(memberObject);
 
    if (response.ok) {
-     updateCharactersGrid();
+     updateMembersGrid();
      showDeleteFeedback();
    } else {
      document.querySelector("#dialog-failed-to-update").showModal();
@@ -141,7 +141,7 @@ function showMembers(memberList) {
   document.querySelector("#medlemmer").innerHTML = "";
   if (memberList.length !== 0) {
     for (const member of memberList) {
-      showCharacter(member);
+      showMember(member);
     }
   } else {
     document.querySelector("#medlemmer").insertAdjacentHTML(
@@ -166,17 +166,17 @@ function showMembers(memberList) {
             <p>Tlf.: ${memberObject.tlf}</p>
         </div>
             <div class="btns">
-                <button class="btn-delete">Delete</button>
-                <button class="btn-update">Update</button>
+                <button class="btn-delete">Slet</button>
+                <button class="btn-update">Opdater</button>
             </div>
         </article>
     `;
-   document.querySelector("#members").insertAdjacentHTML("beforeend", html);
+   document.querySelector("#medlemmer").insertAdjacentHTML("beforeend", html);
 
    const gridItem = document.querySelector("#medlemmer article:last-child .clickable");
 
    gridItem.addEventListener("click", () => {
-     showCharacterModal(memberObject);
+     showMemberModal(memberObject);
    });
 
    document.querySelector("#medlemmer article:last-child .btn-delete").addEventListener("click", () => deleteMemberClicked(memberObject));
