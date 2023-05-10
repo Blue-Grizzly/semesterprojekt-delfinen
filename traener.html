@@ -50,8 +50,43 @@
             <th>Tid</th>
         </tr>
     </table>
+
+    <dialog id="dialog-create-result">
+  <div class="create-dialog-container">
+    <h2 class="create-result">Opret nyt resultat</h2>
+    <form id="form-create-result" method="dialog" class="create-dialog-form">
+      
+      <label for="placering">Placering<input type="text" name="placering" id="placering" placeholder="Placering" size="50"/>
+      </label>
+      
+
+      <label for="dato">Dato<input type="date" name="dato" id="dato" placeholder="Dato" size="50"/>
+      </label> 
+
+      <label for="disciplin">Disciplin<input type="text" name="disciplin" id="disciplin" placeholder="Disciplin" size="50"/>
+      </label> 
+
+      <label for="noter">Noter<input type ="text" id="noter" placeholder="Noter" size="50"/>
+      </label> 
+
+      <label for="stævne">Stævne<input type="text" name="stævne" id="stævne" placeholder="Stævne" size="50"/>
+      </label> 
+
+      <label for="svømmer">Svømmer<input type="text" name="svømmer" id="svømmer" placeholder="Svømmer" size="50"/>
+      </label> 
+
+      <label for="tid">Tid<input type="time" name="tid" id="tid" placeholder="Tid" size="50"/>
+     </label> 
+
+      <button type="submit">Gem</button>
+      <button id="cancel-create" class="btn-cancel">Luk</button>
+    </form>
+  </div>
+</dialog>
+
         
-    
+
+
 <script src="scripts/Trainer2.js" type="module"></script>
 </body>
 </html>
