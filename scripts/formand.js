@@ -2,11 +2,13 @@ import { getMembers, createMember, updateMember, deleteMember } from "./rest-ser
 window.addEventListener("load", initApp);
 
 
-function initApp() {
+
+let memberList;
+
+async function initApp() {
+  memberList = await getMembers();
   updateMembersGrid();
   document.querySelector("#nytmedlem").addEventListener("click", showCreateForm);
-  document.querySelector("#form-update-character .btn-cancel").addEventListener("click", cancelUpdate);
-  document.querySelector("#form-update-character").addEventListener("submit", updateMemberClicked);
 
 }
 
@@ -95,6 +97,9 @@ async function createMemberClicked(event) {
 
    updateForm.setAttribute("data-id", memberObject.id);
    document.querySelector("#dialog-update-member").showModal();
+   document.querySelector("#form-update-member").addEventListener("submit", updateMemberClicked);
+   document.querySelector("#cancel-update").addEventListener("click", updateMemberClicked);
+
  }
 
  function deleteMemberClicked(memberObject) {
@@ -102,7 +107,7 @@ async function createMemberClicked(event) {
    document.querySelector("#dialog-delete-member-title").textContent = memberObject.name;
    document.querySelector("#dialog-delete-member").showModal();
    document.querySelector("#form-delete-member").addEventListener("submit", () => deleteMemberConfirm(memberObject));
-   document.querySelector("#cancelDelete").addEventListener("click", event => cancelMemberCharacter(event));
+   document.querySelector("#cancelDelete").addEventListener("click", event => cancelDeleteMember(event));
  }
 
  function cancelDeleteMember(event) {
@@ -139,13 +144,13 @@ async function createMemberClicked(event) {
  }
 
 function showMembers(memberList) {
-  document.querySelector("#medlemmer").innerHTML = "";
+  document.querySelector("#memberTable").innerHTML = "";
   if (memberList.length !== 0) {
     for (const member of memberList) {
-      showCharacter(member);
+      showMember(member);
     }
   } else {
-    document.querySelector("#medlemmer").insertAdjacentHTML(
+    document.querySelector("#memberTable").insertAdjacentHTML(
       "beforeend",
       /*html*/ `
     <h2 id="search-error-msg"> Ingen medlemmer blev fundet, prøv venligst igen.</h2>
@@ -172,21 +177,21 @@ function showMembers(memberList) {
             </div>
         </article>
     `;
-   document.querySelector("#members").insertAdjacentHTML("beforeend", html);
+   document.querySelector("#memberTable").insertAdjacentHTML("beforeend", html);
 
-   const gridItem = document.querySelector("#medlemmer article:last-child .clickable");
+   const gridItem = document.querySelector("#memberTable article:last-child .clickable");
 
    gridItem.addEventListener("click", () => {
      showCharacterModal(memberObject);
    });
 
-   document.querySelector("#medlemmer article:last-child .btn-delete").addEventListener("click", () => deleteMemberClicked(memberObject));
-   document.querySelector("#medlemmer article:last-child .btn-update").addEventListener("click", () => updateClicked(memberObject));
+   document.querySelector("#memberTable article:last-child .btn-delete").addEventListener("click", () => deleteMemberClicked(memberObject));
+   document.querySelector("#memberTable article:last-child .btn-update").addEventListener("click", () => updateClicked(memberObject));
  }
 
  function showMemberModal(memberObject) {
    const modal = document.querySelector("#member-modal");
-   modal.querySelector("#member-active").src = memberObject.active;
+   modal.querySelector("#member-active").textContent = memberObject.active;
    modal.querySelector("#member-age").textContent = memberObject.age;
    modal.querySelector("#member-debt").textContent = memberObject.debt;
    modal.querySelector("#member-email").textContent = memberObject.email;
@@ -197,3 +202,4 @@ function showMembers(memberList) {
    modal.querySelector("button").addEventListener("click", () => {modal.close();
    });
  }
+

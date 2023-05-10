@@ -21,6 +21,11 @@
 
     </header>
 
+<main>
+    <section id="memberTable"></section>
+</main>
+
+
 <dialog id="member-modal">
   <h3 id="member-name"></h3>
   <p>Aktiv: <span id="member-active"></span></p>
@@ -96,7 +101,7 @@
 </dialog>
 
 <dialog id="dialog-update-member">
-    <h2>Opdater Medlem</h2>
+    <h2 id="update-header"></h2>
     <form id="form-update-member" method="dialog" class="dialog-form">
         <label for="active" class="label1">Aktiv </label>
         <select id="active" name="active" class="input1">
@@ -131,9 +136,9 @@
         <input type="number" name="tlf" id="tlf" placeholder="Tlf.:" size="50" required maxlength="8" class="input7"/>
         
 
-        <button id="cancel-create" class="btn-cancel btn-cancel-create">Luk</button>
+        <button id="cancel-update" class="btn-cancel btn-cancel-create">Luk</button>
         <p class="error-message hide">Der skete en fejl. Prøv venlist igen.</p>
-        <button class="btn-confirm-create">Opret Medlem</button>
+        <button class="btn-confirm-update">Opdater Medlem</button>
     </form>
 </dialog>
 
