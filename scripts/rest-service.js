@@ -10,8 +10,8 @@ async function getMembers() {
     return prepareData(data);
 }
   
-  async function createMember(name, age, debt, konkurrence, email, tlf, active) {
-    const newMember = {name, age, debt, konkurrence, email, tlf, active};
+  async function createMember(name, age, debt, competition, email, tlf, active) {
+    const newMember = {name, age, debt, competition, email, tlf, active};
     const json = JSON.stringify(newMember);
     const response = await fetch(`${endpoint}/medlemmer.json`, {
       method: "POST",
@@ -20,13 +20,13 @@ async function getMembers() {
     return response;
   }
 
-async function updateMember(id, active, age, debt, email, konkurrence, name, tlf) {
+async function updateMember(id, active, age, debt, email, competition, name, tlf) {
   const memberToUpdate = {
     active: active,
     age: age,
     debt: debt,
     email: email,
-    konkurrence: konkurrence,
+    competition: competition,
     name: name,
     tlf: tlf,
 };
@@ -53,7 +53,7 @@ async function updateRestance(
   age,
   debt,
   email,
-  konkurrence,
+  competition,
   name,
   tlf
 ) {
@@ -62,7 +62,7 @@ async function updateRestance(
     age: age,
     debt: debt,
     email: email,
-    konkurrence: konkurrence,
+    competition: competition,
     name: name,
     tlf: tlf,
   };

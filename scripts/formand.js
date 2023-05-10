@@ -23,7 +23,7 @@ async function createMemberClicked(event) {
     const form = document.querySelector("#form-create-member");
     const name = form.name.value;
     const age = form.age.value;
-    const debt = form.restance.value;
+    const debt = form.debt.value;
     const competition = form.competition.value;
     const email = form.email.value;
     const tlf = form.tlf.value;
@@ -41,7 +41,7 @@ async function createMemberClicked(event) {
     if (response.ok) {
       document.querySelector("#dialog-create-member").close();
       form.reset();
-      // event.target.parentNode.close();
+      updateMembersGrid();
     } else {
       console.log(response.status, response.statusText);
     }
@@ -93,7 +93,6 @@ async function createMemberClicked(event) {
    updateForm.competition.value = memberObject.competition;
    updateForm.name.value = memberObject.name;
    updateForm.tlf.value = memberObject.tlf;
-
    updateForm.setAttribute("data-id", memberObject.id);
    document.querySelector("#dialog-update-member").showModal();
    document.querySelector("#form-update-member").addEventListener("submit", updateMemberClicked);
@@ -180,25 +179,25 @@ function showMembers(memberList) {
 
    const gridItem = document.querySelector("#memberTable article:last-child .clickable");
 
-   gridItem.addEventListener("click", () => {
-     showMemberModal(memberObject);
-   });
+  //  gridItem.addEventListener("click", () => {
+  //    showMemberModal(memberObject);
+  //  });
 
    document.querySelector("#memberTable article:last-child .btn-delete").addEventListener("click", () => deleteMemberClicked(memberObject));
    document.querySelector("#memberTable article:last-child .btn-update").addEventListener("click", () => updateClicked(memberObject));
  }
 
- function showMemberModal(memberObject) {
-   const modal = document.querySelector("#member-modal");
-   modal.querySelector("#member-active").textContent = memberObject.active;
-   modal.querySelector("#member-age").textContent = memberObject.age;
-   modal.querySelector("#member-debt").textContent = memberObject.debt;
-   modal.querySelector("#member-email").textContent = memberObject.email;
-   modal.querySelector("#member-competition").textContent = memberObject.competition;
-   modal.querySelector("#member-name").textContent = memberObject.name;
-   modal.querySelector("#member-tlf").textContent = memberObject.tlf;
-   modal.showModal();
-   modal.querySelector("button").addEventListener("click", () => {modal.close();
-   });
- }
+//  function showMemberModal(memberObject) {
+//    const modal = document.querySelector("#member-modal");
+//    modal.querySelector("#member-active").textContent = memberObject.active;
+//    modal.querySelector("#member-age").textContent = memberObject.age;
+//    modal.querySelector("#member-debt").textContent = memberObject.debt;
+//    modal.querySelector("#member-email").textContent = memberObject.email;
+//    modal.querySelector("#member-competition").textContent = memberObject.competition;
+//    modal.querySelector("#member-name").textContent = memberObject.name;
+//    modal.querySelector("#member-tlf").textContent = memberObject.tlf;
+//    modal.showModal();
+//    modal.querySelector("button").addEventListener("click", () => {modal.close();
+//    });
+//  }
 
