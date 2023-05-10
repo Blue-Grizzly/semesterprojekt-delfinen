@@ -3,6 +3,8 @@
 window.addEventListener("load", initApp);
 
 async function initApp() {
+  
+  document.querySelector("#nytmedlem").addEventListener("click", showCreateForm);
   const results = await getResults();
   console.log(results);
   showResults(results);
