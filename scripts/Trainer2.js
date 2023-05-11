@@ -142,7 +142,8 @@ async function updateResultClicked(event) {
   }
 }
 
-function updateClicked(resultObject) {
+function updateClicked( resultObject) {
+
   const updateForm = document.querySelector("#form-update-result");
 
   updateForm.placering.value = resultObject.placering;
@@ -156,11 +157,13 @@ function updateClicked(resultObject) {
   document.querySelector("#dialog-update-result").showModal();
   updateForm.addEventListener("submit", updateResultClicked);
 
-  document.querySelector("#cancel-update").addEventListener("click", () => {
-    document.querySelector("#dialog-update-result").close();
-  });
+  document.querySelector("#cancel-update").addEventListener("click",dialogUpdateCancel);
 }
 
+function dialogUpdateCancel(event){
+  event.preventDefault();
+  document.querySelector("#dialog-update-result").close();
+}
 
 
 
