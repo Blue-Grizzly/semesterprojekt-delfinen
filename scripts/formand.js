@@ -16,6 +16,7 @@ async function initApp() {
   document
     .querySelector("#nytmedlem")
     .addEventListener("click", showCreateForm);
+    document.querySelector("#refresh").addEventListener("click", updateMembersGrid);
 }
 
 function showCreateForm() {
