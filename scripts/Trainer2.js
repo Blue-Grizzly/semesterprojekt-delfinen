@@ -20,8 +20,6 @@ showResults(results);
 }
 function showResults(results) {
   const table = document.querySelector("#hold-table");
-
-  // Clear the table
   table.innerHTML = "";
 
   for (const result of results) {
@@ -39,7 +37,6 @@ function showResults(results) {
       </tr>
     `;
     table.insertAdjacentHTML("beforeend", html);
-
     document.querySelector("#hold-table tr:last-child #btn-delete").addEventListener("click", () => deleteResultClicked(result) )
   }
 }
@@ -49,8 +46,6 @@ function showCreateForm(){
   document.querySelector("#form-create-result").addEventListener("submit", createResultClicked);
   document.querySelector("#cancel-create").addEventListener("click", createCancelClicked);
 }
-
-
 
 async function createResultClicked(event) {
   event.preventDefault();
@@ -76,7 +71,7 @@ async function createResultClicked(event) {
     document.querySelector("#dialog-create-result").close();
     form.reset();
     
-    const results = await getResults(); // Fetch the updated results
+    const results = await getResults();
     showResults(results);  
     
   } else {
