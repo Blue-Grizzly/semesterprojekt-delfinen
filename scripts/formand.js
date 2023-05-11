@@ -22,12 +22,8 @@ async function initApp() {
 
 function showCreateForm() {
   document.querySelector("#dialog-create-member").showModal();
-  document
-    .querySelector("#form-create-member")
-    .addEventListener("submit", createMemberClicked);
-  document
-    .querySelector("#cancel-create")
-    .addEventListener("click", createCancelClicked);
+  document.querySelector("#form-create-member").addEventListener("submit", createMemberClicked);
+  document.querySelector("#cancel-create").addEventListener("click", createCancelClicked);
 }
 
 async function createMemberClicked(event) {
@@ -123,15 +119,10 @@ function updateClicked(memberObject) {
 
 function deleteMemberClicked(memberObject) {
   console.log(memberObject);
-  document.querySelector("#dialog-delete-member-title").textContent =
-    memberObject.name;
+  document.querySelector("#dialog-delete-member-title").textContent = memberObject.name;
   document.querySelector("#dialog-delete-member").showModal();
-  document
-    .querySelector("#form-delete-member")
-    .addEventListener("submit", () => deleteMemberConfirm(memberObject));
-  document
-    .querySelector("#cancelDelete")
-    .addEventListener("click", (event) => cancelDeleteMember(event));
+  document.querySelector("#form-delete-member").addEventListener("submit", () => deleteMemberConfirm(memberObject));
+  document.querySelector("#cancelDelete").addEventListener("click", (event) => cancelDeleteMember(event));
 }
 
 function cancelDeleteMember(event) {
