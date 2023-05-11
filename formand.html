@@ -20,29 +20,40 @@
         </button>
     </header>
 
-<main>
-    <section id="memberTable"></section>
+<main id="formand-grid-container">
+    <table id="grid-item">
+        <tr>
+            <th>Navn</th>
+            <th>Status</th>
+            <th>Alder</th>
+            <th>Indstillinger</th>
+        </tr>
+        <tbody id="memberTable">
+  
+        </tbody>
+    </table>
 </main>
 
 
 <dialog id="member-modal">
-  <h3 id="member-name"></h3>
-  <p>Aktiv: <span id="member-active"></span></p>
-  <p>Alder: <span id="member-age"></span></p>
-  <p>Gæld: <span id="member-debt"></span></p>
-  <p>E-mail: <span id="member-email"></span></p>
-  <p>Konkurrence: <span id="member-competition"></span></p>
-  <p>Motionist: <span id="member-exerciser"></span></p>
-  <p>Navn: <span id="member-name"></span></p>
-  <p>Tlf: <span id="member-phone-number"></span></p>
-  <form method="dialog">
-    <button>Luk</button>
-  </form>
+    <article class="member-grid-container">
+        <h3 id="member-name" class="dialog-head"></h3>
+        <article class="modal-info-container">
+            <p id="member-active"></p>
+            <p id="member-competition"></p>
+            <p>Alder: <span id="member-age"></span></p>
+            <p id="member-swimteam"></p>
+            <p>Restance: <span id="member-debt"></span></p>
+            <p>E-mail: <span id="member-email"></span></p>
+            <p>Tlf: <span id="member-tlf"></span></p>
+        </article>
+        <button id="button-close-info">Luk</button>
+    </article>
 </dialog>
 
   <dialog id="dialog-create-member">
     <div class="create-dialog-container">
-      <h2 class="create-dialog-head">Opret nyt medlem</h2>
+      <h2 class="dialog-head">Opret nyt medlem</h2>
       <form id="form-create-member" method="dialog" class="dialog-form">
         
 
@@ -80,7 +91,7 @@
         
 
         <button id="cancel-create" class="btn-cancel">Luk</button>
-        <p class="error-message hide">Der skete en fejl. Prøv venlist igen.</p>
+        <p id="error-message-create" class="hidden">Der skete en fejl. Prøv venlist igen.</p>
         <button class="btn-confirm">Opret Medlem</button>
       </form>
   </div>

@@ -5,6 +5,7 @@ import {
   filterUnpaidMembers,
   totalIncome,
   totalDebt,
+  isActive,
 } from "./helpers.js";
 
 window.addEventListener("load", initApp);
@@ -58,14 +59,13 @@ async function updateMemberTable(members) {
 }
 
 function showMember(member) {
-  const memberGroup = checkAgeGroup(member);
   document.querySelector("#overview-table-kasser").insertAdjacentHTML(
     "beforeend",
     /*html*/ `
     <tr>
         <td>${member.name}</td>
         <td id="restance">${member.debt}kr</td>
-        <td>${memberGroup}</td>
+        <td>${isActive(member)} ${checkAgeGroup(member)}</td>
         <td><button class="btn-change-restance">Ændre Restance</button></td>
     </tr>
 

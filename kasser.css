@@ -12,8 +12,6 @@
 }
 
 body{
-    /* background-image: url("https://c1.wallpaperflare.com/preview/274/295/630/water-swimming-pool-bathing-travel.jpg"); */
-    /* background-image: url("https://img.rawpixel.com/private/static/images/website/2022-05/px828844-image-kwvxfkf4.jpg?w=1200&h=1200&dpr=1&fit=clip&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&cs=srgb&bg=F4F4F3&ixlib=js-2.2.1&s=f149c13a39d424a0ffe644cc603ede9a"); */
     background-color: var(--light-blue);
 }   
 
@@ -93,7 +91,20 @@ footer{
 
 
 
-table.grid-item1{
+#formand-grid-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+
+}
+
+#grid-item{
+    grid-area: 1 / 1;
+}
+
+
+
+table{
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
@@ -102,33 +113,54 @@ table.grid-item1{
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
-.grid-item1 thead tr{
+thead tr{
     background-color: var(--dark-blue);
     color: var(--light-blue);
     text-align: left;
 }
 
-.grid-item1 th, .grid-item1 td{
+th, td{
     padding: 12px 15px;
     text-align: center;
 }
 
-.grid-item1 tbody tr {
+tbody tr {
     border-bottom: 1px solid var(--dark-blue);
 }
 
-.grid-item1 tbody tr:nth-of-type(even) {
+tbody tr:nth-of-type(even) {
     background-color: var(--light-teal);
 }
 
-.grid-item1 tbody tr:last-of-type {
+tbody tr:last-of-type {
     border-bottom: 2px solid var(--dark-blue);
 }
 
 
-.create-dialog-head{
+.dialog-head{
     margin-bottom: 30px;
     text-align: center;
+}
+.member-grid-container{
+    display: grid;;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    justify-items: center;
+}
+
+#member-modal{
+    width: 40vw;
+    border: 2px solid var(--dark-blue);   
+    background-color: var(--white-blue);
+
+}
+
+.modal-info-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-column-gap: 50px;
+    padding: 20px;
 }
 
 
@@ -140,7 +172,6 @@ table.grid-item1{
     grid-row-gap: 15px;
     }
     
-    /* .head { grid-area: 1 / 4 / 2 / 8; } */
     .label1 { grid-area: 2 / 1 / 3 / 3; }
     .input1 { grid-area: 2 / 2 / 3 / 6; }
     .label2 { grid-area: 2 / 7 / 3 / 8; }

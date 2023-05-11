@@ -5,12 +5,8 @@ import{prepareData} from "./helpers.js";
 const endpoint = "https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app";
 
 async function getUserByUsername(username) {
-  const response = await fetch(
-    "https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app/users.json"
-  );
+  const response = await fetch(`${endpoint}/users.json`);
   const users = await response.json();
-  console.log("users");
-  console.log(users);
   if (users) {
     const keys = Object.keys(users);
     for (let i = 0; i < keys.length; i++) {

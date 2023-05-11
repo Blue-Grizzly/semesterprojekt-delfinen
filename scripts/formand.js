@@ -5,7 +5,7 @@ import {
   deleteMember,
 } from "./rest-service.js";
 
-import{isActive, isInCompetionen} from "./helpers.js"
+import{isActive, isInCompetionen, checkSwimteam} from "./helpers.js"
 window.addEventListener("load", initApp);
 
 let memberList;
@@ -53,6 +53,7 @@ async function createMemberClicked(event) {
       form.reset();
       updateMembersGrid();
     } else {
+      document.querySelector("#error-message-create").classList.remove("hidden");
       console.log(response.status, response.statusText);
     }
   }
@@ -65,6 +66,7 @@ function createCancelClicked(event) {
 
 function cancelUpdate(event) {
   event.preventDefault();
+  document.querySelector("#form-update-member").reset();
   document.querySelector("#dialog-update-member").close();
 }
 
@@ -115,7 +117,7 @@ function updateClicked(memberObject) {
    updateForm.setAttribute("data-id", memberObject.id);
    document.querySelector("#dialog-update-member").showModal();
    document.querySelector("#form-update-member").addEventListener("submit", updateMemberClicked);
-   document.querySelector("#cancel-update").addEventListener("click", updateMemberClicked);
+   document.querySelector("#cancel-update").addEventListener("click", cancelUpdate);
 
  }
 
@@ -184,55 +186,45 @@ function showMembers(memberList) {
 }
 
 function showMember(memberObject) {
+
   const html = /*html*/ `
-        <article class="grid-item">
-        <div class="clickable">    
-            <p>Aktiv: ${isActive(memberObject)}</p>
-            <p>Alder: ${memberObject.age}</p>
-            <p>Gæld: ${memberObject.debt}</p>
-            <p>E-mail: ${memberObject.email}</p>
-            <p>Konkurrence: ${isInCompetionen(memberObject)}</p>
-            <p>Navn: ${memberObject.name}</p>
-            <p>Tlf.: ${memberObject.tlf}</p>
-        </div>
-            <div class="btns">
+          <tr class="clickable">    
+            <td>${memberObject.name}</td>
+              <td>${isActive(memberObject)}, ${isInCompetionen(memberObject)}</td>
+              <td>${memberObject.age}</td>
+              <td class="btns">
                 <button class="btn-delete">Slet</button>
                 <button class="btn-update">Opdater</button>
-            </div>
-        </article>
-    `;
+                <button class="btn-info">Info</button>
+              </td>
+          </tr>
+            `;
 
   
- 
-
   document.querySelector("#memberTable").insertAdjacentHTML("beforeend", html);
-
-  const gridItem = document.querySelector(
-    "#memberTable article:last-child .clickable"
-  );
-
-  //  gridItem.addEventListener("click", () => {
-  //    showMemberModal(memberObject);
-  //  });
+  
+  document
+    .querySelector("#memberTable tr:last-child .btn-info")
+    .addEventListener("click", () => showMemberInfo(memberObject));
 
   document
-    .querySelector("#memberTable article:last-child .btn-delete")
+    .querySelector("#memberTable tr:last-child .btn-delete")
     .addEventListener("click", () => deleteMemberClicked(memberObject));
   document
-    .querySelector("#memberTable article:last-child .btn-update")
+    .querySelector("#memberTable tr:last-child .btn-update")
     .addEventListener("click", () => updateClicked(memberObject));
 }
 
-//  function showMemberModal(memberObject) {
-//    const modal = document.querySelector("#member-modal");
-//    modal.querySelector("#member-active").textContent = memberObject.active;
-//    modal.querySelector("#member-age").textContent = memberObject.age;
-//    modal.querySelector("#member-debt").textContent = memberObject.debt;
-//    modal.querySelector("#member-email").textContent = memberObject.email;
-//    modal.querySelector("#member-competition").textContent = memberObject.competition;
-//    modal.querySelector("#member-name").textContent = memberObject.name;
-//    modal.querySelector("#member-tlf").textContent = memberObject.tlf;
-//    modal.showModal();
-//    modal.querySelector("button").addEventListener("click", () => {modal.close();
-//    });
-//  }
+ function showMemberInfo(memberObject) {
+   const modal = document.querySelector("#member-modal");
+   modal.querySelector("#member-active").textContent = isActive(memberObject);
+   modal.querySelector("#member-competition").textContent = isInCompetionen(memberObject);
+   modal.querySelector("#member-swimteam").textContent = checkSwimteam(memberObject);
+   modal.querySelector("#member-age").textContent = memberObject.age;
+   modal.querySelector("#member-debt").textContent = memberObject.debt;
+   modal.querySelector("#member-email").textContent = memberObject.email;
+   modal.querySelector("#member-name").textContent = memberObject.name;
+   modal.querySelector("#member-tlf").textContent = memberObject.tlf;
+   modal.showModal();
+   document.querySelector("#button-close-info").addEventListener("click", () => modal.close());
+ }
