@@ -1,5 +1,4 @@
-"use strict";
-
+import { createResult, getResults, deleteResult } from "./rest-service.js";
 window.addEventListener("load", initApp);
 
 async function initApp() {
@@ -7,15 +6,23 @@ async function initApp() {
   const results = await getResults();
   console.log(results);
   showResults(results);
+  document
+    .querySelector(".log-off-btn")
+    .addEventListener("click", () => (window.location.href = "index.html"));
+  updateResultsGrid();
 }
 
-async function getResults() {
-  const response = await fetch("https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app/resultater.json");
-  const data = await response.json();
-  return Object.values(data);
+async function updateResultsGrid() {
+const results = await getResults();
+console.log(results);
+showResults(results);
 }
-
 function showResults(results) {
+  const table = document.querySelector("#hold-table");
+
+  // Clear the table
+  table.innerHTML = "";
+
   for (const result of results) {
     const html = `
       <tr>
@@ -26,47 +33,21 @@ function showResults(results) {
         <td>${result.stævne}</td>
         <td>${result.svømmer}</td>
         <td>${result.tid}</td>
+        <td><button id="btn-update">Opdater</button></td>
+        <td><button id="btn-delete">Slet</button></td>
       </tr>
     `;
-    document.querySelector("#hold1-table").insertAdjacentHTML("beforeend", html);
+    table.insertAdjacentHTML("beforeend", html);
+
+    document.querySelector("#hold-table tr:last-child #btn-delete").addEventListener("click", () => deleteResultClicked(result) )
   }
 }
 
 function showCreateForm(){
-    document.querySelector("#dialog-create-result").showModal();
-    document.querySelector("#form-create-result").addEventListener("submit", createResultClicked);
-    document.querySelector("#cancel-create").addEventListener("click", createCancelClicked);
-
+  document.querySelector("#dialog-create-result").showModal();
+  document.querySelector("#form-create-result").addEventListener("submit", createResultClicked);
+  document.querySelector("#cancel-create").addEventListener("click", createCancelClicked);
 }
-
-
-async function createResult(
-  placering,
-  dato,
-  disciplin,
-  noter,
-  stævne,
-  svømmer,
-  tid
-) {
-  const response = await fetch(
-    "https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app/resultater.json",
-    {
-      method: "POST",
-      body: JSON.stringify({
-        placering: placering,
-        dato: dato,
-        disciplin: disciplin,
-        noter: noter,
-        stævne: stævne,
-        svømmer: svømmer,
-        tid: tid,
-      }),
-    }
-  );
-  return response;
-}
-
 
 
 
@@ -93,11 +74,13 @@ async function createResultClicked(event) {
   if (response.ok) {
     document.querySelector("#dialog-create-result").close();
     form.reset();
-    // event.target.parentNode.close();
+    
+    const results = await getResults(); // Fetch the updated results
+    showResults(results);  
+    
   } else {
     console.log(response.status, response.statusText);
   }
-  showCreateForm();
 }
 
  function createCancelClicked(event) {
@@ -105,3 +88,27 @@ async function createResultClicked(event) {
    document.querySelector("#form-create-result").reset();
    document.querySelector("#dialog-create-result").close();
  }
+
+function deleteResultClicked(resultObject) {
+  console.log(resultObject);
+  document.querySelector("#dialog-delete-result-title").textContent = resultObject.name;
+  document.querySelector("#dialog-delete-result").showModal();
+  document.querySelector("#form-delete-result").addEventListener("submit", () => deleteResultConfirm(resultObject));
+  document.querySelector("#cancel-delete-result").addEventListener("click", event => cancelDeleteResult(event));
+}
+
+function cancelDeleteResult(event) {
+  event.preventDefault();
+  document.querySelector("#dialog-delete-result").close();
+}
+
+async function deleteResultConfirm(resultObject) {
+  const response = await deleteResult(resultObject);
+
+  if (response.ok) {
+    updateResultsGrid();
+    console.log("sletter");
+  } else {
+    document.querySelector("#dialog-failed-to-update").showModal();
+  }
+}

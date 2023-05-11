@@ -5,8 +5,12 @@ import{prepareData} from "./helpers.js";
 const endpoint = "https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app";
 
 async function getUserByUsername(username) {
-  const response = await fetch(`${endpoint}/users.json`);
+  const response = await fetch(
+    "https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app/users.json"
+  );
   const users = await response.json();
+  console.log("users");
+  console.log(users);
   if (users) {
     const keys = Object.keys(users);
     for (let i = 0; i < keys.length; i++) {
@@ -25,6 +29,12 @@ async function getMembers() {
     const data = await response.json();
     return prepareData(data);
 }
+
+async function getResults() {
+  const response = await fetch("https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app/resultater.json");
+  const data = await response.json();
+  return prepareData(data);
+}
   
   async function createMember(name, age, debt, competition, email, tlf, active) {
     const newMember = {name, age, debt, competition, email, tlf, active};
@@ -35,6 +45,33 @@ async function getMembers() {
     });
     return response;
   }
+
+  async function createResult(
+  placering,
+  dato,
+  disciplin,
+  noter,
+  stævne,
+  svømmer,
+  tid
+) {
+  const response = await fetch(
+    "https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app/resultater.json",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        placering: placering,
+        dato: dato,
+        disciplin: disciplin,
+        noter: noter,
+        stævne: stævne,
+        svømmer: svømmer,
+        tid: tid,
+      }),
+    }
+  );
+  return response;
+}
 
 async function updateMember(id, active, age, debt, email, competition, name, tlf) {
   const memberToUpdate = {
@@ -57,6 +94,14 @@ async function updateMember(id, active, age, debt, email, competition, name, tlf
 async function deleteMember(memberObject) {
   const id = memberObject.id;
   const response = await fetch(`${endpoint}/medlemmer/${id}.json`, {
+    method: "DELETE",
+  });
+  return response;
+}
+
+async function deleteResult(resultObject) {
+  const id = resultObject.id;
+  const response = await fetch(`${endpoint}/resultater/${id}.json`, {
     method: "DELETE",
   });
   return response;
@@ -90,4 +135,4 @@ async function updateRestance(
   return response;
 }
 
-export {getMembers, createMember, updateMember, deleteMember, updateRestance, getUserByUsername};
+export {getMembers, getResults, createMember, createResult, updateMember, deleteMember, deleteResult, updateRestance, getUserByUsername};
