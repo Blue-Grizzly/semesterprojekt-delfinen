@@ -37,13 +37,13 @@ function checkAgeGroup(member){
 function filterPaidMembers(memberList){
   return memberList
     .filter((member) => member.debt == 0)
-    .sort((a, b) => a.name.localeCompare(b.name));
+    ;
 }
 
 
 
 function filterUnpaidMembers(memberList){
-  return memberList.filter((member) => member.debt !== 0).sort((a,b) => a.name.localeCompare(b.name));
+  return memberList.filter((member) => member.debt !== 0);
 }
 
 function totalIncome(list){
