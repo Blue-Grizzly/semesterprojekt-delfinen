@@ -1,80 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="kasser.css">
-    <link rel="shortcut icon" href="#" type="image/x-icon">
-    <title>Svømmeklubben Delfinen</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="kasser.css">
+  <link rel="shortcut icon" href="#" type="image/x-icon">
+  <title>Svømmeklubben Delfinen</title>
 </head>
 <body>
-    <header>
-        <h2 class="header1">Svømmeklubben Delfinen</h2>
-        <h2 class="header2">Formand</h2>
-        <button id="refresh" class="button1">
-            <h2>Medlemsliste</h2>
-        </button>
-        <button id="nytmedlem" class="button3">
-            <h2>Nyt medlem</h2>
-        </button>
-    </header>
+  <header>
+    <h2 class="header1">Svømmeklubben Delfinen</h2>
+    <h2 class="header2">Formand</h2>
+    <button id="refresh" class="button1">
+      <h2>Medlemsliste</h2>
+    </button>
+      <button id="nytmedlem" class="button3">
+        <h2>Nyt medlem</h2>
+      </button>
+  </header>
 
-<main id="formand-grid-container">
+  <main id="formand-grid-container">
     <table id="grid-item">
-        <tr>
-            <th>Navn</th>
-            <th>Status</th>
-            <th>Alder</th>
-            <th>Indstillinger</th>
-        </tr>
-        <tbody id="memberTable">
-  
-        </tbody>
+      <tr>
+        <th>Navn</th>
+        <th>Status</th>
+        <th>Alder</th>
+        <th>Indstillinger</th>
+      </tr>
+      <tbody id="memberTable"></tbody>
     </table>
-</main>
+  </main>
 
-
-<dialog id="member-modal">
+  <dialog id="member-modal">
     <article class="member-grid-container">
-        <h3 id="member-name" class="dialog-head"></h3>
-        <article class="modal-info-container">
-            <p id="member-active"></p>
-            <p id="member-competition"></p>
-            <p>Alder: <span id="member-age"></span></p>
-            <p id="member-swimteam"></p>
-            <p>Restance: <span id="member-debt"></span></p>
-            <p>E-mail: <span id="member-email"></span></p>
-            <p>Tlf: <span id="member-tlf"></span></p>
-        </article>
+      <h3 id="member-name" class="dialog-head"></h3>
+      <article class="modal-info-container">
+        <p id="member-active"></p>
+        <p id="member-competition"></p>
+        <p>Alder: <span id="member-age"></span></p>
+        <p id="member-swimteam"></p>
+        <p>Restance: <span id="member-debt"></span></p>
+        <p>E-mail: <span id="member-email"></span></p>
+        <p>Tlf: <span id="member-tlf"></span></p>
+      </article>
         <button id="button-close-info">Luk</button>
     </article>
-</dialog>
+  </dialog>
 
   <dialog id="dialog-create-member">
     <div class="create-dialog-container">
       <h2 class="dialog-head">Opret nyt medlem</h2>
       <form id="form-create-member" method="dialog" class="dialog-form">
-        
-
         <label for="active" class="label1">Aktiv </label>
         <select id="active" name="active" class="input1">
             <option value="true">Aktiv</option>
             <option value="false">Passiv</option>
         </select>
         
-
         <label for="age" class="label2">Alder </label>
         <input type="number" name="age" id="age" placeholder="Medlemmets alder" size="50" class="input2" required/>
         
-
         <label for="debt" class="label3">Gæld </label>
         <input type="number" name="debt" id="debt" placeholder="Indtast restance, hvis ingen tast 0" size="50" required class="input3"/>
-        
 
         <label for="email" class="label4">E-mail </label>
         <input type="email" name="email" id="email" placeholder="Medlemmets e-mail" size="50" required class="input4"/>
-        
 
         <label for="competition" class="label5">Konkurrence</label>
         <select id="competition" name="competition" class="input5">
@@ -84,39 +75,37 @@
 
         <label for="name" class="label6">Navn </label>
         <input type="text" name="name" id="memberName" placeholder="Medlemmets navn" size="50" required class="input6"/>
-        
 
         <label for="tlf" class="label7">Telefon </label>
         <input type="number" name="tlf" id="tlf" placeholder="Tlf.:" size="50" required maxlength="8" class="input7"/>
-        
 
         <button id="cancel-create" class="btn-cancel">Luk</button>
         <p id="error-message-create" class="hidden">Der skete en fejl. Prøv venlist igen.</p>
         <button class="btn-confirm">Opret Medlem</button>
       </form>
-  </div>
-</dialog>
+    </div>
+  </dialog>
 
-<dialog id="dialog-delete-member">
+  <dialog id="dialog-delete-member">
     <h2>Vil du fjerne dette medlem?</h2>
-    <p id="dialog-delete-member-title">Navn på medlemmet</p>
-    <form method="dialog" id="form-delete-member">
-    <button type="button" class="btn-cancel" id="cancelDelete">Nej</button>
-    <button>Ja</button>
-    </form>
-</dialog>
+      <p id="dialog-delete-member-title">Navn på medlemmet</p>
+      <form method="dialog" id="form-delete-member">
+        <button type="button" class="btn-cancel" id="cancelDelete">Nej</button>
+        <button>Ja</button>
+     </form>
+   </dialog>
 
-<dialog id="dialog-delete-feedback">
+  <dialog id="dialog-delete-feedback">
     <p id="dialog-delete-feedback-message">Medlem slettet</p>
-</dialog>
+  </dialog>
 
-<dialog id="dialog-update-member">
+  <dialog id="dialog-update-member">
     <h2 id="update-header"></h2>
-    <form id="form-update-member" method="dialog" class="dialog-form">
+      <form id="form-update-member" method="dialog" class="dialog-form">
         <label for="active" class="label1">Aktiv </label>
         <select id="active" name="active" class="input1">
-            <option value="true">Aktiv</option>
-            <option value="false">Passiv</option>
+          <option value="true">Aktiv</option>
+          <option value="false">Passiv</option>
         </select>
 
         <label for="age" class="label2">Alder </label>
@@ -130,8 +119,8 @@
         
         <label for="competition" class="label5">Konkurrence</label>
         <select id="competition" name="competition" class="input5">
-            <option value="false">Motionist</option>
-            <option value="true">Konkurrence</option>
+          <option value="false">Motionist</option>
+          <option value="true">Konkurrence</option>
         </select>
 
         <label for="name" class="label6">Navn </label>
@@ -143,19 +132,17 @@
         <button id="cancel-update" class="btn-cancel btn-cancel">Luk</button>
         <p class="error-message hide">Der skete en fejl. Prøv venlist igen.</p>
         <button class="btn-confirm">Opdater Medlem</button>
-    </form>
-</dialog>
+      </form>
+  </dialog>
 
-<dialog id="dialog-failed-to-update">
+  <dialog id="dialog-failed-to-update">
     <p>Medlem blev ikke opdateret</p>
     <button class="btn-cancel">Luk</button>
-</dialog>
+  </dialog>
 
-<script src="scripts/formand.js" type="module"></script>
-<footer>
+  <script src="scripts/formand.js" type="module"></script>
+  <footer>
     <button class="log-off-btn">Log af</button>
-</footer>
+  </footer>
 </body>
 </html>
-
-
