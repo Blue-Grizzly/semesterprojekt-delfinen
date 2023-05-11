@@ -27,7 +27,7 @@ async function initApp() {
     );
   document
     .querySelector("#nav-all")
-    .addEventListener("click", () => updateMemberTable(memberList.sort((a,b) => a.name.localeCompare(b.name))));
+    .addEventListener("click", () => updateMemberTable(memberList));
 
   document
     .querySelector("#form-change-restance")
