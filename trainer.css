@@ -27,8 +27,6 @@ table tbody tr:hover {
     background-color: #f2f2f2;
 }
 
-
-
 /* Style for the dialog container */
 .create-dialog-container {
   background-color: white;
@@ -80,6 +78,3 @@ table tbody tr:hover {
 .btn-cancel {
   background-color: #f44336;
 }
-
-
-
