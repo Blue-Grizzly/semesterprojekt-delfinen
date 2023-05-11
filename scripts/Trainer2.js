@@ -10,6 +10,9 @@ async function initApp() {
   console.log(results);
   showResults(results, "hold1-table");
   showResults(results, "hold2-table");
+  document
+    .querySelector(".log-off-btn")
+    .addEventListener("click", () => (window.location.href = "index.html"));
 }
 
 async function getResults() {

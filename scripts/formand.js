@@ -16,6 +16,8 @@ async function initApp() {
   document
     .querySelector("#nytmedlem")
     .addEventListener("click", showCreateForm);
+
+    document.querySelector(".log-off-btn").addEventListener("click",()=>window.location.href="index.html")
 }
 
 function showCreateForm() {
