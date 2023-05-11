@@ -95,3 +95,65 @@ async function createResultClicked(event) {
    document.querySelector("#form-create-result").reset();
    document.querySelector("#dialog-create-result").close();
  }
+<<<<<<< Updated upstream
+=======
+
+
+//  update
+
+async function updateResultClicked(event) {
+  event.preventDefault();
+  const form = document.querySelector("#form-update-result");
+
+  const placering = form.placering.value;
+  const dato = form.dato.value;
+  const disciplin = form.disciplin.value;
+  const noter = form.noter.value;
+  const stævne = form.stævne.value;
+  const svømmer = form.svømmer.value;
+  const tid = form.tid.value;
+
+  const id = form.getAttribute("data-id");
+
+  const response = await updateResult(
+    id,
+    placering,
+    dato,
+    disciplin,
+    noter,
+    stævne,
+    svæmmer,
+    tid
+  );
+  if (response.ok) {
+    document.querySelector("#dialog-update-member").close();
+    updateMembersGrid();
+  } else {
+    console.log(response.status, response.statusText);
+    showErrorMessage("Noget gik galt, prøv venligst igen");
+    event.target.parentNode.close();
+  }
+}
+
+function updateClicked(resultObject) {
+  const updateForm = document.querySelector("#form-update-result");
+
+  updateForm.placering.value = resultObject.placering;
+  updateForm.dato.value = resultObject.dato;
+  updateForm.disciplin.value = resultObject.disciplin;
+  updateForm.noter.value = resultObject.noter;
+  updateForm.stævne.value = resultObject.stævne;
+  updateForm.svømmer.value = resultObject.svømmer;
+  updateForm.tid.value = resultObject.tid;
+  updateForm.setAttribute("data-id", resultObject.id);
+  document.querySelector("#dialog-update-result").showModal();
+  updateForm.addEventListener("submit", updateResultClicked);
+  document.querySelector("#cancel-update").addEventListener("click", () => {
+    document.querySelector("#dialog-update-result").close();
+  });
+}
+
+
+
+
+>>>>>>> Stashed changes
