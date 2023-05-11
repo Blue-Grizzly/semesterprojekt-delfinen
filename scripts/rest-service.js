@@ -36,7 +36,7 @@ async function getResults() {
   return prepareData(data);
 }
   
-  async function createMember(name, age, debt, competition, email, tlf, active) {
+async function createMember(name, age, debt, competition, email, tlf, active) {
     const newMember = {name, age, debt, competition, email, tlf, active};
     const json = JSON.stringify(newMember);
     const response = await fetch(`${endpoint}/medlemmer.json`, {
@@ -46,7 +46,7 @@ async function getResults() {
     return response;
   }
 
-  async function createResult(
+async function createResult(
   placering,
   dato,
   disciplin,

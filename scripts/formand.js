@@ -114,7 +114,6 @@ function updateClicked(memberObject) {
    document.querySelector("#dialog-update-member").showModal();
    document.querySelector("#form-update-member").addEventListener("submit", updateMemberClicked);
    document.querySelector("#cancel-update").addEventListener("click", cancelUpdate);
-
 }
 
 function deleteMemberClicked(memberObject) {
@@ -179,20 +178,19 @@ function showMembers(memberList) {
 function showMember(memberObject) {
 
   const html = /*html*/ `
-          <tr class="clickable">    
-            <td>${memberObject.name}</td>
-              <td>${isActive(memberObject)}, ${isInCompetionen(memberObject)}</td>
-              <td>${memberObject.age}</td>
-              <td class="btns">
-                <button class="btn-delete">Slet</button>
-                <button class="btn-update">Opdater</button>
-                <button class="btn-info">Info</button>
-              </td>
-          </tr>
-            `;
+    <tr class="clickable">    
+      <td>${memberObject.name}</td>
+        <td>${isActive(memberObject)}, ${isInCompetionen(memberObject)}</td>
+        <td>${memberObject.age}</td>
+        <td class="btns">
+          <button class="btn-delete">Slet</button>
+          <button class="btn-update">Opdater</button>
+          <button class="btn-info">Info</button>
+        </td>
+    </tr>
+  `;
 
   document.querySelector("#memberTable").insertAdjacentHTML("beforeend", html);
-  
   document
     .querySelector("#memberTable tr:last-child .btn-info")
     .addEventListener("click", () => showMemberInfo(memberObject));

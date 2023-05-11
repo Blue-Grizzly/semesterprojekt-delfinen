@@ -6,11 +6,7 @@ window.addEventListener("load", initApp);
 
 function initApp() {
   document.querySelector("#submit").addEventListener("click", login);
-
-
 }
-
-
 
 function redirectToUserPage(userType) {
   if (userType === "admin") {

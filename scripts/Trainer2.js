@@ -6,9 +6,7 @@ async function initApp() {
   const results = await getResults();
   console.log(results);
   showResults(results);
-  document
-    .querySelector(".log-off-btn")
-    .addEventListener("click", () => (window.location.href = "index.html"));
+  document.querySelector(".log-off-btn").addEventListener("click", () => (window.location.href = "index.html"));
   updateResultsGrid();
 }
 
@@ -16,10 +14,8 @@ async function updateResultsGrid() {
 const results = await getResults();
 console.log(results);
 showResults(results);
-
-
-
 }
+
 function showResults(results) {
   const table = document.querySelector("#hold-table");
 
@@ -38,7 +34,6 @@ function showResults(results) {
         <td>${result.tid}</td>
         <td><button id="btn-update">Opdater</button></td>
         <td><button id="btn-delete">Slet</button></td>
-        
       </tr>
     `;
     table.insertAdjacentHTML("beforeend", html);
