@@ -13,15 +13,11 @@ let memberList;
 async function initApp() {
   memberList = await getMembers();
   updateMembersGrid();
-<<<<<<< Updated upstream
   document
     .querySelector("#nytmedlem")
     .addEventListener("click", showCreateForm);
 
     document.querySelector(".log-off-btn").addEventListener("click",()=>window.location.href="index.html")
-=======
-  document.querySelector("#nytmedlem").addEventListener("click", showCreateForm);
->>>>>>> Stashed changes
 }
 
 function showCreateForm() {
