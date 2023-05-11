@@ -88,10 +88,10 @@
 </dialog>
 
 <dialog id="dialog-delete-member">
-    <h2>Vil du gerne fjerne dette medlem?</h2>
+    <h2>Vil du fjerne dette medlem?</h2>
     <p id="dialog-delete-member-title">Navn på medlemmet</p>
     <form method="dialog" id="form-delete-member">
-    <button type="button" class="btn-cancel" id="cancelDelete">No</button>
+    <button type="button" class="btn-cancel" id="cancelDelete">Nej</button>
     <button>Ja</button>
     </form>
 </dialog>
@@ -108,20 +108,16 @@
             <option value="true">Aktiv</option>
             <option value="false">Passiv</option>
         </select>
-        
 
         <label for="age" class="label2">Alder </label>
         <input type="number" name="age" id="age" placeholder="Medlemmets alder" size="50" class="input2" required/>
         
-
         <label for="debt" class="label3">Gæld </label>
         <input type="number" name="debt" id="debt" placeholder="Indtast restance, hvis ingen tast 0" size="50" required class="input3"/>
         
-
         <label for="email" class="label4">E-mail </label>
         <input type="email" name="email" id="email" placeholder="Medlemmets e-mail" size="50" required class="input4"/>
         
-
         <label for="competition" class="label5">Konkurrence</label>
         <select id="competition" name="competition" class="input5">
             <option value="false">Motionist</option>
@@ -131,11 +127,9 @@
         <label for="name" class="label6">Navn </label>
         <input type="text" name="name" id="memberName" placeholder="Medlemmets navn" size="50" required class="input6"/>
         
-
         <label for="tlf" class="label7">Telefon </label>
         <input type="number" name="tlf" id="tlf" placeholder="Tlf.:" size="50" required maxlength="8" class="input7"/>
         
-
         <button id="cancel-update" class="btn-cancel btn-cancel">Luk</button>
         <p class="error-message hide">Der skete en fejl. Prøv venlist igen.</p>
         <button class="btn-confirm">Opdater Medlem</button>

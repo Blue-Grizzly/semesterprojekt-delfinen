@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="trainer.css">
     <title>Svømmeklubben Delfinen</title>
 </head>
-
- <h3>Members</h3>
+    <h3>Members</h3>
     <ul id="memberslist"></ul>
 <body>
     <header>
@@ -24,7 +23,7 @@
         </nav>
     </header>
 
-  <h3>Hold 1 Results</h3>
+  <h3>Resultater</h3>
 <table>
     <thead>
         <tr>
@@ -37,27 +36,9 @@
             <th>Tid</th>
         </tr>
     </thead>
-    <tbody id="hold1-table">
+    <tbody id="hold-table">
     </tbody>
 </table>
-
-<h3>Hold 2 Results</h3>
-<table>
-    <thead>
-        <tr>
-            <th>Placering</th>
-            <th>Dato</th>
-            <th>Disciplin</th>
-            <th>Noter</th>
-            <th>Stævne</th>
-            <th>Svømmer</th>
-            <th>Tid</th>
-        </tr>
-    </thead>
-    <tbody id="hold2-table">
-    </tbody>
-</table>
-
 
     <div id="nytresultat">
     <h1>Nyt Resultater</h1>
@@ -89,7 +70,6 @@
       <label for="placering">Placering<input type="text" name="placering" id="placering" placeholder="Placering" size="50"/>
       </label>
       
-
       <label for="dato">Dato<input type="date" name="dato" id="dato" placeholder="Dato" size="50"/>
       </label> 
 
@@ -108,8 +88,6 @@
       <label for="tid">Tid<input type="time" name="tid" id="tid" placeholder="Tid" size="50"/>
      </label> 
 
-     
-
       <button type="submit">Gem</button>
       <button id="cancel-create" class="btn-cancel">Luk</button>
     </form>
@@ -117,10 +95,10 @@
 </dialog>
 
 <dialog id="dialog-delete-result">
-    <h2>Vil du gerne fjerne dette resultat?</h2>
+    <h2>Vil du fjerne dette resultat?</h2>
     <p id="dialog-delete-result-title">Navn på medlemmet</p>
     <form method="dialog" id="form-delete-result">
-    <button type="button" class="btn-cancel" id="cancelDelete">No</button>
+    <button type="button" class="btn-cancel" id="cancel-delete-result">Nej</button>
     <button>Ja</button>
     </form>
 </dialog>
@@ -128,9 +106,6 @@
 <dialog id="dialog-delete-feedback">
     <p id="dialog-delete-feedback-message">Resultat slettet</p>
 </dialog>
-
-        
-
 
 <script src="scripts/Trainer2.js" type="module"></script>
 <footer>
