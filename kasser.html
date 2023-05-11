@@ -24,13 +24,14 @@
 
         <label for="debt">Restance:</label>
         <input type="number" name="debt" id="restance-input">
+        <button id="cancel-restance-change-button">Luk</button>
         <button>Set Restance</button>
 
         </form>
     </dialog>
     <header>
         <h2 class="header1">Svømmeklubben Delfinen</h2>
-        <h2 class="header2">Kasser</h2>
+        <h2 class="header2">Kasserer</h2>
         <button id="nav-betalt" class="button1"><h2>Betalt</h2></button>
         <button id="nav-restance" class="button2"><h2>Restance</h2></button>
         <button id="nav-all" class="button3"><h2>Alle</h2></button>
@@ -41,7 +42,7 @@
             <tr>
                 <th>Navn</th>
                 <th>Restance</th>
-                <th>Medlemsskab</th>
+                <th>Medlemskab</th>
             </tr>
             <tbody id="overview-table-kasser"></tbody>
         </table>
@@ -50,8 +51,13 @@
         <h3 class="grid-item3">Total restance: <br><span id="total-debt"></span></h3>
     </div>
 
-    <footer> Made by: Abed, Jasper Nielsen, Nikolaj Christian Møller & Emil Nissen.</footer>
+    <footer> </footer>
 
     <script src="scripts/kasser.js" type="module"></script>
+
+    <footer>
+        <p>Made by: Abed, Jasper Nielsen, Nikolaj Christian Møller & Emil Nissen.</p>
+    <button class="log-off-btn">Log af</button>
+</footer>
 </body>
 </html>

@@ -1,34 +1,33 @@
-#hold1-table {
-  border-collapse: collapse;
-  width: 100%;
-  margin-bottom: 20px;
+/* Style for the tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #f9f9f9;
 }
 
-#hold2-table {
-  border-collapse: collapse;
-  width: 100%;
-  margin-bottom: 20px;
+/* Style for table headers */
+table thead th {
+    text-align: left;
+    padding: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #ddd;
 }
 
-th, tr {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
+/* Style for table data cells */
+table tbody td {
+    text-align: left;
+    padding: 5px;
+    border: 1px solid #ddd;
 }
 
-th {
-  background-color: #f2f2f2;
-}
-
-tr:hover {
-  background-color: #f5f5f5;
+/* Style for table rows on hover */
+table tbody tr:hover {
+    background-color: #f2f2f2;
 }
 
 
-/* Style for the background overlay */
-dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
-}
 
 /* Style for the dialog container */
 .create-dialog-container {

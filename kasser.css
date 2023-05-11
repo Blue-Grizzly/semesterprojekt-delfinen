@@ -69,7 +69,12 @@ footer{
     bottom: 0;
     padding: 20px;
     width: 100%;
+    
 }
+
+
+
+
 
 .kasser-grid-container{
     display: grid;
@@ -224,3 +229,7 @@ select {
 form{
     color: var(--dark-blue);
 }
+
+
+
+
