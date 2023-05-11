@@ -7,6 +7,9 @@ async function initApp() {
   const results = await getResults();
   console.log(results);
   showResults(results);
+  document
+    .querySelector(".log-off-btn")
+    .addEventListener("click", () => (window.location.href = "index.html"));
 }
 
 async function getResults() {

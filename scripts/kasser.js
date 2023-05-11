@@ -27,13 +27,17 @@ async function initApp() {
     );
   document
     .querySelector("#nav-all")
-    .addEventListener("click", () => updateMemberTable(memberList.sort((a,b) => a.name.localeCompare(b.name))));
+    .addEventListener("click", () => updateMemberTable(memberList));
 
   document
     .querySelector("#form-change-restance")
     .addEventListener("submit", updateRestanceAccept);
 
     document.querySelector("#cancel-restance-change-button").addEventListener("click", cancelResistanceChange);
+
+    document
+      .querySelector(".log-off-btn")
+      .addEventListener("click", () => (window.location.href = "index.html"));
 }
 
 function cancelResistanceChange(event){
