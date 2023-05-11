@@ -4,16 +4,13 @@ window.addEventListener("load", initApp);
 
 async function initApp() {
   document.querySelector("#nytresultat").addEventListener("click", showCreateForm);
-<<<<<<< Updated upstream
   const results = await getResults();
   console.log(results);
   showResults(results);
   document
     .querySelector(".log-off-btn")
     .addEventListener("click", () => (window.location.href = "index.html"));
-=======
   updateResultsGrid();
->>>>>>> Stashed changes
 }
 
 async function updateResultsGrid() {
