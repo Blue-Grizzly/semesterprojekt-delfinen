@@ -1,4 +1,4 @@
-//rest functions
+
 import { prepareData } from "./helpers.js";
 
 const endpoint =

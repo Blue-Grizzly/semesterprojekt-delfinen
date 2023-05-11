@@ -1,3 +1,4 @@
+
 import { createResult, getResults, deleteResult, updateResult } from "./rest-service.js";
 window.addEventListener("load", initApp);
 
@@ -19,7 +20,6 @@ showResults(results);
 function showResults(results) {
   const table = document.querySelector("#hold-table");
 
-  // Clear the table
   table.innerHTML = "";
 
   for (const result of results) {
@@ -37,30 +37,16 @@ function showResults(results) {
       </tr>
     `;
     table.insertAdjacentHTML("beforeend", html);
-
-    
-
-
-    document.querySelector("#hold-table tr:last-child #btn-delete").addEventListener("click", () => deleteResultClicked(result) )
-  
-  document
-    .querySelector("#hold-table tr:last-child #btn-update")
-    .addEventListener("click", () => updateClicked(result));
+  document.querySelector("#hold-table tr:last-child #btn-delete").addEventListener("click", () => deleteResultClicked(result) )
+  document.querySelector("#hold-table tr:last-child #btn-update").addEventListener("click", () => updateClicked(result));
   }
 }
-
-// Create
-
 
 function showCreateForm(){
   document.querySelector("#dialog-create-result").showModal();
   document.querySelector("#form-create-result").addEventListener("submit", createResultClicked);
   document.querySelector("#cancel-create").addEventListener("click", createCancelClicked);
-  
- 
 }
-
-
 
 async function createResultClicked(event) {
   event.preventDefault();
@@ -94,14 +80,11 @@ async function createResultClicked(event) {
   }
 }
 
- function createCancelClicked(event) {
-   event.preventDefault();
-   document.querySelector("#form-create-result").reset();
-   document.querySelector("#dialog-create-result").close();
- }
-
-
-//  update
+function createCancelClicked(event) {
+  event.preventDefault();
+  document.querySelector("#form-create-result").reset();
+  document.querySelector("#dialog-create-result").close();
+}
 
 async function updateResultClicked(event) {
   event.preventDefault();
@@ -151,7 +134,6 @@ function updateClicked( resultObject) {
   updateForm.setAttribute("data-id", resultObject.id);
   document.querySelector("#dialog-update-result").showModal();
   updateForm.addEventListener("submit", updateResultClicked);
-
   document.querySelector("#cancel-update").addEventListener("click",dialogUpdateCancel);
 }
 
@@ -159,9 +141,6 @@ function dialogUpdateCancel(event){
   event.preventDefault();
   document.querySelector("#dialog-update-result").close();
 }
-
-
-
 
 function deleteResultClicked(resultObject) {
   console.log(resultObject);
