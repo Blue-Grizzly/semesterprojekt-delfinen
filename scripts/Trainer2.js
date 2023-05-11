@@ -48,7 +48,7 @@ function showResults(results) {
     document.querySelector("#hold-table tr:last-child #btn-delete").addEventListener("click", () => deleteResultClicked(result) )
   }
 }
-
+}
 // Create
 
 
@@ -100,8 +100,6 @@ async function createResultClicked(event) {
    document.querySelector("#form-create-result").reset();
    document.querySelector("#dialog-create-result").close();
  }
-<<<<<<< Updated upstream
-=======
 
 
 //  update
@@ -161,7 +159,6 @@ function updateClicked(resultObject) {
 
 
 
->>>>>>> Stashed changes
 
 function deleteResultClicked(resultObject) {
   console.log(resultObject);
