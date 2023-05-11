@@ -1,12 +1,15 @@
 "use strict";
+
+import { prepareData } from "./helpers.js";
 import { createResult, getResults, deleteResult } from "./rest-service.js";
 window.addEventListener("load", initApp);
 
 async function initApp() {
-  document.querySelector("#nytresultat").addEventListener("click", showCreateForm);
+  document.querySelector("#create-result").addEventListener("click", showCreateForm);
   const results = await getResults();
   console.log(results);
-  showResults(results);
+  showResults(results, "hold1-table");
+  showResults(results, "hold2-table");
   document
     .querySelector(".log-off-btn")
     .addEventListener("click", () => (window.location.href = "index.html"));
@@ -40,6 +43,9 @@ function showResults(results) {
     document.querySelector("#hold-table tr:last-child #btn-delete").addEventListener("click", () => deleteResultClicked(result) )
   }
 }
+
+// Create
+
 
 function showCreateForm(){
   document.querySelector("#dialog-create-result").showModal();
@@ -84,27 +90,65 @@ async function createResultClicked(event) {
    document.querySelector("#form-create-result").reset();
    document.querySelector("#dialog-create-result").close();
  }
+<<<<<<< Updated upstream
+=======
 
-function deleteResultClicked(resultObject) {
-  console.log(resultObject);
-  document.querySelector("#dialog-delete-result-title").textContent = resultObject.name;
-  document.querySelector("#dialog-delete-result").showModal();
-  document.querySelector("#form-delete-result").addEventListener("submit", () => deleteResultConfirm(resultObject));
-  document.querySelector("#cancel-delete-result").addEventListener("click", event => cancelDeleteResult(event));
-}
 
-function cancelDeleteResult(event) {
+//  update
+
+async function updateResultClicked(event) {
   event.preventDefault();
-  document.querySelector("#dialog-delete-result").close();
-}
+  const form = document.querySelector("#form-update-result");
 
-async function deleteResultConfirm(resultObject) {
-  const response = await deleteResult(resultObject);
+  const placering = form.placering.value;
+  const dato = form.dato.value;
+  const disciplin = form.disciplin.value;
+  const noter = form.noter.value;
+  const stævne = form.stævne.value;
+  const svømmer = form.svømmer.value;
+  const tid = form.tid.value;
 
+  const id = form.getAttribute("data-id");
+
+  const response = await updateResult(
+    id,
+    placering,
+    dato,
+    disciplin,
+    noter,
+    stævne,
+    svæmmer,
+    tid
+  );
   if (response.ok) {
-    updateResultsGrid();
-    console.log("sletter");
+    document.querySelector("#dialog-update-member").close();
+    updateMembersGrid();
   } else {
-    document.querySelector("#dialog-failed-to-update").showModal();
+    console.log(response.status, response.statusText);
+    showErrorMessage("Noget gik galt, prøv venligst igen");
+    event.target.parentNode.close();
   }
 }
+
+function updateClicked(resultObject) {
+  const updateForm = document.querySelector("#form-update-result");
+
+  updateForm.placering.value = resultObject.placering;
+  updateForm.dato.value = resultObject.dato;
+  updateForm.disciplin.value = resultObject.disciplin;
+  updateForm.noter.value = resultObject.noter;
+  updateForm.stævne.value = resultObject.stævne;
+  updateForm.svømmer.value = resultObject.svømmer;
+  updateForm.tid.value = resultObject.tid;
+  updateForm.setAttribute("data-id", resultObject.id);
+  document.querySelector("#dialog-update-result").showModal();
+  updateForm.addEventListener("submit", updateResultClicked);
+  document.querySelector("#cancel-update").addEventListener("click", () => {
+    document.querySelector("#dialog-update-result").close();
+  });
+}
+
+
+
+
+>>>>>>> Stashed changes
