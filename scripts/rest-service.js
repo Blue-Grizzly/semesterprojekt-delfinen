@@ -30,11 +30,7 @@ async function getMembers() {
   return prepareData(data);
 }
 
-async function getResults() {
-  const response = await fetch("https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app/resultater.json");
-  const data = await response.json();
-  return prepareData(data);
-}
+
 
 async function getResults() {
   const response = await fetch("https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app/resultater.json");
@@ -97,6 +93,33 @@ async function updateMember(id, active, age, debt, email, competition, name, tlf
   return response;
 }
 
+
+async function updateResult(id, placering,
+  dato,
+  disciplin,
+  noter,
+  stævne,
+  svømmer,
+  tid){
+
+    
+    const resultToUpdate = {
+      placering: placering,
+      dato: dato,
+      disciplin: disciplin,
+      noter: noter,
+      stævne: stævne,
+      svømmer: svømmer,
+      tid: tid,
+    };
+   
+    const response = await fetch(`${endpoint}/resultater/${id}.json`, {
+      method: "PUT",
+      body: JSON.stringify(resultToUpdate),
+    });
+    return response;
+  }
+
 async function deleteMember(memberObject) {
   const id = memberObject.id;
   const response = await fetch(`${endpoint}/medlemmer/${id}.json`, {
@@ -141,4 +164,4 @@ async function updateRestance(
   return response;
 }
 
-export {getMembers, getResults, createMember, createResult, updateMember, deleteMember, deleteResult, updateRestance, getUserByUsername};
+export {getMembers, getResults, createMember, createResult, updateMember, updateResult, deleteMember, deleteResult, updateRestance, getUserByUsername};

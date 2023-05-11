@@ -35,7 +35,7 @@
             <th>Svømmer</th>
             <th>Tid</th>
             <th>Update</th>
-            <button>update</button>
+            <button id="create-result">opret Resultat</button>
         </tr>
     </thead>
     <tbody id="hold-table">
@@ -61,6 +61,41 @@
   <form method="dialog">
     <button>Luk</button>
   </form>
+</dialog>
+<dialog id="dialog-update-result">
+    <h2 id="update-result"></h2>
+
+    <form id="form-update-result" method="dialog" class="dialog-form">
+
+
+      <label for="placering">Placering<input type="text" name="placering" id="placering" placeholder="Placering" size="50"/>
+      </label>
+
+
+      <label for="dato">Dato<input type="date" name="dato" id="dato" placeholder="Dato" size="50"/>
+      </label> 
+
+      <label for="disciplin">Disciplin<input type="text" name="disciplin" id="disciplin" placeholder="Disciplin" size="50"/>
+      </label> 
+
+      <label for="noter">Noter<input type ="text" id="noter" placeholder="Noter" size="50"/>
+      </label> 
+
+      <label for="stævne">Stævne<input type="text" name="stævne" id="stævne" placeholder="Stævne" size="50"/>
+      </label> 
+
+      <label for="svømmer">Svømmer<input type="text" name="svømmer" id="svømmer" placeholder="Svømmer" size="50"/>
+      </label> 
+
+      <label for="tid">Tid<input type="time" name="tid" id="tid" placeholder="Tid" size="50"/>
+     </label> 
+
+
+
+
+        <button id="cancel-update" class="btn-cancel btn-cancel">Luk</button>
+        <button class="btn-confirm">Opdater Medlem</button>
+    </form>
 </dialog>
 
     <dialog id="dialog-create-result">

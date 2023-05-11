@@ -1,4 +1,4 @@
-import { createResult, getResults, deleteResult } from "./rest-service.js";
+import { createResult, getResults, deleteResult, updateResult } from "./rest-service.js";
 window.addEventListener("load", initApp);
 
 async function initApp() {
@@ -16,10 +16,9 @@ async function updateResultsGrid() {
 const results = await getResults();
 console.log(results);
 showResults(results);
-async function updateResultsGrid() {
-const results = await getResults();
-console.log(results);
-showResults(results);
+
+
+
 }
 function showResults(results) {
   const table = document.querySelector("#hold-table");
@@ -39,16 +38,22 @@ function showResults(results) {
         <td>${result.tid}</td>
         <td><button id="btn-update">Opdater</button></td>
         <td><button id="btn-delete">Slet</button></td>
-        <td><button id="btn-update">Opdater</button></td>
-        <td><button id="btn-delete">Slet</button></td>
+        
       </tr>
     `;
     table.insertAdjacentHTML("beforeend", html);
 
+    
+
+
     document.querySelector("#hold-table tr:last-child #btn-delete").addEventListener("click", () => deleteResultClicked(result) )
+  
+  document
+    .querySelector("#hold-table tr:last-child #btn-update")
+    .addEventListener("click", () => updateClicked(result));
   }
 }
-}
+
 // Create
 
 
@@ -56,9 +61,8 @@ function showCreateForm(){
   document.querySelector("#dialog-create-result").showModal();
   document.querySelector("#form-create-result").addEventListener("submit", createResultClicked);
   document.querySelector("#cancel-create").addEventListener("click", createCancelClicked);
-  document.querySelector("#dialog-create-result").showModal();
-  document.querySelector("#form-create-result").addEventListener("submit", createResultClicked);
-  document.querySelector("#cancel-create").addEventListener("click", createCancelClicked);
+  
+ 
 }
 
 
@@ -125,12 +129,12 @@ async function updateResultClicked(event) {
     disciplin,
     noter,
     stævne,
-    svæmmer,
+    svømmer,
     tid
   );
   if (response.ok) {
-    document.querySelector("#dialog-update-member").close();
-    updateMembersGrid();
+    document.querySelector("#dialog-update-result").close();
+   updateResultsGrid();
   } else {
     console.log(response.status, response.statusText);
     showErrorMessage("Noget gik galt, prøv venligst igen");
@@ -151,6 +155,7 @@ function updateClicked(resultObject) {
   updateForm.setAttribute("data-id", resultObject.id);
   document.querySelector("#dialog-update-result").showModal();
   updateForm.addEventListener("submit", updateResultClicked);
+
   document.querySelector("#cancel-update").addEventListener("click", () => {
     document.querySelector("#dialog-update-result").close();
   });
