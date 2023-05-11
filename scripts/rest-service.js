@@ -30,8 +30,6 @@ async function getMembers() {
   return prepareData(data);
 }
 
-
-
 async function getResults() {
   const response = await fetch("https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app/resultater.json");
   const data = await response.json();
@@ -93,7 +91,6 @@ async function updateMember(id, active, age, debt, email, competition, name, tlf
   return response;
 }
 
-
 async function updateResult(id, placering,
   dato,
   disciplin,
@@ -101,7 +98,6 @@ async function updateResult(id, placering,
   stævne,
   svømmer,
   tid){
-
     
     const resultToUpdate = {
       placering: placering,
@@ -135,7 +131,6 @@ async function deleteResult(resultObject) {
   });
   return response;
 }
-
 
 async function updateRestance(
   id,

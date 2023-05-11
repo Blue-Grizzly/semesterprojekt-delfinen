@@ -13,12 +13,9 @@ let memberList;
 async function initApp() {
   memberList = await getMembers();
   updateMembersGrid();
-  document
-    .querySelector("#nytmedlem")
-    .addEventListener("click", showCreateForm);
-    document.querySelector("#refresh").addEventListener("click", updateMembersGrid);
-
-    document.querySelector(".log-off-btn").addEventListener("click",()=>window.location.href="index.html")
+  document.querySelector("#nytmedlem").addEventListener("click", showCreateForm);
+  document.querySelector("#refresh").addEventListener("click", updateMembersGrid);
+  document.querySelector(".log-off-btn").addEventListener("click",()=>window.location.href="index.html")
 }
 
 function showCreateForm() {
@@ -118,7 +115,7 @@ function updateClicked(memberObject) {
    document.querySelector("#form-update-member").addEventListener("submit", updateMemberClicked);
    document.querySelector("#cancel-update").addEventListener("click", cancelUpdate);
 
- }
+}
 
 function deleteMemberClicked(memberObject) {
   console.log(memberObject);
@@ -194,13 +191,11 @@ function showMember(memberObject) {
           </tr>
             `;
 
-  
   document.querySelector("#memberTable").insertAdjacentHTML("beforeend", html);
   
   document
     .querySelector("#memberTable tr:last-child .btn-info")
     .addEventListener("click", () => showMemberInfo(memberObject));
-
   document
     .querySelector("#memberTable tr:last-child .btn-delete")
     .addEventListener("click", () => deleteMemberClicked(memberObject));

@@ -53,7 +53,6 @@ function totalIncome(list){
           }
       } else {
         incomeTotal += 500;
-
     } 
   }
   return incomeTotal;
@@ -94,7 +93,5 @@ function checkSwimteam(member){
     }
   }
 }
-
-
 
 export {prepareData, checkMembership, checkAgeGroup, filterPaidMembers, filterUnpaidMembers, totalDebt, totalIncome, isActive, isInCompetionen, checkSwimteam};

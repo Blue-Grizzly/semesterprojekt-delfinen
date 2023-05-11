@@ -10,8 +10,6 @@ async function initApp() {
   showMembers(members);
 }
 
-
-
 function showMembers(members) {
   for (const member of members) {
     const html = /*html*/ `

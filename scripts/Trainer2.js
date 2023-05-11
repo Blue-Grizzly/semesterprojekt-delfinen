@@ -91,7 +91,7 @@ async function createResultClicked(event) {
     document.querySelector("#dialog-create-result").close();
     form.reset();
     
-    const results = await getResults(); // Fetch the updated results
+    const results = await getResults();
     showResults(results);  
     
   } else {
