@@ -1,8 +1,8 @@
 //rest functions
-import{prepareData} from "./helpers.js";
+import { prepareData } from "./helpers.js";
 
-
-const endpoint = "https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app";
+const endpoint =
+  "https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app";
 
 async function getUserByUsername(username) {
   const response = await fetch(
@@ -25,22 +25,31 @@ async function getUserByUsername(username) {
 }
 
 async function getMembers() {
-    const response = await fetch(`${endpoint}/medlemmer.json`);
-    const data = await response.json();
-    return prepareData(data);
+  const response = await fetch(`${endpoint}/medlemmer.json`);
+  const data = await response.json();
+  return prepareData(data);
 }
-  
-  async function createMember(name, age, debt, competition, email, tlf, active) {
-    const newMember = {name, age, debt, competition, email, tlf, active};
-    const json = JSON.stringify(newMember);
-    const response = await fetch(`${endpoint}/medlemmer.json`, {
-      method: "POST",
-      body: json,
-    });
-    return response;
-  }
 
-async function updateMember(id, active, age, debt, email, competition, name, tlf) {
+async function createMember(name, age, debt, competition, email, tlf, active) {
+  const newMember = { name, age, debt, competition, email, tlf, active };
+  const json = JSON.stringify(newMember);
+  const response = await fetch(`${endpoint}/medlemmer.json`, {
+    method: "POST",
+    body: json,
+  });
+  return response;
+}
+
+async function updateMember(
+  id,
+  active,
+  age,
+  debt,
+  email,
+  competition,
+  name,
+  tlf
+) {
   const memberToUpdate = {
     active: active,
     age: age,
@@ -49,7 +58,7 @@ async function updateMember(id, active, age, debt, email, competition, name, tlf
     competition: competition,
     name: name,
     tlf: tlf,
-};
+  };
   const json = JSON.stringify(memberToUpdate);
   const response = await fetch(`${endpoint}/medlemmer/${id}.json`, {
     method: "PUT",
@@ -65,7 +74,6 @@ async function deleteMember(memberObject) {
   });
   return response;
 }
-
 
 async function updateRestance(
   id,
@@ -94,4 +102,11 @@ async function updateRestance(
   return response;
 }
 
-export {getMembers, createMember, updateMember, deleteMember, updateRestance, getUserByUsername};
+export {
+  getMembers,
+  createMember,
+  updateMember,
+  deleteMember,
+  updateRestance,
+  getUserByUsername,
+};
