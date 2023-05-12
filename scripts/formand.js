@@ -207,4 +207,4 @@ function showMemberInfo(memberObject) {
   modal.querySelector("#member-tlf").textContent = memberObject.tlf;
   modal.showModal();
   document.querySelector("#button-close-info").addEventListener("click", () => modal.close());
- }
+}

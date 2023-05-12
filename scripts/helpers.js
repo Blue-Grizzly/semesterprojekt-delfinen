@@ -13,10 +13,10 @@ function checkMembership(member){
     if(member.active === true){
         if(member.motionist === true){
             return `Motionist`;
-        } else{
+        } else {
             return `Konkurrence`;
         }
-    } else{ 
+    } else { 
     return `Passiv`;
  }
 }
@@ -48,7 +48,7 @@ function totalIncome(list){
             incomeTotal += 1600;
           } else if(memberGroup.toUpperCase() === "SENIORPLUS"){
             incomeTotal += 1200;
-          } else{
+          } else {
             incomeTotal += 1000;
           }
       } else {
@@ -88,7 +88,7 @@ function checkSwimteam(member){
       if(member.age >= 18){
         return `Hold 1`
       }
-    } else{
+    } else {
       return `Hold 2`
     }
   }
