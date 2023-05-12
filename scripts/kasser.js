@@ -23,39 +23,39 @@ async function initApp() {
   document
     .querySelector("#nav-betalt")
     .addEventListener("click", () =>{ 
-      document.querySelector("#kasserer-table").setAttribute("filterOption", "paid");
+      document.querySelector("#data-table").setAttribute("filterOption", "paid");
       refreshTable();
       });
   document
     .querySelector("#nav-restance")
     .addEventListener("click", () => {   
-    document.querySelector("#kasserer-table").setAttribute("filterOption", "unpaid");
+    document.querySelector("#data-table").setAttribute("filterOption", "unpaid");
     refreshTable();
   });
   document
     .querySelector("#nav-all")
     .addEventListener("click", () =>{
-      document.querySelector("#kasserer-table").removeAttribute("filterOption");
+      document.querySelector("#data-table").removeAttribute("filterOption");
       refreshTable();
     });
 
     document.querySelector("#table-name").addEventListener("click", ()=>{
-      document.querySelector("#kasserer-table").setAttribute("sortOption", "name");
+      document.querySelector("#data-table").setAttribute("sortOption", "name");
       refreshTable();    
     } );
 
     document.querySelector("#table-debt").addEventListener("click", ()=> {
-      document.querySelector("#kasserer-table").setAttribute("sortOption", "debt");
+      document.querySelector("#data-table").setAttribute("sortOption", "debt");
       refreshTable();
     });
 
     document.querySelector("#table-membership").addEventListener("click", ()=> {
-      document.querySelector("#kasserer-table").setAttribute("sortOption", "membership");
+      document.querySelector("#data-table").setAttribute("sortOption", "membership");
       refreshTable();
     } );
 
     document.querySelector("#table-options").addEventListener("click", ()=>{
-      document.querySelector("#kasserer-table").setAttribute("sortOption", "membership");
+      document.querySelector("#data-table").removeAttribute("sortOption");
       refreshTable();
     });
 
@@ -77,7 +77,6 @@ async function refreshTable() {
   await getAllMembers();
   const filteredList = filterMembersDebt(memberList);
   const sortedList = sortBySelected(filteredList);
-
 
   updateMemberTable(sortedList);
   document.querySelector("#total-debt").textContent = totalDebt(memberList);

@@ -1,18 +1,63 @@
 import { getMembers, createMember, updateMember, deleteMember } from "./rest-service.js";
 
-import { isActive, isInCompetionen, checkSwimteam } from "./helpers.js";
+import { isActive, isInCompetionen, checkSwimteam, sortBySelected } from "./helpers.js";
 
 window.addEventListener("load", initApp);
 
-let memberList;
+let memberList = [];  
+let lastTime = 0;
+
 
 async function initApp() {
   memberList = await getMembers();
-  updateMembersGrid();
+  refreshTable();
   document.querySelector("#nytmedlem").addEventListener("click", showCreateForm);
-  document.querySelector("#refresh").addEventListener("click", updateMembersGrid);
+  document.querySelector("#refresh").addEventListener("click", refreshTable);
   document.querySelector(".log-off-btn").addEventListener("click",()=>window.location.href="index.html")
+
+  document.querySelector("#table-name").addEventListener("click", ()=>{
+    document.querySelector("#data-table").setAttribute("sortOption", "name");
+    console.log("name")
+    refreshTable();    
+  } );
+
+  document.querySelector("#table-age").addEventListener("click", ()=> {
+    document.querySelector("#data-table").setAttribute("sortOption", "age");
+    console.log("age")
+    refreshTable();
+  });
+
+  document.querySelector("#table-membership").addEventListener("click", ()=> {
+    document.querySelector("#data-table").setAttribute("sortOption", "membership");
+    console.log("membership")
+    refreshTable();
+  } );
+
+  document.querySelector("#table-options").addEventListener("click", ()=>{
+    document.querySelector("#data-table").removeAttribute("sortOption");
+    console.log("all")
+    refreshTable();
+  });
+
 }
+
+
+async function getAllMembers(){
+  const now = Date.now();
+    if( now - lastTime > 10000 || memberList.length === 0 ){
+      memberList = await getMembers();
+    }
+    return memberList;
+}
+
+async function refreshTable() {
+  await getAllMembers();
+  const sortedList = sortBySelected(memberList);
+
+
+  showMembers(sortedList);
+}
+
 
 function showCreateForm() {
   document.querySelector("#dialog-create-member").showModal();
@@ -44,7 +89,7 @@ active
   if (response.ok) {
   document.querySelector("#dialog-create-member").close();
   form.reset();
-  updateMembersGrid();
+  refreshTable();
   } else {
   document.querySelector("#error-message-create").classList.remove("hidden");
   console.log(response.status, response.statusText);
@@ -89,7 +134,7 @@ async function updateMemberClicked(event) {
   );
   if (response.ok) {
     document.querySelector("#dialog-update-member").close();
-    updateMembersGrid();
+    refreshTable();
   } else {
     console.log(response.status, response.statusText);
     showErrorMessage("Noget gik galt, prøv venligst igen");
@@ -130,7 +175,7 @@ async function deleteMemberConfirm(memberObject) {
   const response = await deleteMember(memberObject);
 
   if (response.ok) {
-    updateMembersGrid();
+    refreshTable();
     showDeleteFeedback();
   } else {
     document.querySelector("#dialog-failed-to-update").showModal();
@@ -151,10 +196,6 @@ function showDeleteFeedback() {
   }
 }
 
-async function updateMembersGrid() {
-  memberList = await getMembers();
-  showMembers(memberList);
-}
 
 function showMembers(memberList) {
   document.querySelector("#memberTable").innerHTML = "";

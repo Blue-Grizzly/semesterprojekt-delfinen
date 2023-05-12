@@ -32,7 +32,7 @@ function checkAgeGroup(member){;
 }
 
 function filterMembersDebt(members){
-  const selectedFilter = document.querySelector("#kasserer-table").getAttribute("filterOption");
+  const selectedFilter = document.querySelector("#data-table").getAttribute("filterOption");
     if(selectedFilter == "paid"){
   return members.filter((member) => member.debt == "0");
     }else if(selectedFilter == "unpaid"){
@@ -44,13 +44,15 @@ function filterMembersDebt(members){
 
 
 function sortBySelected(members){
-  const selectedSort = document.querySelector("#kasserer-table").getAttribute("sortOption");
+  const selectedSort = document.querySelector("#data-table").getAttribute("sortOption");
   if(selectedSort === "name"){
   return members.sort((a, b) => a.name.localeCompare(b.name));
   } else if (selectedSort === "debt"){
     return  members.sort((a, b) =>  b.debt - a.debt );
   } else if (selectedSort === "membership"){
-    return members.sort((a, b) => a.age - b.age);
+    return members.sort((a, b) => b.active.localeCompare(a.active));
+  } else if (selectedSort === "age"){
+    return members.sort((a, b) => a.age - b.age); 
   } else{
     return members;
   }
