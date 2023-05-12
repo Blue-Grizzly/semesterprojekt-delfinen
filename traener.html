@@ -8,7 +8,7 @@
   <title>Svømmeklubben Delfinen</title>
 </head>
 
-<h3>Members</h3>
+<h3>Medlemmer</h3>
 <ul id="memberslist"></ul>
 
 <body>
@@ -37,14 +37,14 @@
         <th>Svømmer</th>
         <th>Tid</th>
         <th>Update</th>
-        <button id="create-result">opret Resultat</button>
+        <button id="create-result">Opret Resultat</button>
       </tr>
     </thead>
   <tbody id="hold-table"></tbody>
   </table>
 
   <div id="nytresultat">
-    <h1>Nyt Resultater</h1>
+    <h1>Nye Resultater</h1>
     <form>
     </form>
   </div>
@@ -73,7 +73,8 @@
       <label for="stævne">Stævne<input type="text" name="stævne" id="stævne" placeholder="Stævne" size="50"/></label> 
       <label for="svømmer">Svømmer<input type="text" name="svømmer" id="svømmer" placeholder="Svømmer" size="50"/></label> 
       <label for="tid">Tid<input type="time" name="tid" id="tid" placeholder="Tid" size="50"/></label> 
-      <button id="cancel-update" class="btn-cancel btn-cancel">Luk</button>
+      <button id="cancel-update" class="btn-cancel">Luk</button>
+      <p class="error-message hide">Der skete en fejl. Udfyld venligst alle felter.</p>
       <button class="btn-confirm">Opdater Medlem</button>
     </form>
   </dialog>
@@ -88,8 +89,9 @@
         <label for="stævne">Stævne<input type="text" name="stævne" id="stævne" placeholder="Stævne" size="50"/></label> 
         <label for="svømmer">Svømmer<input type="text" name="svømmer" id="svømmer" placeholder="Svømmer" size="50"/></label> 
         <label for="tid">Tid<input type="time" name="tid" id="tid" placeholder="Tid" size="50"/></label> 
-        <button type="submit">Gem</button>
         <button id="cancel-create" class="btn-cancel">Luk</button>
+        <p id="error-message-create" class="hidden">Der skete en fejl. Udfyld venligst alle felter.</p>
+        <button type="submit">Gem</button>
       </form>
     </div>
   </dialog>
@@ -105,6 +107,16 @@
 
   <dialog id="dialog-delete-feedback">
     <p id="dialog-delete-feedback-message">Resultat slettet</p>
+  </dialog>
+
+  <dialog id="dialog-failed-to-update">
+    <p>Medlem blev ikke opdateret</p>
+    <button class="btn-cancel">Luk</button>
+  </dialog>
+
+  <dialog id="dialog-failed-to-create">
+    <p>Resultat blev ikke oprettet</p>
+    <button class="btn-cancel">Luk</button>
   </dialog>
 
   <script src="scripts/Trainer2.js" type="module"></script>

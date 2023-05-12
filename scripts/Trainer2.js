@@ -71,12 +71,12 @@ async function createResultClicked(event) {
   if (response.ok) {
     document.querySelector("#dialog-create-result").close();
     form.reset();
-    
     const results = await getResults();
     showResults(results);  
-    
+    hideErrorMessage();
   } else {
     console.log(response.status, response.statusText);
+    showErrorMessage("Der skete en fejl. Udfyld venligst alle felter.");
   }
 }
 
@@ -112,10 +112,11 @@ async function updateResultClicked(event) {
   );
   if (response.ok) {
     document.querySelector("#dialog-update-result").close();
-   updateResultsGrid();
+    updateResultsGrid();
+    hideErrorMessage();
   } else {
     console.log(response.status, response.statusText);
-    showErrorMessage("Noget gik galt, prøv venligst igen");
+    showErrorMessage("Der skete en fejl. Udfyld venligst alle felter.");
     event.target.parentNode.close();
   }
 }
@@ -164,4 +165,14 @@ async function deleteResultConfirm(resultObject) {
   } else {
     document.querySelector("#dialog-failed-to-update").showModal();
   }
+}
+
+function showErrorMessage(message) {
+  document.querySelector(".error-message").textContent = message;
+  document.querySelector(".error-message").classList.remove("hide");
+}
+
+function hideErrorMessage() {
+  document.querySelector(".error-message").textContent = "";
+  document.querySelector(".error-message").classList.add("hide");
 }

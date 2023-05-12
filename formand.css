@@ -89,3 +89,19 @@ dialog {
   margin-left:auto;
   margin-right: auto;
 }
+
+
+/* Error messages styling */
+
+.error-message {
+  background-color: rgb(255, 121, 121);
+  margin: 1em auto;
+  width: 100%;
+  max-width: 342px;
+  padding: 1em;
+}
+
+#search-error-msg {
+  background-color: #00000085;
+  text-align: center;
+}

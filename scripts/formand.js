@@ -43,11 +43,13 @@ active
 );
   if (response.ok) {
   document.querySelector("#dialog-create-member").close();
-  form.reset();
   updateMembersGrid();
+  form.reset();
+  hideErrorMessage();
   } else {
   document.querySelector("#error-message-create").classList.remove("hidden");
   console.log(response.status, response.statusText);
+  showErrorMessage("Der skete en fejl. Udfyld venligst alle felter.");
   }
 }
 
@@ -92,7 +94,7 @@ async function updateMemberClicked(event) {
     updateMembersGrid();
   } else {
     console.log(response.status, response.statusText);
-    showErrorMessage("Noget gik galt, prøv venligst igen");
+    showErrorMessage("Der skete en fejl. Udfyld venligst alle felter.");
     event.target.parentNode.close();
   }
 }
@@ -207,4 +209,14 @@ function showMemberInfo(memberObject) {
   modal.querySelector("#member-tlf").textContent = memberObject.tlf;
   modal.showModal();
   document.querySelector("#button-close-info").addEventListener("click", () => modal.close());
+}
+
+function showErrorMessage(message) {
+  document.querySelector(".error-message").textContent = message;
+  document.querySelector(".error-message").classList.remove("hide");
+}
+
+function hideErrorMessage() {
+  document.querySelector(".error-message").textContent = "";
+  document.querySelector(".error-message").classList.add("hide");
 }

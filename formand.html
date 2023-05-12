@@ -130,14 +130,19 @@
         <label for="tlf" class="label7">Telefon </label>
         <input type="number" name="tlf" id="tlf" placeholder="Tlf.:" size="50" required maxlength="8" class="input7"/>
         
-        <button id="cancel-update" class="btn-cancel btn-cancel">Luk</button>
-        <p class="error-message hide">Der skete en fejl. Prøv venlist igen.</p>
+        <button id="cancel-update" class="btn-cancel">Luk</button> 
+        <p class="error-message hide">Der skete en fejl. Udfyld venligst alle felter.</p>
         <button class="btn-confirm">Opdater Medlem</button>
       </form>
   </dialog>
 
   <dialog id="dialog-failed-to-update">
     <p>Medlem blev ikke opdateret</p>
+    <button class="btn-cancel">Luk</button>
+  </dialog>
+
+  <dialog id="dialog-failed-to-create">
+    <p>Medlem blev ikke oprettet</p>
     <button class="btn-cancel">Luk</button>
   </dialog>
 
