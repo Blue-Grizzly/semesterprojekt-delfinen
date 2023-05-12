@@ -37,8 +37,8 @@ async function getResults() {
 }
 
   
-async function createMember(name, age, debt, competition, email, tlf, active) {
-    const newMember = {name, age, debt, competition, email, tlf, active};
+async function createMember(name, age, debt, competition, email, tlf, active, disciplin) {
+    const newMember = {name, age, debt, competition, email, tlf, active, disciplin};
     const json = JSON.stringify(newMember);
     const response = await fetch(`${endpoint}/medlemmer.json`, {
       method: "POST",

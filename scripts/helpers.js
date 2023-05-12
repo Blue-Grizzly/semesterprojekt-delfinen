@@ -114,4 +114,19 @@ function checkSwimteam(member){
   }
 }
 
-export {prepareData, checkMembership, checkAgeGroup, filterMembersDebt, totalDebt, totalIncome, isActive, isInCompetionen, checkSwimteam, sortBySelected};
+function controlDisciplin(event){
+  if (event.target.value === "true"){
+    document.querySelector("#disciplin").disabled = false;
+    document.querySelector("#disciplin-update").disabled = false;
+  } else{
+    document.querySelector("#disciplin-update").disabled = true;
+    document.querySelector("#disciplin").disabled = true;
+
+
+ 
+  }
+}
+
+
+
+export {prepareData, checkMembership, checkAgeGroup, filterMembersDebt, totalDebt, totalIncome, isActive, isInCompetionen, checkSwimteam, sortBySelected, controlDisciplin};

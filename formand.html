@@ -26,7 +26,7 @@
       <tr>
         <th id="table-name">Navn</th>
         <th id="table-membership">Medlemskab</th>
-        <th id="table-age">alder</th>
+        <th id="table-age">Alder</th>
         <th id="table-options">Indstillinger</th>
       </tr>
       <tbody id="memberTable"></tbody>
@@ -68,17 +68,26 @@
         <label for="email" class="label4">E-mail </label>
         <input type="email" name="email" id="email" placeholder="Medlemmets e-mail" size="50" required class="input4"/>
 
-        <label for="competition" class="label5">Konkurrence</label>
-        <select id="competition" name="competition" class="input5">
+        <label for="competition" class="label7">Konkurrence</label>
+        <select id="competition" name="competition" class="input7">
             <option value="false">Motionist</option>
             <option value="true">Konkurrence</option>
         </select>
 
         <label for="name" class="label6">Navn </label>
         <input type="text" name="name" id="memberName" placeholder="Medlemmets navn" size="50" required class="input6"/>
-
-        <label for="tlf" class="label7">Telefon </label>
-        <input type="number" name="tlf" id="tlf" placeholder="Tlf.:" size="50" required maxlength="8" class="input7"/>
+        
+        <label for="tlf" class="label5">Telefon </label>
+        <input type="number" name="tlf" id="tlf" placeholder="Tlf.:" size="50" required maxlength="8" class="input5"/>
+        
+        <label for="disciplin" class="label8">Disciplin</label>
+        <select id="disciplin" name="disciplin" class="input8" disabled>
+            <option value="Motionist"selected>Ingen</option>
+            <option value="Bryst">Bryst</option>
+            <option value="Crawl">Crawl</option>
+            <option value="Ryg Crawl">Ryg Crawl</option>
+            <option value="Butterfly">Butterfly</option>
+        </select>
 
         <button id="cancel-create" class="btn-cancel">Luk</button>
         <p id="error-message-create" class="hidden">Der skete en fejl. Prøv venlist igen.</p>
@@ -118,8 +127,8 @@
         <label for="email" class="label4">E-mail </label>
         <input type="email" name="email" id="email" placeholder="Medlemmets e-mail" size="50" required class="input4"/>
         
-        <label for="competition" class="label5">Konkurrence</label>
-        <select id="competition" name="competition" class="input5">
+        <label for="competition" class="label7">Konkurrence</label>
+        <select id="competition-update" name="competition" class="input7">
           <option value="false">Motionist</option>
           <option value="true">Konkurrence</option>
         </select>
@@ -127,8 +136,17 @@
         <label for="name" class="label6">Navn </label>
         <input type="text" name="name" id="memberName" placeholder="Medlemmets navn" size="50" required class="input6"/>
         
-        <label for="tlf" class="label7">Telefon </label>
-        <input type="number" name="tlf" id="tlf" placeholder="Tlf.:" size="50" required maxlength="8" class="input7"/>
+        <label for="tlf" class="label5">Telefon </label>
+        <input type="number" name="tlf" id="tlf" placeholder="Tlf.:" size="50" required maxlength="8" class="input5"/>
+
+        <label for="disciplin" class="label8">Disciplin</label>
+        <select id="disciplin-update" name="disciplin" class="input8" disabled>
+            <option value="Motionist"selected>Ingen</option>
+            <option value="Bryst">Bryst</option>
+            <option value="Crawl">Crawl</option>
+            <option value="Ryg Crawl">Ryg Crawl</option>
+            <option value="Butterfly">Butterfly</option>
+        </select>
         
         <button id="cancel-update" class="btn-cancel btn-cancel">Luk</button>
         <p class="error-message hide">Der skete en fejl. Prøv venlist igen.</p>

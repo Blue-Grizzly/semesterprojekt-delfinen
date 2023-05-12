@@ -1,6 +1,6 @@
 import { getMembers, createMember, updateMember, deleteMember } from "./rest-service.js";
 
-import { isActive, isInCompetionen, checkSwimteam, sortBySelected } from "./helpers.js";
+import { isActive, isInCompetionen, checkSwimteam, sortBySelected, controlDisciplin } from "./helpers.js";
 
 window.addEventListener("load", initApp);
 
@@ -39,6 +39,10 @@ async function initApp() {
     refreshTable();
   });
 
+  document.querySelector("#competition").addEventListener("change", event => controlDisciplin(event));
+  document.querySelector("#competition-update").addEventListener("change", event => controlDisciplin(event));
+
+
 }
 
 
@@ -76,6 +80,7 @@ const competition = form.competition.value;
 const email = form.email.value;
 const tlf = form.tlf.value;
 const active = form.active.value;
+const discipline = form.discipline.value;
 
 const response = await createMember(
 name,
@@ -84,7 +89,8 @@ debt,
 competition,
 email,
 tlf,
-active
+active,
+discipline
 );
   if (response.ok) {
   document.querySelector("#dialog-create-member").close();

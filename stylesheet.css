@@ -6,6 +6,7 @@
   --dark-teal: #02bad6;
   --light-red: #ec7d7d93;
   --dark-red: #d62323;
+  --grey-blue: #4f626b7e;
 }
 
 .hidden{
@@ -240,15 +241,16 @@ tbody tr:last-of-type {
   .input6 { grid-area: 4 / 8 / 5 / 11; }
   .label7 { grid-area: 5 / 1 / 6 / 3; }
   .input7 { grid-area: 5 / 2 / 6 / 6; }
+  .label8 { grid-area: 5 / 8 / 6 / 7;}
+  .input8 { grid-area: 5 / 8 / 6 / 11;}
 
   .btn-confirm { grid-area: 7 / 3 / 8 / 6; }
   .btn-cancel { grid-area: 7 / 6 / 8 / 9; } 
 
 
-#form-create-member label{
+label{
   padding: 15px;
 }
-
 dialog{
   background-color: var(--white-blue);
 }
@@ -257,6 +259,7 @@ input {
   border: 2px solid var(--dark-blue);
   display: block;
   background: var(--white-blue);
+  padding: 15px;
 }
 
 input:valid, select:valid{
@@ -268,12 +271,15 @@ input:invalid, select:invalid{
 }
 
 select {
+  padding: 15px;
   background-color: var(--white-blue);
   border: 2px solid var(--dark-blue);
   color: var(--dark-blue);
 }
 
-
+:disabled{
+  background-color: var(--grey-blue);
+}
 
 form{
   color: var(--dark-blue);
@@ -283,4 +289,12 @@ form{
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto;
+}
+
+#restance-input{
+  margin: 15px;
+}
+
+#cancel-restance-change-button{
+  margin-bottom: 15px;
 }
