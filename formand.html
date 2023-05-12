@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheet.css">
     <link rel="shortcut icon" href="#" type="image/x-icon">
-    <title>Svømmeklubben Delfinen</title>
+    <link rel="shortcut icon" href="images/delfin.jpg" type="image/x-icon">
+  <title>Svømmeklubben Delfinen</title>
 </head>
 
 <body>
@@ -148,8 +149,8 @@
             <option value="Butterfly">Butterfly</option>
         </select>
         
-        <button id="cancel-update" class="btn-cancel btn-cancel">Luk</button>
-        <p class="error-message hide">Der skete en fejl. Prøv venlist igen.</p>
+        <button id="cancel-update" class="btn-cancel">Luk</button> 
+        <p class="error-message hide">Der skete en fejl. Udfyld venligst alle felter.</p>
         <button class="btn-confirm">Opdater Medlem</button>
       </form>
   </dialog>
@@ -160,9 +161,13 @@
     <button class="btn-cancel">Luk</button>
   </dialog>
 
-<script src="scripts/formand.js" type="module"></script>
-<footer>
-    <p>Made by: Abed, Jasper Nielsen, Nikolaj Christian Møller & Emil Nissen.</p>
+  <dialog id="dialog-failed-to-create">
+    <p>Medlem blev ikke oprettet</p>
+    <button class="btn-cancel">Luk</button>
+  </dialog>
+
+  <script src="scripts/formand.js" type="module"></script>
+  <footer>
     <button class="log-off-btn">Log af</button>
   </footer>
 </body>

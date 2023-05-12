@@ -298,3 +298,7 @@ form{
 #cancel-restance-change-button{
   margin-bottom: 15px;
 }
+#search-error-msg {
+  background-color: #00000085;
+  text-align: center;
+}

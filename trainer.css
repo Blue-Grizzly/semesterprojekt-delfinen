@@ -78,3 +78,16 @@ table tbody tr:hover {
 .btn-cancel {
   background-color: #f44336;
 }
+
+.error-message {
+  background-color: rgb(255, 121, 121);
+  margin: 1em auto;
+  width: 100%;
+  max-width: 342px;
+  padding: 1em;
+}
+
+#search-error-msg {
+  background-color: #00000085;
+  text-align: center;
+}
