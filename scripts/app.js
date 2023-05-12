@@ -15,7 +15,7 @@ function redirectToUserPage(userType) {
   } else if (userType === "kasser") {
     window.location.href = "kasser.html";
   } else if (userType === "træner") {
-    window.location.href = "træner.html";
+    window.location.href = "traener.html";
   } else {
     alert("Invalid userType");
   }
