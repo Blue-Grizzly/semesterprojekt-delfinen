@@ -6,7 +6,7 @@ const endpoint =
 
 async function getUserByUsername(username) {
   const response = await fetch(
-    "https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app/users.json"
+    `${endpoint}/users.json`
   );
   const users = await response.json();
   console.log("users");
@@ -31,10 +31,11 @@ async function getMembers() {
 }
 
 async function getResults() {
-  const response = await fetch("https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app/resultater.json");
+  const response = await fetch(`${endpoint}/resultater.json`);
   const data = await response.json();
   return prepareData(data);
 }
+
   
 async function createMember(name, age, debt, competition, email, tlf, active) {
     const newMember = {name, age, debt, competition, email, tlf, active};
@@ -56,7 +57,7 @@ async function createResult(
   tid
 ) {
   const response = await fetch(
-    "https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app/resultater.json",
+    `${endpoint}/resultater.json`,
     {
       method: "POST",
       body: JSON.stringify({

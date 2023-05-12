@@ -25,7 +25,7 @@ function showResults(results) {
   table.innerHTML = "";
 
   for (const result of results) {
-    const html = `
+    const html = /*html*/`
       <tr>
         <td>${result.placering}</td>
         <td>${result.dato}</td>

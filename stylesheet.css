@@ -1,102 +1,288 @@
-body {
-  color: black;
+:root{
+  --dark-blue: #0d78aa;
+  --white-blue: #e3faff;
+  --light-blue: #c9fafe;
+  --light-teal: #a4f4f8;
+  --dark-teal: #02bad6;
+  --light-red: #ec7d7d93;
+  --dark-red: #d62323;
+}
+
+.hidden{
+  display: none;
+}
+
+body{
+  background-color: var(--light-blue);
+  margin: 0;
+  overflow-x: hidden;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}   
+
+h1{
+  color: var(--dark-blue);
+}
+
+
+.login-grid {
+  display: block;
+  align-content: center;
+  justify-content: center;
+  background-color: var(--white-blue);
+  border: 2px solid var(--dark-blue);
+  margin-left: auto;
+  margin-right: auto;
+  width: 50vw;
+  height: 50vh;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+  }
+  
+  .login-head { grid-area: 1 / 2 / 2 / 4;}
+  .login { 
+    grid-area: 2 / 2 / 5 / 4; 
+  }
+
+  .login input{
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+.login button{
+  padding: 25px;
+  border: 2px solid var(--dark-blue);
+  max-width: 300px;
+}
+
+#login-error{
+  color: var(--dark-red);
+}
+
+
+
+button {
+  font-weight: 300;
+  font-size: 1em;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid var(--dark-teal);
+  color: var(--dark-blue);
+  background-color: var(--light-teal);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.5em 1em;
+  width: 100%;
+  max-width: 380px;
+  margin: auto;
+  border-radius: 4px;
 }
 
 header {
-  font-family: cursive;
-  font-size: 50px;
-  font-weight: bold;
-  text-align: center;
-  color: #f0f1f4;
-  background-color: #0ce7c6;
-  padding: 20px;
-  width: 100%;
-  border-bottom: 4px solid #f3f4f6;
-  margin-bottom: 0px;
-  position: absolute;
-  top: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  background-color: var(--dark-blue);
+  color: var(--white-blue);
+  margin-bottom: 20px;
+  }
+  
+  .header1 { grid-area: 1 / 1 / 2 / 3; 
+  margin: auto;
+  padding: 15px;
+}
+  .header2 { grid-area: 1 / 5 / 2 / 7; 
+  text-align: right;
+  margin: auto;
+  padding: 15px;
+}
+  .button1 { 
+      grid-area: 2 / 1 / 3 / 3;
+      margin-bottom: 15px; }
+  .button2 { 
+      grid-area: 2 / 3 / 3 / 5; 
+      margin-bottom: 15px;}
+  .button3 { 
+      grid-area: 2 / 5 / 3 / 7; 
+      margin-bottom: 15px;}
+
+footer{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: auto;
+  background-color: var(--dark-blue);
+  color: var(--white-blue);
+  position:sticky;
   left: 0;
-}
-
-h2 {
-  font-family: cursive;
-  font-size: 40px;
-  font-weight: bold;
-  text-align: center;
-  color: #dadce0;
-  background-color: #065e91;
-  border-radius: 30px;
+  bottom: 0;
   padding: 20px;
   width: 100%;
-  border-bottom: 4px solid #427db9;
-  margin-top: -20px;
 }
 
-h1 {
-  font-family: cursive;
+
+.log-off-btn{ grid-area: 1 / 3 / 1;}
+footer p{
+  grid-area: 1 / 1 / 1;
 }
 
-html,
-body {
-  height: 100%;
-  overflow-x: hidden;
+
+
+
+.kasser-grid-container{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
 }
 
-body {
-  font-family: cursive;
-  background-color: #795d5d;
-  background-image: url("https://img.freepik.com/free-photo/athlete-diving-swimming-po_181624-38362.jpg?w=900&t=st=1683613831~exp=1683614431~hmac=512d776f6b4b18660b907358e436d5939358ee892fe0fd03becddafc11499e3c");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  padding-top: 100px;
-}
-
-#login-form {
-  font-weight: bold;
-  background-color: #f7f3f3;
-  border: 10px solid #5b98f4;
-  border-radius: 30px;
-  width: 30%;
-  margin: auto;
-  padding: 50px;
+.grid-item1 { grid-area: 1 / 1 / 4 / 4; }
+.grid-item2 { 
+  grid-area: 1 / 4 / 2 / 6; 
   text-align: center;
+}
+.grid-item3 { 
+  grid-area: 3 / 4 / 3 / 6; 
+  text-align: center;
+} 
+
+
+
+#formand-grid-container{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+
+}
+
+
+
+table{
+  border-collapse: collapse;
+  margin: 25px;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  
+}
+
+thead tr{
+  background-color: var(--dark-blue);
+  color: var(--light-blue);
+  text-align: left;
+}
+
+th, td{
+  padding: 12px 15px;
+  text-align: center;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--dark-blue);
+}
+
+tbody tr:nth-of-type(even) {
+  background-color: var(--light-teal);
+}
+
+tbody tr:last-of-type {
+  border-bottom: 2px solid var(--dark-blue);
+}
+
+
+.dialog-head{
   margin-bottom: 30px;
-  margin-top: 350px;
-  height: 30%;
-}
-
-#password,
-#username {
-  border-radius: 50px;
-  width: 200px;
-  margin: auto;
-  padding: 20px;
   text-align: center;
-  margin-bottom: 10px;
+}
+.member-grid-container{
+  display: grid;;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  justify-items: center;
 }
 
-#submit {
-  background-color: #4caf50;
-  color: white;
-  padding: 20px 30px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 15px;
-  margin-top: 10px;
+#member-modal{
+  width: 40vw;
+  border: 2px solid var(--dark-blue);   
+  background-color: var(--white-blue);
+
 }
 
-#table {
-  width: 100%;
+.modal-info-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-column-gap: 50px;
+  padding: 20px;
 }
 
-.error-message {
-  background-color: rgb(255, 121, 121);
-  margin: 1em auto;
-  width: 100%;
-  max-width: 342px;
-  padding: 1em;
+
+.dialog-form{
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: auto;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  }
+  
+  .label1 { grid-area: 2 / 1 / 3 / 3; }
+  .input1 { grid-area: 2 / 2 / 3 / 6; }
+  .label2 { grid-area: 2 / 7 / 3 / 8; }
+  .input2 { grid-area: 2 / 8 / 3 / 11; }
+  .label3 { grid-area: 3 / 1 / 4 / 3; }
+  .input3 { grid-area: 3 / 2 / 4 / 6; }
+  .label4 { grid-area: 3 / 7 / 4 / 8; }
+  .input4 { grid-area: 3 / 8 / 4 / 11; }
+  .label5 { grid-area: 4 / 1 / 5 / 3; }
+  .input5 { grid-area: 4 / 2 / 5 / 6; }
+  .label6 { grid-area: 4 / 7 / 5 / 8; }
+  .input6 { grid-area: 4 / 8 / 5 / 11; }
+  .label7 { grid-area: 5 / 1 / 6 / 3; }
+  .input7 { grid-area: 5 / 2 / 6 / 6; }
+
+  .btn-confirm { grid-area: 7 / 3 / 8 / 6; }
+  .btn-cancel { grid-area: 7 / 6 / 8 / 9; } 
+
+
+#form-create-member label{
+  padding: 15px;
+}
+
+dialog{
+  background-color: var(--white-blue);
+}
+
+input {
+  border: 2px solid var(--dark-blue);
+  display: block;
+  background: var(--white-blue);
+}
+
+input:valid, select:valid{
+  background-color: var(--light-teal);
+}
+
+input:invalid, select:invalid{
+  background-color: var(--light-red);
+}
+
+select {
+  background-color: var(--white-blue);
+  border: 2px solid var(--dark-blue);
+  color: var(--dark-blue);
+}
+
+
+
+form{
+  color: var(--dark-blue);
+}
+
+.login-grid{
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
 }
 
 #search-error-msg {

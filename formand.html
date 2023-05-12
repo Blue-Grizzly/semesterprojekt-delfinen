@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="kasser.css">
-  <link rel="shortcut icon" href="#" type="image/x-icon">
-  <link rel="shortcut icon" href="images/delfin.jpg" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <link rel="shortcut icon" href="images/delfin.jpg" type="image/x-icon">
   <title>Svømmeklubben Delfinen</title>
 </head>
 
@@ -23,12 +23,12 @@
   </header>
 
   <main id="formand-grid-container">
-    <table id="grid-item">
+    <table id="data-table">
       <tr>
-        <th>Navn</th>
-        <th>Status</th>
-        <th>Alder</th>
-        <th>Indstillinger</th>
+        <th id="table-name">Navn</th>
+        <th id="table-membership">Medlemskab</th>
+        <th id="table-age">alder</th>
+        <th id="table-options">Indstillinger</th>
       </tr>
       <tbody id="memberTable"></tbody>
     </table>
@@ -139,6 +139,7 @@
 
   <dialog id="dialog-failed-to-update">
     <p>Medlem blev ikke opdateret</p>
+    <p>Der skete en fejl, prøv igen</p>
     <button class="btn-cancel">Luk</button>
   </dialog>
 

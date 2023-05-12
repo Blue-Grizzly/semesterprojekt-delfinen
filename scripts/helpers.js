@@ -31,13 +31,33 @@ function checkAgeGroup(member){;
     }
 }
 
-function filterPaidMembers(memberList){
-  return memberList.filter((member) => member.debt == "0");
+function filterMembersDebt(members){
+  const selectedFilter = document.querySelector("#data-table").getAttribute("filterOption");
+    if(selectedFilter == "paid"){
+  return members.filter((member) => member.debt == "0");
+    }else if(selectedFilter == "unpaid"){
+      return members.filter((member) => member.debt != "0");
+    } else{
+      return members;
+    }
 }
 
-function filterUnpaidMembers(memberList){
-  return memberList.filter((member) => member.debt != "0");
+
+function sortBySelected(members){
+  const selectedSort = document.querySelector("#data-table").getAttribute("sortOption");
+  if(selectedSort === "name"){
+  return members.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (selectedSort === "debt"){
+    return  members.sort((a, b) =>  b.debt - a.debt );
+  } else if (selectedSort === "membership"){
+    return members.sort((a, b) => b.active.localeCompare(a.active));
+  } else if (selectedSort === "age"){
+    return members.sort((a, b) => a.age - b.age); 
+  } else{
+    return members;
+  }
 }
+
 
 function totalIncome(list){
   let incomeTotal = 0;
@@ -61,7 +81,7 @@ function totalIncome(list){
 function totalDebt(list){
   let debtTotal = 0;
       for(const member of list){
-         debtTotal += member.debt;
+         debtTotal += Number(member.debt);
       }
   return debtTotal;
 }    
@@ -94,4 +114,4 @@ function checkSwimteam(member){
   }
 }
 
-export {prepareData, checkMembership, checkAgeGroup, filterPaidMembers, filterUnpaidMembers, totalDebt, totalIncome, isActive, isInCompetionen, checkSwimteam};
+export {prepareData, checkMembership, checkAgeGroup, filterMembersDebt, totalDebt, totalIncome, isActive, isInCompetionen, checkSwimteam, sortBySelected};
