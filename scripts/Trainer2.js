@@ -3,6 +3,8 @@ import { createResult, getResults, deleteResult, updateResult } from "./rest-ser
 window.addEventListener("load", initApp);
 
 async function initApp() {
+
+  document.querySelector("#dialog-update-result").addEventListener("click", updateResultClicked);
   document.querySelector("#create-result").addEventListener("click", showCreateForm);
   const results = await getResults();
   console.log(results);
@@ -72,7 +74,7 @@ async function createResultClicked(event) {
     document.querySelector("#dialog-create-result").close();
     form.reset();
     const results = await getResults();
-    showResults(results);  
+    showResults(results);
     hideErrorMessage();
   } else {
     console.log(response.status, response.statusText);
@@ -168,6 +170,7 @@ async function deleteResultConfirm(resultObject) {
 }
 
 function showErrorMessage(message) {
+  document.querySelector("#dialog-failed-to-create").showModal();
   document.querySelector(".error-message").textContent = message;
   document.querySelector(".error-message").classList.remove("hide");
 }
