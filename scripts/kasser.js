@@ -2,11 +2,11 @@
 import { getMembers, updateRestance } from "./rest-service.js";
 import {
   checkAgeGroup,
-  filterPaidMembers,
-  filterUnpaidMembers,
+  filterMembersDebt,
   totalIncome,
   totalDebt,
   isActive,
+  sortBySelected,
 } from "./helpers.js";
 
 window.addEventListener("load", initApp);
@@ -16,55 +16,78 @@ let lastTime = 0;
 
 
 async function initApp() {
-  getAllMembers();
   
-
+   refreshTable();
+  
+  // document.querySelector("#table-name").addEventListener("click", sortByName)
   document
     .querySelector("#nav-betalt")
-    .addEventListener("click", () =>
-      updateMemberTable(filterPaidMembers(memberList))
-    );
+    .addEventListener("click", () =>{ 
+      document.querySelector("#kasserer-table").setAttribute("filterOption", "paid");
+      refreshTable();
+      });
   document
     .querySelector("#nav-restance")
-    .addEventListener("click", () =>
-      updateMemberTable(filterUnpaidMembers(memberList))
-    );
+    .addEventListener("click", () => {   
+    document.querySelector("#kasserer-table").setAttribute("filterOption", "unpaid");
+    refreshTable();
+  });
   document
     .querySelector("#nav-all")
-    .addEventListener("click", () => updateMemberTable(memberList));
+    .addEventListener("click", () =>{
+      document.querySelector("#kasserer-table").removeAttribute("filterOption");
+      refreshTable();
+    });
 
-  document
-    .querySelector("#form-change-restance")
-    .addEventListener("submit", updateRestanceAccept);
+    document.querySelector("#table-name").addEventListener("click", ()=>{
+      document.querySelector("#kasserer-table").setAttribute("sortOption", "name");
+      refreshTable();    
+    } );
 
-    document.querySelector("#cancel-restance-change-button").addEventListener("click", cancelResistanceChange);
+    document.querySelector("#table-debt").addEventListener("click", ()=> {
+      document.querySelector("#kasserer-table").setAttribute("sortOption", "debt");
+      refreshTable();
+    });
+
+    document.querySelector("#table-membership").addEventListener("click", ()=> {
+      document.querySelector("#kasserer-table").setAttribute("sortOption", "membership");
+      refreshTable();
+    } );
+
+    document.querySelector("#table-options").addEventListener("click", ()=>{
+      document.querySelector("#kasserer-table").setAttribute("sortOption", "membership");
+      refreshTable();
+    });
 
     document
       .querySelector(".log-off-btn")
       .addEventListener("click", () => (window.location.href = "index.html"));
 }
 
+
 async function getAllMembers(){
   const now = Date.now();
     if( now - lastTime > 10000 || memberList.length === 0 ){
       memberList = await getMembers();
     }
-    refreshTable(memberList);
-}
-
-function cancelResistanceChange(event){
-  event.preventDefault();
-  document.querySelector("#dialog-change-restance").close();
+    return memberList;
 }
 
 async function refreshTable() {
-  memberList = await getMembers();
-  updateMemberTable(memberList);
+  await getAllMembers();
+  const filteredList = filterMembersDebt(memberList);
+  const sortedList = sortBySelected(filteredList);
+
+
+  updateMemberTable(sortedList);
   document.querySelector("#total-debt").textContent = totalDebt(memberList);
   document.querySelector("#total-income").textContent = totalIncome(memberList);
+
 }
+
+
 async function updateMemberTable(members) {
-  if (memberList.length > 0) {
+  if (members.length > 0) {
     document.querySelector("#overview-table-kasser").innerHTML = "";
     for (const member of members) {
       showMember(member);
@@ -109,6 +132,12 @@ function updateRestanceClicked(member) {
   document.querySelector("#dialog-change-restance").showModal();
   document.querySelector("#dialog-change-restance-title"
   ).textContent = `Ændr resistance for: ${member.name}`;
+
+  document.querySelector("#cancel-restance-change-button").addEventListener("click", cancelResistanceChange);
+  document
+  .querySelector("#form-change-restance")
+  .addEventListener("submit", updateRestanceAccept);
+
 }
 
 async function updateRestanceAccept(event) {
@@ -143,6 +172,11 @@ async function updateRestanceAccept(event) {
   } else {
     console.log("Something went wrong");
   }
+}
+
+function cancelResistanceChange(event){
+  event.preventDefault();
+  document.querySelector("#dialog-change-restance").close();
 }
 
 export { updateMemberTable };
