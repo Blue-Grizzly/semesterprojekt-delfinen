@@ -1,4 +1,4 @@
-//rest functions
+
 import { prepareData } from "./helpers.js";
 
 const endpoint =
@@ -37,7 +37,7 @@ async function getResults() {
 }
 
   
-  async function createMember(name, age, debt, competition, email, tlf, active) {
+async function createMember(name, age, debt, competition, email, tlf, active) {
     const newMember = {name, age, debt, competition, email, tlf, active};
     const json = JSON.stringify(newMember);
     const response = await fetch(`${endpoint}/medlemmer.json`, {
@@ -47,7 +47,7 @@ async function getResults() {
     return response;
   }
 
-  async function createResult(
+async function createResult(
   placering,
   dato,
   disciplin,
@@ -92,6 +92,31 @@ async function updateMember(id, active, age, debt, email, competition, name, tlf
   return response;
 }
 
+async function updateResult(id, placering,
+  dato,
+  disciplin,
+  noter,
+  stævne,
+  svømmer,
+  tid){
+    
+    const resultToUpdate = {
+      placering: placering,
+      dato: dato,
+      disciplin: disciplin,
+      noter: noter,
+      stævne: stævne,
+      svømmer: svømmer,
+      tid: tid,
+    };
+   
+    const response = await fetch(`${endpoint}/resultater/${id}.json`, {
+      method: "PUT",
+      body: JSON.stringify(resultToUpdate),
+    });
+    return response;
+  }
+
 async function deleteMember(memberObject) {
   const id = memberObject.id;
   const response = await fetch(`${endpoint}/medlemmer/${id}.json`, {
@@ -107,7 +132,6 @@ async function deleteResult(resultObject) {
   });
   return response;
 }
-
 
 async function updateRestance(
   id,
@@ -136,4 +160,4 @@ async function updateRestance(
   return response;
 }
 
-export {getMembers, getResults, createMember, createResult, updateMember, deleteMember, deleteResult, updateRestance, getUserByUsername};
+export {getMembers, getResults, createMember, createResult, updateMember, updateResult, deleteMember, deleteResult, updateRestance, getUserByUsername};

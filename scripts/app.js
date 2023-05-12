@@ -1,7 +1,6 @@
-import {getUserByUsername} from "./rest-service.js"
 
+import { getUserByUsername } from "./rest-service.js"
 
-// login del(Abed)
 window.addEventListener("load", initApp);
 
 function initApp() {
@@ -9,8 +8,6 @@ function initApp() {
 
 
 }
-
-
 
 function redirectToUserPage(userType) {
   if (userType === "admin") {

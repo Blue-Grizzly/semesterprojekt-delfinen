@@ -1,3 +1,4 @@
+
 import { getMembers, updateRestance } from "./rest-service.js";
 import {
   checkAgeGroup,
@@ -54,7 +55,6 @@ async function getAllMembers(){
 function cancelResistanceChange(event){
   event.preventDefault();
   document.querySelector("#dialog-change-restance").close();
-
 }
 
 async function refreshTable() {
@@ -90,19 +90,14 @@ function showMember(member) {
         <td>${isActive(member)} ${checkAgeGroup(member)}</td>
         <td><button class="btn-change-restance">Ændre Restance</button></td>
     </tr>
-
     `
   );
-  document
-    .querySelector("#overview-table-kasser tr:last-child .btn-change-restance")
-    .addEventListener("click", () => updateRestanceClicked(member));
+  document.querySelector("#overview-table-kasser tr:last-child .btn-change-restance").addEventListener("click", () => updateRestanceClicked(member));
 }
 
 function updateRestanceClicked(member) {
   const updateForm = document.querySelector("#form-change-restance");
-  // updateForm.reset();
-
-  //   //sets value of form to that of object
+  
   updateForm.debt.value = member.debt;
   updateForm.setAttribute("active", member.active);
   updateForm.setAttribute("age", member.age);
@@ -111,11 +106,8 @@ function updateRestanceClicked(member) {
   updateForm.setAttribute("competition", member.competition);
   updateForm.setAttribute("name", member.name);
   updateForm.setAttribute("data-id", member.id);
-
   document.querySelector("#dialog-change-restance").showModal();
-
-  document.querySelector(
-    "#dialog-change-restance-title"
+  document.querySelector("#dialog-change-restance-title"
   ).textContent = `Ændr resistance for: ${member.name}`;
 }
 
