@@ -5,7 +5,7 @@ import {getUserByUsername} from "./rest-service.js"
 window.addEventListener("load", initApp);
 
 function initApp() {
-  document.querySelector("#submit").addEventListener("click", login);
+  document.querySelector("#login").addEventListener("submit", login);
 
 
 }
@@ -33,13 +33,9 @@ async function login(event) {
   console.log(password);
 
   const user = await getUserByUsername(username);
-  if (user) {
-    if (user.password === password) {
+  if (user.password === password){
       redirectToUserPage(user.usertype);
-    } else {
-      alert("Invalid password");
-    }
   } else {
-    alert("Invalid username");
+    document.querySelector("#login-error").textContent =  `Forkert brugernavn eller password!`;
   }
 }

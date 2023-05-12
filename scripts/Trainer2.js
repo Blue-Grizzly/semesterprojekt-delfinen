@@ -16,10 +16,6 @@ async function updateResultsGrid() {
 const results = await getResults();
 console.log(results);
 showResults(results);
-async function updateResultsGrid() {
-const results = await getResults();
-console.log(results);
-showResults(results);
 }
 function showResults(results) {
   const table = document.querySelector("#hold-table");
@@ -28,7 +24,7 @@ function showResults(results) {
   table.innerHTML = "";
 
   for (const result of results) {
-    const html = `
+    const html = /*html*/`
       <tr>
         <td>${result.placering}</td>
         <td>${result.dato}</td>
@@ -47,7 +43,6 @@ function showResults(results) {
 
     document.querySelector("#hold-table tr:last-child #btn-delete").addEventListener("click", () => deleteResultClicked(result) )
   }
-}
 }
 // Create
 

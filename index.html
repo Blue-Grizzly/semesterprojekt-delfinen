@@ -7,19 +7,21 @@
     <link rel="stylesheet" href="stylesheet.css">
     <title>Svømmeklubben Delfinen</title>
 </head>
-
- <header>Svømmeklubben Delfinen</header>
-  <h2>Velkommen</h2>
-
 <body>
-    <div id="login-form">
-      <h1>Login</h1>
-      <form>
+ <header>
+  <h2 class="header1">Svømmeklubben Delfinen</h2> 
+  <h2 class="header2">Velkommen</h2>
+</header>
+ 
+    <div id="login-form" class="login-grid">
+      <h1 class="login-head">Login</h2>
+      <form class="login" id="login">
         <label for="username">Username:</label><br>
         <input type="text" id="username" name="username" placeholder="Type in your username"><br>
         <label for="password">Password:</label><br>
         <input type="password" id="password" name="password" placeholder="Type in your password" ><br>
-        <input type="submit" id="submit" value="Login">
+        <button type="submit" id="submit" value="Login">Log in</button>
+        <p id="login-error"></p>
       </form>
     </div>
   <script src="scripts/app.js"type="module"></script>

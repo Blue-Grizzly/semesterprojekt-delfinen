@@ -10,11 +10,13 @@ import {
 
 window.addEventListener("load", initApp);
 
-let memberList;
+let memberList = [];
+let lastTime = 0;
+
 
 async function initApp() {
-  memberList = await getMembers();
-  refreshTable();
+  getAllMembers();
+  
 
   document
     .querySelector("#nav-betalt")
@@ -39,6 +41,14 @@ async function initApp() {
     document
       .querySelector(".log-off-btn")
       .addEventListener("click", () => (window.location.href = "index.html"));
+}
+
+async function getAllMembers(){
+  const now = Date.now();
+    if( now - lastTime > 10000 || memberList.length === 0 ){
+      memberList = await getMembers();
+    }
+    refreshTable(memberList);
 }
 
 function cancelResistanceChange(event){

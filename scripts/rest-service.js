@@ -36,11 +36,6 @@ async function getResults() {
   return prepareData(data);
 }
 
-async function getResults() {
-  const response = await fetch("https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app/resultater.json");
-  const data = await response.json();
-  return prepareData(data);
-}
   
   async function createMember(name, age, debt, competition, email, tlf, active) {
     const newMember = {name, age, debt, competition, email, tlf, active};

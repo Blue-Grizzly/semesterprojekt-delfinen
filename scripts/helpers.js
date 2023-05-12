@@ -62,7 +62,7 @@ function totalIncome(list){
 function totalDebt(list){
   let debtTotal = 0;
       for(const member of list){
-         debtTotal += member.debt;
+         debtTotal += Number(member.debt);
       }
   return debtTotal;
 }    
