@@ -51,9 +51,6 @@ function filterByButterfly(list){
 
 
 
-
-
-
 function filterMembersDebt(members){
   const selectedFilter = document.querySelector("#data-table").getAttribute("filterOption");
     if(selectedFilter == "paid"){
