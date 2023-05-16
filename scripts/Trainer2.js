@@ -1,31 +1,149 @@
+let resultsList = [];
+let memberList =[];
 
-import { createResult, getResults, deleteResult, updateResult } from "./rest-service.js";
+import {
+  createResult,
+  getResults,
+  deleteResult,
+  updateResult,
+  getMembers
+} from "./rest-service.js";
+
+import {
+  filterByBryst,
+  filterByButterfly,
+  filterByCrawl,
+  filterByRygCrawl,
+  
+} from "./helpers.js";
+
+
+
+
+
 window.addEventListener("load", initApp);
 
 async function initApp() {
 
   document.querySelector("#dialog-update-result").addEventListener("click", updateResultClicked);
-  document.querySelector("#create-result").addEventListener("click", showCreateForm);
-  const results = await getResults();
-  console.log(results);
-  showResults(results);
-  document.querySelector(".log-off-btn").addEventListener("click", () => (window.location.href = "index.html"));
   updateResultsGrid();
+
+  document
+    .querySelector("#create-result")
+    .addEventListener("click", showCreateForm);
+  const results = await getResults();
+  // console.log(results);
+  showResult(results);
+
+  console.log(results);
+  document
+    .querySelector(".log-off-btn")
+    .addEventListener("click", () => (window.location.href = "index.html"));
+
+  document.querySelector("#nav-hold").addEventListener("click", showTeams);
+fillMemberList();
+
+document
+  .querySelector("#nav-bryst")
+  .addEventListener("click", () => {showResults (filterByBryst(resultsList)); 
+  document.querySelector("#results-table").classList.remove("hidden");
+});
+
+
+  document.querySelector("#nav-crawl").addEventListener("click", () => {
+    showResults(filterByCrawl(resultsList));
+    document.querySelector("#results-table").classList.remove("hidden");
+  });
+
+document.querySelector("#nav-ryg").addEventListener("click", () => {showResults(filterByRygCrawl(resultsList)); 
+document.querySelector("#results-table").classList.remove("hidden");
+  });
+
+  
+
+  document.querySelector("#nav-butterfly").addEventListener("click", () => {
+    showResults(filterByButterfly(resultsList));
+    document.querySelector("#results-table").classList.remove("hidden");
+  });
+
+  }
+
+
+
+
+
+
+
+function showTeams(){
+  document.querySelector("#hold-table").classList.remove("hidden");
+}
+
+async function fillMemberList(){
+  memberList = await getMembers();
+  console.log(memberList);
+  showCompetitionMembers(memberList);
+}
+
+function showCompetitionMembers(list){
+  
+    for (const member of list) {
+      if(member.competition == "true"){
+        showCompetetionMember(member);
+      }
+      
+    }
+  
+}
+
+function showCompetetionMember(member){
+ 
+    const html = /* html */ `
+    <tr>
+    <td>${member.name}</td>
+    <td>${member.age}</td>
+    <td>${member.disciplin}</td>
+    </tr>
+    `;
+ if(member.age < 18){
+    document.querySelector("#unge-hold-body").insertAdjacentHTML("beforeend",html);
+ }
+  else{ 
+
+  document
+    .querySelector("#senior-hold-body")
+    .insertAdjacentHTML("beforeend", html);
+  }
 }
 
 async function updateResultsGrid() {
-const results = await getResults();
-console.log(results);
-showResults(results);
+  resultsList = await getResults();
+  
+  showResults(resultsList);
 }
 
-function showResults(results) {
-  const table = document.querySelector("#hold-table");
+function showResults(resultList) {
 
-  table.innerHTML = "";
+  document.querySelector("#results-table-body").innerHTML = "";
 
-  for (const result of results) {
-    const html = /*html*/`
+  document.querySelector("#hold-table").classList.add("hidden");
+   document.querySelector("#results-table").classList.add("hidden");
+ 
+  if (resultList.length !== 0) {
+    for (const result of resultList) {
+      showResult(result);
+    }
+  } else {
+    document
+      .querySelector("#results-table-body")
+      .insertAdjacentHTML(
+        "beforeend",
+        /*html*/ ` <h2>Der er ingen resultater her</h2>`
+      );
+  }
+}
+
+function showResult(result) {
+  const html = `
       <tr>
         <td>${result.placering}</td>
         <td>${result.dato}</td>
@@ -38,16 +156,25 @@ function showResults(results) {
         <td><button id="btn-delete">Slet</button></td>
       </tr>
     `;
-    table.insertAdjacentHTML("beforeend", html);
-  document.querySelector("#hold-table tr:last-child #btn-delete").addEventListener("click", () => deleteResultClicked(result) )
-  document.querySelector("#hold-table tr:last-child #btn-update").addEventListener("click", () => updateClicked(result));
-  }
+  document
+    .querySelector("#results-table-body")
+    .insertAdjacentHTML("beforeend", html);
+  document
+    .querySelector("#results-table-body tr:last-child #btn-delete")
+    .addEventListener("click", () => deleteResultClicked(result));
+  document
+    .querySelector("#results-table-body tr:last-child #btn-update")
+    .addEventListener("click", () => updateClicked(result));
 }
 
-function showCreateForm(){
+function showCreateForm() {
   document.querySelector("#dialog-create-result").showModal();
-  document.querySelector("#form-create-result").addEventListener("submit", createResultClicked);
-  document.querySelector("#cancel-create").addEventListener("click", createCancelClicked);
+  document
+    .querySelector("#form-create-result")
+    .addEventListener("submit", createResultClicked);
+  document
+    .querySelector("#cancel-create")
+    .addEventListener("click", createCancelClicked);
 }
 
 async function createResultClicked(event) {
@@ -73,9 +200,8 @@ async function createResultClicked(event) {
   if (response.ok) {
     document.querySelector("#dialog-create-result").close();
     form.reset();
-    const results = await getResults();
-    showResults(results);
-    hideErrorMessage();
+
+    updateResultsGrid();
   } else {
     console.log(response.status, response.statusText);
     showErrorMessage("Der skete en fejl. Udfyld venligst alle felter.");
@@ -123,8 +249,7 @@ async function updateResultClicked(event) {
   }
 }
 
-function updateClicked( resultObject) {
-
+function updateClicked(resultObject) {
   const updateForm = document.querySelector("#form-update-result");
 
   updateForm.placering.value = resultObject.placering;
@@ -137,20 +262,27 @@ function updateClicked( resultObject) {
   updateForm.setAttribute("data-id", resultObject.id);
   document.querySelector("#dialog-update-result").showModal();
   updateForm.addEventListener("submit", updateResultClicked);
-  document.querySelector("#cancel-update").addEventListener("click",dialogUpdateCancel);
+  document
+    .querySelector("#cancel-update")
+    .addEventListener("click", dialogUpdateCancel);
 }
 
-function dialogUpdateCancel(event){
+function dialogUpdateCancel(event) {
   event.preventDefault();
   document.querySelector("#dialog-update-result").close();
 }
 
 function deleteResultClicked(resultObject) {
   console.log(resultObject);
-  document.querySelector("#dialog-delete-result-title").textContent = resultObject.name;
+  document.querySelector("#dialog-delete-result-title").textContent =
+    resultObject.name;
   document.querySelector("#dialog-delete-result").showModal();
-  document.querySelector("#form-delete-result").addEventListener("submit", () => deleteResultConfirm(resultObject));
-  document.querySelector("#cancel-delete-result").addEventListener("click", event => cancelDeleteResult(event));
+  document
+    .querySelector("#form-delete-result")
+    .addEventListener("submit", () => deleteResultConfirm(resultObject));
+  document
+    .querySelector("#cancel-delete-result")
+    .addEventListener("click", (event) => cancelDeleteResult(event));
 }
 
 function cancelDeleteResult(event) {

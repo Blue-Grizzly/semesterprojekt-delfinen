@@ -1,4 +1,5 @@
 
+
 function prepareData(dataObject) {
   const memberArray = [];
   for (const key in dataObject) {
@@ -31,6 +32,32 @@ function checkAgeGroup(member){;
     }
 }
 
+
+function filterByBryst(list){
+return list.filter((result) => result.disciplin === "Bryst");
+}
+
+function filterByCrawl(list){
+return list.filter((result) => result.disciplin === "Crawl");
+}
+
+function filterByRygCrawl(list){
+  return list.filter((result) => result.disciplin === "Ryg");
+}
+
+function filterByButterfly(list){
+  return list.filter((result) => result.disciplin === "Butterfly");
+}
+
+
+
+
+
+
+
+
+function filterPaidMembers(memberList){
+  return memberList.filter((member) => member.debt == "0");
 function filterMembersDebt(members){
   const selectedFilter = document.querySelector("#data-table").getAttribute("filterOption");
     if(selectedFilter == "paid"){
@@ -57,7 +84,6 @@ function sortBySelected(members){
     return members;
   }
 }
-
 
 function totalIncome(list){
   let incomeTotal = 0;

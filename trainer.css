@@ -79,6 +79,10 @@ table tbody tr:hover {
   background-color: #f44336;
 }
 
+.hidden{
+  display:none;
+}
+
 .error-message {
   background-color: rgb(255, 121, 121);
   margin: 1em auto;
