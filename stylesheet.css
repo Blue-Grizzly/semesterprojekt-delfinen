@@ -13,14 +13,14 @@
   display: none;
 }
 
-body{
+body {
   background-color: var(--light-blue);
   margin: 0;
   overflow-x: hidden;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }   
 
-h1{
+h1 {
   color: var(--dark-blue);
 }
 
@@ -301,4 +301,12 @@ form{
 #search-error-msg {
   background-color: #00000085;
   text-align: center;
+}
+
+.error-message {
+  background-color: rgb(255, 121, 121);
+  margin: 1em auto;
+  width: 100%;
+  max-width: 342px;
+  padding: 1em;
 }
