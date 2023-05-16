@@ -161,6 +161,8 @@ function controlDiscipline(event){
   } else{
     document.querySelector("#discipline-update").disabled = true;
     document.querySelector("#discipline").disabled = true;
+    document.querySelector("#discipline-update").value = "";
+    document.querySelector("#discipline").value = "";
   }
 }
 
