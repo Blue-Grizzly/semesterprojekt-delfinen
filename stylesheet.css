@@ -147,7 +147,21 @@ footer p{
   text-align: center;
 } 
 
+.header-btns{
+  grid-area: 2 / 1 / 3 / 7;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto;
+  grid-column-gap: 10px;
+}
 
+
+.team-grid-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+
+}
 
 #formand-grid-container{
   display: grid;
@@ -156,7 +170,15 @@ footer p{
 
 }
 
+.results-table-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+}
 
+ h2{
+  text-align: center;
+}
 
 table{
   border-collapse: collapse;

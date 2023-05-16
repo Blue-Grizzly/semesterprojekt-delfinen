@@ -1,5 +1,3 @@
-let resultsList = [];
-let memberList =[];
 
 import {
   createResult,
@@ -10,82 +8,167 @@ import {
 } from "./rest-service.js";
 
 import {
-  filterByBryst,
-  filterByButterfly,
-  filterByCrawl,
-  filterByRygCrawl,
-  
+  filterByDiscipline,
+  sortBySelectedResults,
+  sortBySelected  
 } from "./helpers.js";
 
 
 
-
+let resultsList = [];
+let memberList =[];
+let lastTime = 0;
 
 window.addEventListener("load", initApp);
 
 async function initApp() {
-
-  document.querySelector("#dialog-update-result").addEventListener("click", updateResultClicked);
-  updateResultsGrid();
+  refreshTableMembers();
 
   document
     .querySelector("#create-result")
     .addEventListener("click", showCreateForm);
-  const results = await getResults();
-  // console.log(results);
-  showResult(results);
 
-  console.log(results);
   document
     .querySelector(".log-off-btn")
     .addEventListener("click", () => (window.location.href = "index.html"));
 
   document.querySelector("#nav-hold").addEventListener("click", showTeams);
-fillMemberList();
 
 document
   .querySelector("#nav-bryst")
-  .addEventListener("click", () => {showResults (filterByBryst(resultsList)); 
-  document.querySelector("#results-table").classList.remove("hidden");
+  .addEventListener("click", () => {
+  document.querySelector("#results-table").setAttribute("filterOption", "Bryst");
+  refreshTableResults();
 });
 
 
-  document.querySelector("#nav-crawl").addEventListener("click", () => {
-    showResults(filterByCrawl(resultsList));
-    document.querySelector("#results-table").classList.remove("hidden");
-  });
+document.querySelector("#table-place").addEventListener("click", ()=> {
+  document.querySelector("#results-table").setAttribute("sortOption", "Place");
+  refreshTableResults();
+});
+document.querySelector("#table-date").addEventListener("click", ()=> {
+  document.querySelector("#results-table").setAttribute("sortOption", "Date");
+  refreshTableResults();
+});
+document.querySelector("#table-discipline").addEventListener("click", ()=> {
+  document.querySelector("#results-table").setAttribute("sortOption", "Discipline");
+  refreshTableResults();
+});
+document.querySelector("#table-note").addEventListener("click", ()=> {
+  document.querySelector("#results-table").setAttribute("sortOption", "Note");
+  refreshTableResults();
+});
+document.querySelector("#table-event").addEventListener("click", ()=> {
+  document.querySelector("#results-table").setAttribute("sortOption", "Event");
+  refreshTableResults();
+});
+document.querySelector("#table-swimmer").addEventListener("click", ()=> {
+  document.querySelector("#results-table").setAttribute("sortOption", "Swimmer")
+  refreshTableResults();
+});
+document.querySelector("#table-time").addEventListener("click", ()=> {
+  document.querySelector("#results-table").setAttribute("sortOption", "Time")
+  refreshTableResults();
+});
+document.querySelector("#table-options").addEventListener("click", ()=> {
+  document.querySelector("#results-table").removeAttribute("sortOption")
+  refreshTableResults();
+});
 
-document.querySelector("#nav-ryg").addEventListener("click", () => {showResults(filterByRygCrawl(resultsList)); 
-document.querySelector("#results-table").classList.remove("hidden");
+  document.querySelector("#nav-crawl").addEventListener("click", () => {
+    document.querySelector("#results-table").setAttribute("filterOption", "Crawl");
+    refreshTableResults();
+    });
+
+document.querySelector("#nav-ryg").addEventListener("click", () => {
+  document.querySelector("#results-table").setAttribute("filterOption", "Ryg");
+  refreshTableResults();
   });
 
   
 
   document.querySelector("#nav-butterfly").addEventListener("click", () => {
-    showResults(filterByButterfly(resultsList));
-    document.querySelector("#results-table").classList.remove("hidden");
+    document.querySelector("#results-table").setAttribute("filterOption", "Butterfly");
+    refreshTableResults();
   });
 
-  }
 
+  document.querySelector("#table-name-junior").addEventListener("click", ()=>{
+    document.querySelector("#data-table").setAttribute("sortOption", "name");
+    refreshTableMembers();    
+  });
+  document.querySelector("#table-name-senior").addEventListener("click", ()=>{
+    document.querySelector("#data-table").setAttribute("sortOption", "name");
+    refreshTableMembers();    
+  });
 
+  document.querySelector("#table-age-junior").addEventListener("click", ()=> {
+    document.querySelector("#data-table").setAttribute("sortOption", "age");
+    refreshTableMembers();
+  });
+  document.querySelector("#table-age-senior").addEventListener("click", ()=> {
+    document.querySelector("#data-table").setAttribute("sortOption", "age");
+    refreshTableMembers();
+  });
 
+  document.querySelector("#table-discipline-junior").addEventListener("click", ()=> {
+    document.querySelector("#data-table").setAttribute("sortOption", "discipline");
+    refreshTableMembers();
+  });
+  document.querySelector("#table-discipline-senior").addEventListener("click", ()=> {
+    document.querySelector("#data-table").setAttribute("sortOption", "discipline");
+    refreshTableMembers();
+  });
 
-
-
+}
 
 function showTeams(){
-  document.querySelector("#hold-table").classList.remove("hidden");
+  document.querySelector("#data-table").classList.remove("hidden");
+  document.querySelector("#results-table-wrapper").classList.add("hidden");
+  refreshTableMembers();
 }
 
-async function fillMemberList(){
-  memberList = await getMembers();
-  console.log(memberList);
-  showCompetitionMembers(memberList);
+async function getAllMembers(){
+  const now = Date.now();
+    if( now - lastTime > 10000 || memberList.length === 0 ){
+      memberList = await getMembers();
+    }
+    return memberList;
 }
+
+async function getAllResults(){
+  const now = Date.now();
+    if( now - lastTime > 10000 || resultsList.length === 0 ){
+      resultsList = await getResults();
+    }
+    return resultsList;
+}
+
+
+async function refreshTableMembers() {
+  await getAllMembers();
+  const sortedList = sortBySelected(memberList);
+
+  showCompetitionMembers(sortedList);
+}
+
+
+async function refreshTableResults() {
+  await getAllResults();
+
+  const filteredList = filterByDiscipline(resultsList);
+  const sortedList = sortBySelectedResults(filteredList);
+
+  showResults(sortedList);
+}
+
+
 
 function showCompetitionMembers(list){
-  
+  document.querySelector("#senior-hold-body").innerHTML = "";
+  document.querySelector("#unge-hold-body").innerHTML = "";
+  document.querySelector("#results-table-wrapper").classList.add("hidden");
+
     for (const member of list) {
       if(member.competition == "true"){
         showCompetetionMember(member);
@@ -96,12 +179,13 @@ function showCompetitionMembers(list){
 }
 
 function showCompetetionMember(member){
- 
+  document.querySelector("#data-table").classList.remove("hidden");
+
     const html = /* html */ `
     <tr>
     <td>${member.name}</td>
     <td>${member.age}</td>
-    <td>${member.disciplin}</td>
+    <td>${member.discipline}</td>
     </tr>
     `;
  if(member.age < 18){
@@ -115,18 +199,13 @@ function showCompetetionMember(member){
   }
 }
 
-async function updateResultsGrid() {
-  resultsList = await getResults();
-  
-  showResults(resultsList);
-}
 
 function showResults(resultList) {
 
   document.querySelector("#results-table-body").innerHTML = "";
 
-  document.querySelector("#hold-table").classList.add("hidden");
-   document.querySelector("#results-table").classList.add("hidden");
+  document.querySelector("#data-table").classList.add("hidden");
+   document.querySelector("#results-table-wrapper").classList.remove("hidden");
  
   if (resultList.length !== 0) {
     for (const result of resultList) {
@@ -143,7 +222,7 @@ function showResults(resultList) {
 }
 
 function showResult(result) {
-  const html = `
+  const html = /*html*/`
       <tr>
         <td>${result.placering}</td>
         <td>${result.dato}</td>
@@ -201,7 +280,7 @@ async function createResultClicked(event) {
     document.querySelector("#dialog-create-result").close();
     form.reset();
 
-    updateResultsGrid();
+    refreshTableResults();
   } else {
     console.log(response.status, response.statusText);
     showErrorMessage("Der skete en fejl. Udfyld venligst alle felter.");
@@ -240,8 +319,8 @@ async function updateResultClicked(event) {
   );
   if (response.ok) {
     document.querySelector("#dialog-update-result").close();
-    updateResultsGrid();
-    hideErrorMessage();
+    refreshTableResults();
+    // hideErrorMessage();
   } else {
     console.log(response.status, response.statusText);
     showErrorMessage("Der skete en fejl. Udfyld venligst alle felter.");
@@ -273,7 +352,6 @@ function dialogUpdateCancel(event) {
 }
 
 function deleteResultClicked(resultObject) {
-  console.log(resultObject);
   document.querySelector("#dialog-delete-result-title").textContent =
     resultObject.name;
   document.querySelector("#dialog-delete-result").showModal();
@@ -294,7 +372,7 @@ async function deleteResultConfirm(resultObject) {
   const response = await deleteResult(resultObject);
 
   if (response.ok) {
-    updateResultsGrid();
+    refreshTableResults();
     console.log("sletter");
   } else {
     document.querySelector("#dialog-failed-to-update").showModal();
@@ -307,7 +385,7 @@ function showErrorMessage(message) {
   document.querySelector(".error-message").classList.remove("hide");
 }
 
-function hideErrorMessage() {
-  document.querySelector(".error-message").textContent = "";
-  document.querySelector(".error-message").classList.add("hide");
-}
+// function hideErrorMessage() {
+//   document.querySelector(".error-message").textContent = "";
+//   document.querySelector(".error-message").classList.add("hide");
+// }

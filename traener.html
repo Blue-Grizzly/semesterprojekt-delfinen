@@ -4,68 +4,74 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="trainer.css">
+  <link rel="stylesheet" href="stylesheet.css">
   <link rel="shortcut icon" href="images/delfin.jpg" type="image/x-icon">
-  <link rel="shortcut icon" href="#" type="image/x-icon">
   <title>Svømmeklubben Delfinen</title>
 </head>
 
-<h3>Medlemmer</h3>
-<ul id="memberslist"></ul>
+ <body>
 
-  <body>
     <header>
-      <nav>
+      <h3 class="header1">Svømmeklubben Delfinen</h3> 
+      <h3 class="header2">Velkommen</h3>
+      <div class="header-btns">
         <button id="nav-hold">Hold</button>
         <button id="nav-bryst">Bryst</button>
         <button id="nav-crawl">Crawl</button>
         <button id="nav-ryg">Ryg Crawl</button>
         <button id="nav-butterfly">Butterfly</button>
         <button id="create-result">Opret Resultat</button>
-      </nav>
+      </div>
     </header>
 
-<div id = hold-table>
+<div id="data-table" >
+  <div class="team-grid-container">
+    <h2>Junior</h2>
+    <h2>Senior</h2>
    <table id="unge-hold-table">
       <tr>
-        <th>Navn</th>
-        <th>Alder</th>
-        <th>Discipliner</th>
-        <th>Knapper</th>
+        <th id="table-name-junior">Navn</th>
+        <th id="table-age-junior">Alder</th>
+        <th id="table-discipline-junior">Discipliner</th>
       </tr>
       <tbody id="unge-hold-body"></tbody>
      
     </table>
-
+    
   <table id="senior-hold-table">
       <tr>
-        <th>Navn</th>
-        <th>Alder</th>
-        <th>Discipliner</th>
-        <th>Knapper</th>
+        <th id="table-name-senior">Navn</th>
+        <th id="table-age-senior">Alder</th>
+        <th id="table-discipline-senior">Discipliner</th>
       </tr>
       <tbody id="senior-hold-body"></tbody>
       
     </table>
+  </div>
 </div>
-    
-    <table id="results-table">
-      <h3>Resultater</h3>
-      <thead>
-        <tr>
-          <th>Placering</th>
-          <th>Dato</th>
-          <th>Disciplin</th>
-          <th>Noter</th>
-          <th>Stævne</th>
-          <th>Svømmer</th>
-          <th>Tid</th>
-          <th>Opdater</th>
-          <th>Slet</th>
-        </tr>
-      </thead>
-      <tbody id="results-table-body"></tbody>
-    </table>
+  
+  <div id="results-table-wrapper">
+    <div class="results-table-grid">
+      <h2>Resultater</h2>
+      <table id="results-table">
+        <thead>
+          <tr>
+            <th id="table-place">Placering</th>
+            <th id="table-date">Dato</th>
+            <th id="table-discipline">Disciplin</th>
+            <th id="table-note">Noter</th>
+            <th id="table-event">Stævne</th>
+            <th id="table-swimmer">Svømmer</th>
+            <th id="table-time">Tid</th>
+            <th id="table-options">Opdater</th>
+            <th>Slet</th>
+          </tr>
+        </thead>
+        <tbody id="results-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+  
 
     <dialog id="Resultater-modal">
       <h3 id="result-info"></h3>
@@ -83,7 +89,7 @@
 
     <dialog id="dialog-update-result">
       <h2 id="update-result"></h2>
-      <form id="form-update-result" method="dialog" class="dialog-form">
+      <form id="form-update-result" class="dialog-form">
         <label for="placering"
           >Placering<input
             type="text"
@@ -129,7 +135,7 @@
         /></label>
         <label for="tid"
           >Tid<input
-            type="time"
+            type="number"
             name="tid"
             id="tid"
             placeholder="Tid"

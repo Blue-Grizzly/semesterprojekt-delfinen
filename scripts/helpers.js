@@ -32,22 +32,43 @@ function checkAgeGroup(member){
     }
 }
 
-
-function filterByBryst(list){
-return list.filter((result) => result.disciplin === "Bryst");
+function sortBySelectedResults(list){
+  const selectedSort = document.querySelector("#results-table").getAttribute("sortOption");
+  if(selectedSort === "Place"){
+    return list.sort((a, b) =>  a.placering - b.placering);
+  } else if(selectedSort === "Date"){
+    return list.sort((a, b) =>  b.dato - a.dato);
+  } else if (selectedSort === "Discipline"){
+    return list.sort((a, b) => a.disciplin.localeCompare(b.disciplin));
+  }else if(selectedSort === "Note"){
+    return list.sort((a, b) => a.noter.localeCompare(b.noter));
+  }else if(selectedSort === "Event"){
+    return  list.sort((a, b) => a.stævne.localeCompare(b.stævne));
+  }else if(selectedSort === "Swimmer"){
+    return list.sort((a, b) => a.svømmer.localeCompare(b.svømmer));
+  }else if(selectedSort === "Time"){
+    return list.sort((a, b) =>  a.tid - b.tid);
+  } else {
+    return list
+  }
 }
 
-function filterByCrawl(list){
-return list.filter((result) => result.disciplin === "Crawl");
+function filterByDiscipline(list){
+const selectedFilter = document.querySelector("#results-table").getAttribute("filterOption");
+  if(selectedFilter === "Bryst"){
+    return list.filter((result) => result.disciplin == "Bryst");
+  } else if(selectedFilter === "Crawl"){
+    return list.filter((result) => result.disciplin == "Crawl");
+  } else if (selectedFilter === "Ryg"){
+    return list.filter((result) => result.disciplin == "Ryg");
+  }else if(selectedFilter === "Butterfly"){
+    return list.filter((result) => result.disciplin == "Butterfly");
+  } else {
+    return list
+  }
+
 }
 
-function filterByRygCrawl(list){
-  return list.filter((result) => result.disciplin === "Ryg");
-}
-
-function filterByButterfly(list){
-  return list.filter((result) => result.disciplin === "Butterfly");
-}
 
 
 
@@ -145,4 +166,4 @@ function controlDisciplin(event){
 
 
 
-export {prepareData, checkMembership, checkAgeGroup, filterByBryst, filterByButterfly, filterByCrawl, filterByRygCrawl,filterMembersDebt, totalDebt, totalIncome, isActive, isInCompetionen, checkSwimteam, sortBySelected, controlDisciplin};
+export {prepareData, checkMembership, checkAgeGroup, filterByDiscipline, filterMembersDebt, totalDebt, totalIncome, isActive, isInCompetionen, checkSwimteam, sortBySelected, controlDisciplin, sortBySelectedResults};
