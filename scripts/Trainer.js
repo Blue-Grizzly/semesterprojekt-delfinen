@@ -44,34 +44,42 @@ document
 
 document.querySelector("#table-place").addEventListener("click", ()=> {
   document.querySelector("#results-table").setAttribute("sortOption", "Place");
+  document.querySelector("#results-table-body").classList.remove("top-five");
   refreshTableResults();
 });
 document.querySelector("#table-date").addEventListener("click", ()=> {
   document.querySelector("#results-table").setAttribute("sortOption", "Date");
+  document.querySelector("#results-table-body").classList.remove("top-five");
   refreshTableResults();
 });
 document.querySelector("#table-discipline").addEventListener("click", ()=> {
   document.querySelector("#results-table").setAttribute("sortOption", "Discipline");
+  document.querySelector("#results-table-body").classList.remove("top-five");
   refreshTableResults();
 });
 document.querySelector("#table-note").addEventListener("click", ()=> {
   document.querySelector("#results-table").setAttribute("sortOption", "Note");
+  document.querySelector("#results-table-body").classList.remove("top-five");
   refreshTableResults();
 });
 document.querySelector("#table-event").addEventListener("click", ()=> {
   document.querySelector("#results-table").setAttribute("sortOption", "Event");
+  document.querySelector("#results-table-body").classList.remove("top-five");
   refreshTableResults();
 });
 document.querySelector("#table-swimmer").addEventListener("click", ()=> {
   document.querySelector("#results-table").setAttribute("sortOption", "Swimmer")
+  document.querySelector("#results-table-body").classList.remove("top-five");
   refreshTableResults();
 });
 document.querySelector("#table-time").addEventListener("click", ()=> {
-  document.querySelector("#results-table").setAttribute("sortOption", "Time")
+  document.querySelector("#results-table").setAttribute("sortOption", "Time");
+  document.querySelector("#results-table-body").classList.add("top-five");
   refreshTableResults();
 });
 document.querySelector("#table-options").addEventListener("click", ()=> {
   document.querySelector("#results-table").removeAttribute("sortOption")
+  document.querySelector("#results-table-body").classList.remove("top-five");
   refreshTableResults();
 });
 
@@ -226,7 +234,7 @@ function showResult(result) {
       <tr>
         <td>${result.placering}</td>
         <td>${result.dato}</td>
-        <td>${result.disciplin}</td>
+        <td>${result.discipline}</td>
         <td>${result.noter}</td>
         <td>${result.stævne}</td>
         <td>${result.svømmer}</td>
@@ -261,7 +269,7 @@ async function createResultClicked(event) {
   const form = document.querySelector("#form-create-result");
   const placering = form.placering.value;
   const dato = form.dato.value;
-  const disciplin = form.disciplin.value;
+  const discipline = form.discipline.value;
   const noter = form.noter.value;
   const stævne = form.stævne.value;
   const svømmer = form.svømmer.value;
@@ -270,7 +278,7 @@ async function createResultClicked(event) {
   const response = await createResult(
     placering,
     dato,
-    disciplin,
+    discipline,
     noter,
     stævne,
     svømmer,
@@ -299,7 +307,7 @@ async function updateResultClicked(event) {
 
   const placering = form.placering.value;
   const dato = form.dato.value;
-  const disciplin = form.disciplin.value;
+  const discipline = form.discipline.value;
   const noter = form.noter.value;
   const stævne = form.stævne.value;
   const svømmer = form.svømmer.value;
@@ -311,7 +319,7 @@ async function updateResultClicked(event) {
     id,
     placering,
     dato,
-    disciplin,
+    discipline,
     noter,
     stævne,
     svømmer,
@@ -333,7 +341,7 @@ function updateClicked(resultObject) {
 
   updateForm.placering.value = resultObject.placering;
   updateForm.dato.value = resultObject.dato;
-  updateForm.disciplin.value = resultObject.disciplin;
+  updateForm.discipline.value = resultObject.discipline;
   updateForm.noter.value = resultObject.noter;
   updateForm.stævne.value = resultObject.stævne;
   updateForm.svømmer.value = resultObject.svømmer;

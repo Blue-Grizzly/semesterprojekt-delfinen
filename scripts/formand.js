@@ -5,7 +5,7 @@ import {
   deleteMember,
 } from "./rest-service.js";
 
-import { isActive, isInCompetionen, checkSwimteam, sortBySelected, controlDisciplin } from "./helpers.js";
+import { isActive, isInCompetionen, checkSwimteam, sortBySelected, controlDiscipline } from "./helpers.js";
 
 window.addEventListener("load", initApp);
 
@@ -44,8 +44,8 @@ async function initApp() {
     refreshTable();
   });
 
-  document.querySelector("#competition").addEventListener("change", event => controlDisciplin(event));
-  document.querySelector("#competition-update").addEventListener("change", event => controlDisciplin(event));
+  document.querySelector("#competition").addEventListener("change", event => controlDiscipline(event));
+  document.querySelector("#competition-update").addEventListener("change", event => controlDiscipline(event));
 
 
 }
@@ -135,6 +135,7 @@ async function updateMemberClicked(event) {
   const competition = form.competition.value;
   const name = form.name.value;
   const tlf = form.tlf.value;
+  const discipline = form.discipline.value;
 
   const id = form.getAttribute("data-id");
 
@@ -146,7 +147,8 @@ async function updateMemberClicked(event) {
     email,
     competition,
     name,
-    tlf
+    tlf,
+    discipline
   );
   if (response.ok) {
     document.querySelector("#dialog-update-member").close();
@@ -168,6 +170,7 @@ function updateClicked(memberObject) {
   updateForm.competition.value = memberObject.competition;
   updateForm.name.value = memberObject.name;
   updateForm.tlf.value = memberObject.tlf;
+  updateForm.discipline.value = memberObject.discipline;
   updateForm.setAttribute("data-id", memberObject.id);
   document.querySelector("#dialog-update-member").showModal();
   document

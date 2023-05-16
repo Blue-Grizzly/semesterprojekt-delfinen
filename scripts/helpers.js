@@ -39,7 +39,7 @@ function sortBySelectedResults(list){
   } else if(selectedSort === "Date"){
     return list.sort((a, b) =>  b.dato - a.dato);
   } else if (selectedSort === "Discipline"){
-    return list.sort((a, b) => a.disciplin.localeCompare(b.disciplin));
+    return list.sort((a, b) => a.discipline.localeCompare(b.discipline));
   }else if(selectedSort === "Note"){
     return list.sort((a, b) => a.noter.localeCompare(b.noter));
   }else if(selectedSort === "Event"){
@@ -56,13 +56,13 @@ function sortBySelectedResults(list){
 function filterByDiscipline(list){
 const selectedFilter = document.querySelector("#results-table").getAttribute("filterOption");
   if(selectedFilter === "Bryst"){
-    return list.filter((result) => result.disciplin == "Bryst");
+    return list.filter((result) => result.discipline == "Bryst");
   } else if(selectedFilter === "Crawl"){
-    return list.filter((result) => result.disciplin == "Crawl");
+    return list.filter((result) => result.discipline == "Crawl");
   } else if (selectedFilter === "Ryg"){
-    return list.filter((result) => result.disciplin == "Ryg");
+    return list.filter((result) => result.discipline == "Ryg");
   }else if(selectedFilter === "Butterfly"){
-    return list.filter((result) => result.disciplin == "Butterfly");
+    return list.filter((result) => result.discipline == "Butterfly");
   } else {
     return list
   }
@@ -154,16 +154,16 @@ function checkSwimteam(member){
   }
 }
 
-function controlDisciplin(event){
+function controlDiscipline(event){
   if (event.target.value === "true"){
-    document.querySelector("#disciplin").disabled = false;
-    document.querySelector("#disciplin-update").disabled = false;
+    document.querySelector("#discipline").disabled = false;
+    document.querySelector("#discipline-update").disabled = false;
   } else{
-    document.querySelector("#disciplin-update").disabled = true;
-    document.querySelector("#disciplin").disabled = true;
+    document.querySelector("#discipline-update").disabled = true;
+    document.querySelector("#discipline").disabled = true;
   }
 }
 
 
 
-export {prepareData, checkMembership, checkAgeGroup, filterByDiscipline, filterMembersDebt, totalDebt, totalIncome, isActive, isInCompetionen, checkSwimteam, sortBySelected, controlDisciplin, sortBySelectedResults};
+export {prepareData, checkMembership, checkAgeGroup, filterByDiscipline, filterMembersDebt, totalDebt, totalIncome, isActive, isInCompetionen, checkSwimteam, sortBySelected, controlDiscipline, sortBySelectedResults};

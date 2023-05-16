@@ -113,7 +113,7 @@ footer{
   grid-template-columns: auto;
   background-color: var(--dark-blue);
   color: var(--white-blue);
-  position:sticky;
+  position:fixed;
   left: 0;
   bottom: 0;
   padding: 20px;
@@ -135,6 +135,7 @@ footer p{
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 15px;
   grid-row-gap: 15px;
+  margin-bottom: 10vh;
 }
 
 .grid-item1 { grid-area: 1 / 1 / 4 / 4; }
@@ -167,6 +168,7 @@ footer p{
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
+  margin-bottom: 10vh;
 
 }
 
@@ -209,8 +211,13 @@ tbody tr:nth-of-type(even) {
   background-color: var(--light-teal);
 }
 
+
 tbody tr:last-of-type {
   border-bottom: 2px solid var(--dark-blue);
+}
+
+.top-five tr:nth-of-type(-n+5){
+  background-color: rgb(47, 255, 168);
 }
 
 

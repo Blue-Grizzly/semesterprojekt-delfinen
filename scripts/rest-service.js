@@ -37,8 +37,8 @@ async function getResults() {
 }
 
   
-async function createMember(name, age, debt, competition, email, tlf, active, disciplin) {
-    const newMember = {name, age, debt, competition, email, tlf, active, disciplin};
+async function createMember(name, age, debt, competition, email, tlf, active, discipline) {
+    const newMember = {name, age, debt, competition, email, tlf, active, discipline};
     const json = JSON.stringify(newMember);
     const response = await fetch(`${endpoint}/medlemmer.json`, {
       method: "POST",
@@ -50,7 +50,7 @@ async function createMember(name, age, debt, competition, email, tlf, active, di
 async function createResult(
   placering,
   dato,
-  disciplin,
+  discipline,
   noter,
   stævne,
   svømmer,
@@ -63,7 +63,7 @@ async function createResult(
       body: JSON.stringify({
         placering: placering,
         dato: dato,
-        disciplin: disciplin,
+        discipline: discipline,
         noter: noter,
         stævne: stævne,
         svømmer: svømmer,
@@ -74,7 +74,7 @@ async function createResult(
   return response;
 }
 
-async function updateMember(id, active, age, debt, email, competition, name, tlf) {
+async function updateMember(id, active, age, debt, email, competition, name, tlf, discipline) {
   const memberToUpdate = {
     active: active,
     age: age,
@@ -83,6 +83,7 @@ async function updateMember(id, active, age, debt, email, competition, name, tlf
     competition: competition,
     name: name,
     tlf: tlf,
+    discipline: discipline,
   };
   const json = JSON.stringify(memberToUpdate);
   const response = await fetch(`${endpoint}/medlemmer/${id}.json`, {
@@ -94,7 +95,7 @@ async function updateMember(id, active, age, debt, email, competition, name, tlf
 
 async function updateResult(id, placering,
   dato,
-  disciplin,
+  discipline,
   noter,
   stævne,
   svømmer,
@@ -103,7 +104,7 @@ async function updateResult(id, placering,
     const resultToUpdate = {
       placering: placering,
       dato: dato,
-      disciplin: disciplin,
+      discipline: discipline,
       noter: noter,
       stævne: stævne,
       svømmer: svømmer,
