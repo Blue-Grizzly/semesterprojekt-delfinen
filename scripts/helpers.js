@@ -22,7 +22,7 @@ function checkMembership(member){
  }
 }
 
-function checkAgeGroup(member){;
+function checkAgeGroup(member){
   if(member.age >= 60){
     return `SeniorPlus`;
     } else if(member.age >= 18) {
@@ -54,10 +54,6 @@ function filterByButterfly(list){
 
 
 
-
-
-function filterPaidMembers(memberList){
-  return memberList.filter((member) => member.debt == "0");
 function filterMembersDebt(members){
   const selectedFilter = document.querySelector("#data-table").getAttribute("filterOption");
     if(selectedFilter == "paid"){
@@ -147,12 +143,9 @@ function controlDisciplin(event){
   } else{
     document.querySelector("#disciplin-update").disabled = true;
     document.querySelector("#disciplin").disabled = true;
-
-
- 
   }
 }
 
 
 
-export {prepareData, checkMembership, checkAgeGroup, filterMembersDebt, totalDebt, totalIncome, isActive, isInCompetionen, checkSwimteam, sortBySelected, controlDisciplin};
+export {prepareData, checkMembership, checkAgeGroup, filterByBryst, filterByButterfly, filterByCrawl, filterByRygCrawl,filterMembersDebt, totalDebt, totalIncome, isActive, isInCompetionen, checkSwimteam, sortBySelected, controlDisciplin};
