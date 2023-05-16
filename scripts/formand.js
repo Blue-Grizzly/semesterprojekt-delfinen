@@ -258,6 +258,7 @@ function showMemberInfo(memberObject) {
 }
 
 function showErrorMessage(message) {
+  document.querySelector("#dialog-failed-to-update").showModal;
   document.querySelector(".error-message").textContent = message;
   document.querySelector(".error-message").classList.remove("hide");
 }
