@@ -1,69 +1,47 @@
 
 import { getMembers, updateRestance } from "./rest-service.js";
-import {
-  checkAgeGroup,
-  filterMembersDebt,
-  totalIncome,
-  totalDebt,
-  isActive,
-  sortBySelected,
-} from "./helpers.js";
+import { checkAgeGroup, filterMembersDebt, totalIncome, totalDebt, isActive, sortBySelected } from "./helpers.js";
 
 window.addEventListener("load", initApp);
 
 let memberList = [];
 let lastTime = 0;
 
-
 async function initApp() {
-  
+
    refreshTable();
   
   // document.querySelector("#table-name").addEventListener("click", sortByName)
-  document
-    .querySelector("#nav-betalt")
-    .addEventListener("click", () =>{ 
-      document.querySelector("#data-table").setAttribute("filterOption", "paid");
-      refreshTable();
-      });
-  document
-    .querySelector("#nav-restance")
-    .addEventListener("click", () => {   
-    document.querySelector("#data-table").setAttribute("filterOption", "unpaid");
-    refreshTable();
+  document.querySelector("#nav-betalt").addEventListener("click", () =>{ 
+  document.querySelector("#data-table").setAttribute("filterOption", "paid");
+  refreshTable();
   });
-  document
-    .querySelector("#nav-all")
-    .addEventListener("click", () =>{
-      document.querySelector("#data-table").removeAttribute("filterOption");
-      refreshTable();
-    });
-
-    document.querySelector("#table-name").addEventListener("click", ()=>{
-      document.querySelector("#data-table").setAttribute("sortOption", "name");
-      refreshTable();    
-    } );
-
-    document.querySelector("#table-debt").addEventListener("click", ()=> {
-      document.querySelector("#data-table").setAttribute("sortOption", "debt");
-      refreshTable();
-    });
-
-    document.querySelector("#table-membership").addEventListener("click", ()=> {
-      document.querySelector("#data-table").setAttribute("sortOption", "membership");
-      refreshTable();
-    } );
-
-    document.querySelector("#table-options").addEventListener("click", ()=>{
-      document.querySelector("#data-table").removeAttribute("sortOption");
-      refreshTable();
-    });
-
-    document
-      .querySelector(".log-off-btn")
-      .addEventListener("click", () => (window.location.href = "index.html"));
+  document.querySelector("#nav-restance").addEventListener("click", () => {   
+  document.querySelector("#data-table").setAttribute("filterOption", "unpaid");
+  refreshTable();
+  });
+  document.querySelector("#nav-all").addEventListener("click", () =>{
+  document.querySelector("#data-table").removeAttribute("filterOption");
+  refreshTable();
+  });
+  document.querySelector("#table-name").addEventListener("click", ()=>{
+  document.querySelector("#data-table").setAttribute("sortOption", "name");
+  refreshTable();    
+  });
+  document.querySelector("#table-debt").addEventListener("click", ()=> {
+  document.querySelector("#data-table").setAttribute("sortOption", "debt");
+  refreshTable();
+  });
+  document.querySelector("#table-membership").addEventListener("click", ()=> {
+  document.querySelector("#data-table").setAttribute("sortOption", "membership");
+  refreshTable();
+  });
+  document.querySelector("#table-options").addEventListener("click", ()=>{
+  document.querySelector("#data-table").removeAttribute("sortOption");
+  refreshTable();
+  });
+  document.querySelector(".log-off-btn").addEventListener("click", () => (window.location.href = "index.html"));
 }
-
 
 async function getAllMembers(){
   const now = Date.now();
@@ -81,7 +59,6 @@ async function refreshTable() {
   updateMemberTable(sortedList);
   document.querySelector("#total-debt").textContent = totalDebt(memberList);
   document.querySelector("#total-income").textContent = totalIncome(memberList);
-
 }
 
 
@@ -133,10 +110,7 @@ function updateRestanceClicked(member) {
   ).textContent = `Ændr resistance for: ${member.name}`;
 
   document.querySelector("#cancel-restance-change-button").addEventListener("click", cancelResistanceChange);
-  document
-  .querySelector("#form-change-restance")
-  .addEventListener("submit", updateRestanceAccept);
-
+  document.querySelector("#form-change-restance").addEventListener("submit", updateRestanceAccept);
 }
 
 async function updateRestanceAccept(event) {
@@ -163,7 +137,6 @@ async function updateRestanceAccept(event) {
     name,
     tlf
   );
-
   if (response.ok) {
     document.querySelector("#dialog-change-restance").close();
     refreshTable();
