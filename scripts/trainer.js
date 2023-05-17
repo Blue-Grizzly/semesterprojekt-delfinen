@@ -59,7 +59,6 @@ document.querySelector("#table-options").addEventListener("click", ()=> {
 });
   document.querySelector("#nav-bryst").addEventListener("click", () => {
   document.querySelector("#results-table").setAttribute("filterOption", "Bryst");
-  document.querySelector("#results-table-wrapper").classList.remove("hidden");
   document.querySelector("#results-table-body").classList.remove("top-five");
   refreshTableResults();
 });
@@ -181,9 +180,9 @@ function showCompetetionMember(member){
 }
 
 function showResults(resultList){
+  document.querySelector("#data-table").classList.add("hidden");
   document.querySelector("#results-table-wrapper").classList.remove("hidden");
   document.querySelector("#results-table-body").innerHTML = "";
-  document.querySelector("#data-table").classList.add("hidden");
   if (resultList.length !== 0) {
     for (const result of resultList) {
       showResult(result);
