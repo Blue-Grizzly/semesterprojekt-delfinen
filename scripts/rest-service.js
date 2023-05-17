@@ -4,7 +4,7 @@ import { prepareData } from "./helpers.js";
 const endpoint =
   "https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app";
 
-async function getUserByUsername(username) {
+async function getUserByUsername(username){
   const response = await fetch(
     `${endpoint}/users.json`
   );
@@ -15,7 +15,7 @@ async function getUserByUsername(username) {
     const keys = Object.keys(users);
     for (let i = 0; i < keys.length; i++) {
       const key = keys[i];
-      if (users[key].username === username) {
+      if (users[key].username === username){
         return users[key];
       }
     }
@@ -23,19 +23,19 @@ async function getUserByUsername(username) {
   return null;
 }
 
-async function getMembers() {
+async function getMembers(){
   const response = await fetch(`${endpoint}/medlemmer.json`);
   const data = await response.json();
   return prepareData(data);
 }
 
-async function getResults() {
+async function getResults(){
   const response = await fetch(`${endpoint}/resultater.json`);
   const data = await response.json();
   return prepareData(data);
 }
   
-async function createMember(name, age, debt, competition, email, tlf, active, discipline) {
+async function createMember(name, age, debt, competition, email, tlf, active, discipline){
     const newMember = {name, age, debt, competition, email, tlf, active, discipline};
     const json = JSON.stringify(newMember);
     const response = await fetch(`${endpoint}/medlemmer.json`, {
@@ -43,7 +43,7 @@ async function createMember(name, age, debt, competition, email, tlf, active, di
       body: json,
     });
     return response;
-  }
+}
 
 async function createResult(
   placering,
@@ -53,7 +53,7 @@ async function createResult(
   stævne,
   svømmer,
   tid
-) {
+){
   const response = await fetch(
     `${endpoint}/resultater.json`,
     {
@@ -72,7 +72,7 @@ async function createResult(
   return response;
 }
 
-async function updateMember(id, active, age, debt, email, competition, name, tlf, discipline) {
+async function updateMember(id, active, age, debt, email, competition, name, tlf, discipline){
   const memberToUpdate = {
     active: active,
     age: age,
@@ -114,7 +114,7 @@ async function updateResult(id, placering,
     return response;
 }
 
-async function deleteMember(memberObject) {
+async function deleteMember(memberObject){
   const id = memberObject.id;
   const response = await fetch(`${endpoint}/medlemmer/${id}.json`, {
     method: "DELETE",
@@ -122,7 +122,7 @@ async function deleteMember(memberObject) {
   return response;
 }
 
-async function deleteResult(resultObject) {
+async function deleteResult(resultObject){
   const id = resultObject.id;
   const response = await fetch(`${endpoint}/resultater/${id}.json`, {
     method: "DELETE",
@@ -139,7 +139,7 @@ async function updateRestance(
   competition,
   name,
   tlf
-) {
+){
   const restanceToUpdate = {
     active: active,
     age: age,

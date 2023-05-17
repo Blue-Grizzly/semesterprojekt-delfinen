@@ -5,11 +5,9 @@ window.addEventListener("load", initApp);
 
 function initApp() {
   document.querySelector("#login").addEventListener("submit", login);
-
-
 }
 
-function redirectToUserPage(userType) {
+function redirectToUserPage(userType){
   if (userType === "admin") {
     window.location.href = "formand.html";
   } else if (userType === "kasser") {
@@ -21,7 +19,7 @@ function redirectToUserPage(userType) {
   }
 }
 
-async function login(event) {
+async function login(event){
   event.preventDefault();
 
   const username = document.querySelector("#username").value;
