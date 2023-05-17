@@ -274,7 +274,26 @@ tbody tr:last-of-type {
 
 .btn-confirm { grid-area: 7 / 3 / 8 / 6; }
 .btn-cancel { grid-area: 7 / 6 / 8 / 9; } 
+
+
  
+#cancel-create {
+
+color: white;
+background-color: rgb(220, 87, 87);
+border-color: black;
+}
+
+.btn-confirm {
+
+  color: white;
+  background-color: rgb(59, 183, 55);
+  border-color: black; 
+
+}
+
+
+
 
 label {
   padding: 15px;
