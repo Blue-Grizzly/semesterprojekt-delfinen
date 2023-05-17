@@ -11,7 +11,7 @@
 
   <body>
     <header>
-      <img src="images/delfin logo.png">
+      <img src="images/delfin logo.png" />
       <h3 class="header1">Svømmeklubben Delfinen</h3>
       <h3 class="header2">Træner</h3>
       <div class="header-btns">
@@ -89,101 +89,148 @@
         <h2>Updater Resultat</h2>
         <form id="form-update-result" class="dialog-form">
           <label for="svømmer" class="label1">Svømmer</label>
-          <input type="text" name="svømmer" id="svømmer" placeholder="Svømmer" size="50" class="input1">
+          <input
+            type="text"
+            name="svømmer"
+            id="svømmer"
+            placeholder="Svømmer"
+            size="50"
+            class="input1"
+          />
           <label for="dato" class="label2">Dato</label>
-          <input type="date" name="dato" id="dato" placeholder="Dato" size="50" class="input2">
+          <input
+            type="date"
+            name="dato"
+            id="dato"
+            placeholder="Dato"
+            size="50"
+            class="input2"
+          />
           <label for="discipline" class="label3">Disciplin</label>
-          <input type="text" name="discipline" id="discipline" placeholder="Discipline" size="50" class="input3">
+          <select class="input3" id="discipline" name="discipline">
+            <option value="Bryst">Bryst</option>
+            <option value="Crawl">Crawl</option>
+            <option value="Ryg">Ryg Crawl</option>
+            <option value="Butterfly">Butterfly</option>
+          </select>
+
           <label for="stævne" class="label4">Stævne</label>
-          <input type="text" name="stævne" id="stævne" placeholder="Stævne" size="50" class="input4">
+          <input
+            type="text"
+            name="stævne"
+            id="stævne"
+            placeholder="Stævne"
+            size="50"
+            class="input4"
+          />
           <label for="placering" class="label5">Placering</label>
-          <input type="text" name="placering" id="placering" placeholder="Placering" size="50" class="input5">
+          <input
+            type="text"
+            name="placering"
+            id="placering"
+            placeholder="Placering"
+            size="50"
+            class="input5"
+          />
           <label for="tid" class="label6">Tid</label>
-          <input type="number" name="tid" id="tid" placeholder="Tid" size="50" class="input6">
+          <input
+            type="number"
+            name="tid"
+            id="tid"
+            placeholder="Tid"
+            size="50"
+            class="input6"
+          />
           <label for="noter" class="label7">Noter</label>
-          <textarea id="noter" placeholder="Noter" rows="5" cols="50" wrap="hard" class="input7"></textarea>
+          <textarea
+            id="noter"
+            placeholder="Noter"
+            rows="5"
+            cols="50"
+            wrap="hard"
+            class="input7"
+          ></textarea>
           <button id="cancel-update" class="btn-cancel btn-cancel">Luk</button>
           <button class="btn-confirm">Opdater Medlem</button>
         </form>
       </div>
     </dialog>
-    <dialog id="dialog-create-result" >
+    <dialog id="dialog-create-result">
       <div class="create-dialog-container">
         <h2 class="create-result">Opret nyt resultat</h2>
-        <form class="dialog-form"
+        <form
+          class="dialog-form"
           id="form-create-result"
           method="dialog"
           class="create-dialog-form"
         >
-          <label class="label1" for="placering"
-            >Placering</label>
-            <input
-              type="text"
-              name="placering"
-              id="placering"
-              placeholder="Placering"
-              size="50"
-              class="input1"
+          <label class="label1" for="placering">Placering</label>
+          <input
+            type="text"
+            name="placering"
+            id="placering"
+            placeholder="Placering"
+            size="50"
+            class="input1"
           />
-          <label class="label2"for="dato"
-            >Dato</label>
-            <input
-              type="date"
-              name="dato"
-              id="dato"
-              placeholder="Dato"
-              size="50"
-              class="input2"
+          <label class="label2" for="dato">Dato</label>
+          <input
+            type="date"
+            name="dato"
+            id="dato"
+            placeholder="Dato"
+            size="50"
+            class="input2"
           />
-          <label class="label3" for="discipline"
-            >Disciplin
-            </label>
-            <select
-              name="discipline"
-              id="discipline"
-              class="input3"
-            >
-              <option value="" selected>Ingen</option>
-              <option value="Bryst">Bryst</option>
-              <option value="Crawl">Crawl</option>
-              <option value="Ryg Crawl">Ryg Crawl</option>
-              <option value="Butterfly">Butterfly</option>
-            </select>
-            
-          
-          <label class="label4"for="stævne"
-            >Stævne</label>
-            <input
-              type="text"
-              name="stævne"
-              id="stævne"
-              placeholder="Stævne"
-              size="50"
-              class="input4"
+          <label class="label3" for="discipline">Disciplin </label>
+          <select name="discipline" id="discipline" class="input3">
+            <option value="" selected>Ingen</option>
+            <option value="Bryst">Bryst</option>
+            <option value="Crawl">Crawl</option>
+            <option value="Ryg">Ryg Crawl</option>
+            <option value="Butterfly">Butterfly</option>
+          </select>
+
+          <label class="label4" for="stævne">Stævne</label>
+          <input
+            type="text"
+            name="stævne"
+            id="stævne"
+            placeholder="Stævne"
+            size="50"
+            class="input4"
           />
-          <label for="svømmer" class="label5"
-            >Svømmer</label><input
-              type="text"
-              name="svømmer"
-              id="svømmer"
-              placeholder="Svømmer"
-              size="50"
-              class="input5"
+          <label for="svømmer" class="label5">Svømmer</label
+          ><input
+            type="text"
+            name="svømmer"
+            id="svømmer"
+            placeholder="Svømmer"
+            size="50"
+            class="input5"
           />
-          <label for="tid" class="label6"
-            >Tid</label><input
-              type="number"
-              name="tid"
-              id="tid"
-              placeholder="Tid"
-              size="50"
-              class="input6"
+          <label for="tid" class="label6">Tid</label
+          ><input
+            type="number"
+            name="tid"
+            id="tid"
+            placeholder="Tid"
+            size="50"
+            class="input6"
           />
-          <label for="noter" class="label7"
-            >Noter</label><textarea type="text" id="noter" placeholder="Noter" rows="4" cols="50"
-          class="input7"></textarea>
+          <label for="noter" class="label7">Noter</label
+          ><textarea
+            type="text"
+            id="noter"
+            placeholder="Noter"
+            rows="4"
+            cols="50"
+            class="input7"
+          ></textarea>
           <button type="submit" class="btn-confirm">Gem</button>
-          <button id="cancel-create" class="btn-cancel" class="btn-cancel">Luk</button>
+          <button id="cancel-create" class="btn-cancel" class="btn-cancel">
+            Luk
+          </button>
         </form>
       </div>
     </dialog>
