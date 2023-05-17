@@ -8,6 +8,7 @@
   --dark-red: #d62323;
   --grey-blue: #4f626b7e;
   --button-green: #7debad;
+  --button-red: #ff7575;
 }
 
 .hidden{
@@ -143,8 +144,11 @@ footer {
 
 .log-off-btn:hover{
   background-color: var(--dark-red);
-
 }
+
+
+
+
 
 footer p {
   grid-area: 1 / 1 / 1;
@@ -312,6 +316,11 @@ background-color: rgb(220, 87, 87);
 border-color: black;
 }
 
+#cancel-create:hover{
+  background-color: var(--dark-red);
+
+}
+
 .btn-confirm {
 
   color: white;
@@ -322,24 +331,37 @@ border-color: black;
 
 .btn-cancel {
 
-color: white;
-background-color: rgb(220, 87, 87);
-border-color: black;
+  color: black;
+  background-color: rgb(220, 87, 87);
+  border-color: black;
 
 }
 
+.btn-cancel:hover{
+  background-color: var(--dark-red);
+
+}
+
+
 .ja-btn{
-color: white;
-background-color: rgb(59, 183, 55);
-border-color: black; 
+  color: white;
+  background-color: rgb(59, 183, 55);
+  border-color: black; 
 }
 
 .delete-members{
+  color: white;
+  background-color: rgb(59, 183, 55);
+  border-color: black;  
+}
 
-color: white;
-background-color: rgb(59, 183, 55);
-border-color: black;  
 
+.btn-delete{
+  background-color: var(--button-red);
+}
+
+.btn-delete:hover{
+  background-color: var(--dark-red);
 }
 
 #button-close-info{
@@ -366,7 +388,7 @@ label {
 }
 
 dialog {
-  background-color: var(--white-blue);
+  background-color: var(--light-teal);
 }
 
 input {
@@ -376,19 +398,16 @@ input {
   padding: 15px;
 }
 
-input:valid, select:valid {
-  background-color: var(--light-teal);
-}
 
 input:invalid, select:invalid {
-  background-color: var(--light-red);
+  background-color: #ff5454cf;
 }
 
 select {
   padding: 15px;
   background-color: var(--white-blue);
   border: 2px solid var(--dark-blue);
-  color: var(--dark-blue);
+  color: black;
 }
 
 :disabled {
@@ -396,7 +415,7 @@ select {
 }
 
 form {
-  color: var(--dark-blue);
+  color: black;
 }
 
 .login-grid{
@@ -408,7 +427,7 @@ form {
 textarea {
   resize: none;
   border: 2px solid var(--dark-blue);
-  background: var(--light-teal);
+  background: var(--white-blue);
   padding: 15px;
 }
 

@@ -222,9 +222,9 @@ function showMember(memberObject) {
         <td>${isActive(memberObject)}, ${isInCompetionen(memberObject)}</td>
         <td>${memberObject.age}</td>
         <td class="btns">
-          <button class="btn-delete">Slet</button>
-          <button class="btn-update">Opdater</button>
-          <button class="btn-info">Info</button>
+        <button class="btn-info">Info</button>
+        <button class="btn-update">Opdater</button>
+        <button class="btn-delete">Slet</button>
         </td>
     </tr>
   `;

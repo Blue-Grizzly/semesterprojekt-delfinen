@@ -203,7 +203,7 @@ function showResult(result) {
         <td>${result.svømmer}</td>
         <td>${result.tid}</td>
         <td><button id="btn-update">Opdater</button></td>
-        <td><button id="btn-delete">Slet</button></td>
+        <td><button id="btn-delete" class="btn-cancel">Slet</button></td>
       </tr>
     `;
   document.querySelector("#results-table-body").insertAdjacentHTML("beforeend", html);
