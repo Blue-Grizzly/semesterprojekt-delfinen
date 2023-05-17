@@ -330,3 +330,8 @@ form {
   max-width: 342px;
   padding: 1em;
 }
+
+#cancel-delete-result {
+  position: relative;
+  top: -10px; 
+}
