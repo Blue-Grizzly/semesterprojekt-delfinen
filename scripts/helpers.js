@@ -100,4 +100,4 @@ function controlDiscipline(event){
   }
 }
 
-export {prepareData, checkMembership, checkAgeGroup, totalDebt, totalIncome, isActive, isInCompetionen, checkSwimteam, sortBySelected, controlDiscipline, sortBySelectedResults};
+export {prepareData, checkMembership, checkAgeGroup, totalDebt, totalIncome, isActive, isInCompetionen, checkSwimteam, controlDiscipline};
