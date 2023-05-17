@@ -389,6 +389,7 @@ label {
 
 dialog {
   background-color: var(--light-teal);
+  width: 100vw;
 }
 
 input {
@@ -456,14 +457,14 @@ position: relative;
 top: -10px; 
 }
 
-/*  Chromium */
+/* Removes arrows on number input for Chromium */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-/* Firefox */
+/* Removes arrows on number input for Firefox */
 input[type=number] {
   -moz-appearance: textfield;
   appearance: textfield;

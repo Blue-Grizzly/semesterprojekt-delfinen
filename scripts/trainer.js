@@ -15,10 +15,8 @@ async function initApp(){
   document.querySelector("#create-result").addEventListener("click", showCreateForm);
   document.querySelector(".log-off-btn").addEventListener("click", () => (window.location.href = "index.html"));
   document.querySelector("#nav-hold").addEventListener("click", showTeams);
-  document.querySelector("#nav-bryst").addEventListener("click", () => {
-  document.querySelector("#results-table").setAttribute("filterOption", "Bryst");
-  refreshTableResults();
-});
+
+ 
 document.querySelector("#table-place").addEventListener("click", ()=> {
   document.querySelector("#results-table").setAttribute("sortOption", "Place");
   document.querySelector("#results-table-body").classList.remove("top-five");
@@ -59,16 +57,25 @@ document.querySelector("#table-options").addEventListener("click", ()=> {
   document.querySelector("#results-table-body").classList.remove("top-five");
   refreshTableResults();
 });
+  document.querySelector("#nav-bryst").addEventListener("click", () => {
+  document.querySelector("#results-table").setAttribute("filterOption", "Bryst");
+  document.querySelector("#results-table-wrapper").classList.remove("hidden");
+  document.querySelector("#results-table-body").classList.remove("top-five");
+  refreshTableResults();
+});
   document.querySelector("#nav-crawl").addEventListener("click", () => {
   document.querySelector("#results-table").setAttribute("filterOption", "Crawl");
+  document.querySelector("#results-table-body").classList.remove("top-five");
   refreshTableResults();
 });
   document.querySelector("#nav-ryg").addEventListener("click", () => {
   document.querySelector("#results-table").setAttribute("filterOption", "Ryg");
+  document.querySelector("#results-table-body").classList.remove("top-five");
   refreshTableResults();
 });
   document.querySelector("#nav-butterfly").addEventListener("click", () => {
   document.querySelector("#results-table").setAttribute("filterOption", "Butterfly");
+  document.querySelector("#results-table-body").classList.remove("top-five");
   refreshTableResults();
 });
   document.querySelector("#table-name-junior").addEventListener("click", ()=>{
@@ -177,8 +184,6 @@ function showResults(resultList){
 
   document.querySelector("#results-table-body").innerHTML = "";
   document.querySelector("#data-table").classList.add("hidden");
-  document.querySelector("#results-table-wrapper").classList.remove("hidden");
- 
   if (resultList.length !== 0) {
     for (const result of resultList) {
       showResult(result);
