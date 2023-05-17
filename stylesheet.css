@@ -320,6 +320,14 @@ form{
   grid-template-rows: auto;
 }
 
+textarea{
+  resize: none;
+  border: 2px solid var(--dark-blue);
+  background: var(--light-teal);
+  padding: 15px;
+}
+
+
 #restance-input{
   margin: 15px;
 }
