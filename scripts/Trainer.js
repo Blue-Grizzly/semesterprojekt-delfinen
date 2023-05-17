@@ -166,12 +166,26 @@ function showCompetitionMembers(list){
   document.querySelector("#senior-hold-body").innerHTML = "";
   document.querySelector("#unge-hold-body").innerHTML = "";
   document.querySelector("#results-table-wrapper").classList.add("hidden");
+   document.querySelector("#create-select-swimmer").innerHTML = "";
+   document.querySelector("#update-select-swimmer").innerHTML = "";
 
     for (const member of list) {
       if(member.competition == "true"){
         showCompetetionMember(member);
+         addMemberAsOption(member);
       }
     }
+}
+
+
+function addMemberAsOption(member){
+  
+const html = /*html*/`
+<option value="${member.name}">${member.name}</option>
+`  
+
+document.querySelector("#create-select-swimmer").insertAdjacentHTML("beforeend",html);
+document.querySelector("#update-select-swimmer").insertAdjacentHTML("beforeend", html);
 }
 
 function showCompetetionMember(member){
