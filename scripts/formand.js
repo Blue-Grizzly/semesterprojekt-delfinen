@@ -1,3 +1,4 @@
+
 import {
   getMembers,
   createMember,
@@ -11,7 +12,6 @@ window.addEventListener("load", initApp);
 
 let memberList = [];  
 let lastTime = 0;
-
 
 async function initApp() {
   memberList = await getMembers();
@@ -46,10 +46,7 @@ async function initApp() {
 
   document.querySelector("#competition").addEventListener("change", event => controlDiscipline(event));
   document.querySelector("#competition-update").addEventListener("change", event => controlDiscipline(event));
-
-
 }
-
 
 async function getAllMembers(){
   const now = Date.now();
@@ -62,11 +59,8 @@ async function getAllMembers(){
 async function refreshTable() {
   await getAllMembers();
   const sortedList = sortBySelected(memberList);
-
-
   showMembers(sortedList);
 }
-
 
 function showCreateForm() {
   document.querySelector("#dialog-create-member").showModal();
@@ -223,7 +217,6 @@ function showDeleteFeedback() {
     dialog.close();
   }
 }
-
 
 function showMembers(memberList) {
   document.querySelector("#memberTable").innerHTML = "";

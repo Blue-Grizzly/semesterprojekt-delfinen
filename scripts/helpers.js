@@ -1,5 +1,4 @@
 
-
 function prepareData(dataObject) {
   const memberArray = [];
   for (const key in dataObject) {
@@ -69,9 +68,6 @@ const selectedFilter = document.querySelector("#results-table").getAttribute("fi
 
 }
 
-
-
-
 function filterMembersDebt(members){
   const selectedFilter = document.querySelector("#data-table").getAttribute("filterOption");
     if(selectedFilter == "paid"){
@@ -82,7 +78,6 @@ function filterMembersDebt(members){
       return members;
     }
 }
-
 
 function sortBySelected(members){
   const selectedSort = document.querySelector("#data-table").getAttribute("sortOption");
@@ -165,7 +160,5 @@ function controlDiscipline(event){
     document.querySelector("#discipline").value = "";
   }
 }
-
-
 
 export {prepareData, checkMembership, checkAgeGroup, filterByDiscipline, filterMembersDebt, totalDebt, totalIncome, isActive, isInCompetionen, checkSwimteam, sortBySelected, controlDiscipline, sortBySelectedResults};
