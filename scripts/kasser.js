@@ -2,7 +2,7 @@
 import { getMembers, updateRestance } from "./rest-service.js";
 import { checkAgeGroup, totalIncome, totalDebt, isActive } from "./helpers.js";
 import { filterMembersDebt } from "./filter.js";
-import { sortBySelected } from "./helpers.js";
+import { sortBySelected } from "./sort.js";
 
 window.addEventListener("load", initApp);
 
