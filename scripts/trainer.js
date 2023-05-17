@@ -181,7 +181,7 @@ function showCompetetionMember(member){
 }
 
 function showResults(resultList){
-
+  document.querySelector("#results-table-wrapper").classList.remove("hidden");
   document.querySelector("#results-table-body").innerHTML = "";
   document.querySelector("#data-table").classList.add("hidden");
   if (resultList.length !== 0) {
