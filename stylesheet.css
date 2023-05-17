@@ -36,6 +36,7 @@ h1 {
   justify-content: center;
   background-color: var(--white-blue);
   border: 2px solid var(--dark-blue);
+  margin-top: 5vh;
   margin-left: auto;
   margin-right: auto;
   width: 50vw;
