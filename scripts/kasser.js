@@ -1,6 +1,8 @@
 
 import { getMembers, updateRestance } from "./rest-service.js";
-import { checkAgeGroup, filterMembersDebt, totalIncome, totalDebt, isActive, sortBySelected } from "./helpers.js";
+import { checkAgeGroup, totalIncome, totalDebt, isActive } from "./helpers.js";
+import { filterMembersDebt } from "./filter.js";
+import { sortBySelected } from "./helpers.js";
 
 window.addEventListener("load", initApp);
 
@@ -138,9 +140,12 @@ async function updateRestanceAccept(event){
   if (response.ok) {
     document.querySelector("#dialog-change-restance").close();
     refreshTable();
+    document.querySelector("#dialog-success").showModal();
+    setTimeout(() => document.querySelector("#dialog-success").close(), 1500);
     console.log("Update Member Debt clicked");
   } else {
-    console.log("Something went wrong");
+    document.querySelector("#dialog-error").showModal();
+    setTimeout(() => document.querySelector("#dialog-error").close(), 3000);
   }
 }
 

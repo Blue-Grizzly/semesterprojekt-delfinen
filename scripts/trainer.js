@@ -1,6 +1,8 @@
 
 import { createResult, getResults, deleteResult, updateResult, getMembers } from "./rest-service.js";
-import { filterByDiscipline, sortBySelectedResults, sortBySelected } from "./helpers.js";
+import { sortBySelectedResults, sortBySelected } from "./sort.js";
+import { filterByDiscipline } from "./filter.js";
+
 
 let resultsList = [];
 let memberList =[];
@@ -235,11 +237,13 @@ async function createResultClicked(event){
   if (response.ok) {
     document.querySelector("#dialog-create-result").close();
     form.reset();
+    document.querySelector("#dialog-success").showModal();
+    setTimeout(() => document.querySelector("#dialog-success").close(), 1500);
 
     refreshTableResults();
   } else {
-    console.log(response.status, response.statusText);
-    showErrorMessage("Der skete en fejl. Udfyld venligst alle felter.");
+    document.querySelector("#dialog-error").showModal();
+    setTimeout(() => document.querySelector("#dialog-error").close(), 3000);
   }
 }
 
@@ -276,11 +280,12 @@ async function updateResultClicked(event){
   if (response.ok) {
     document.querySelector("#dialog-update-result").close();
     refreshTableResults();
+    document.querySelector("#dialog-success").showModal();
+    setTimeout(() => document.querySelector("#dialog-success").close(), 1500);
     // hideErrorMessage();
   } else {
-    console.log(response.status, response.statusText);
-    showErrorMessage("Der skete en fejl. Udfyld venligst alle felter.");
-    event.target.parentNode.close();
+   document.querySelector("#dialog-error").showModal();
+   setTimeout(() => document.querySelector("#dialog-error").close(), 3000);
   }
 }
 
@@ -322,19 +327,11 @@ async function deleteResultConfirm(resultObject){
 
   if (response.ok) {
     refreshTableResults();
-    console.log("sletter");
+    document.querySelector("#dialog-success").showModal();
+    setTimeout(() => document.querySelector("#dialog-success").close(), 1500);
   } else {
-    document.querySelector("#dialog-failed-to-update").showModal();
+    document.querySelector("#dialog-error").showModal();
+    setTimeout(() => document.querySelector("#dialog-error").close(), 3000);
   }
 }
 
-function showErrorMessage(message){
-  document.querySelector("#dialog-failed-to-create").showModal();
-  document.querySelector(".error-message").textContent = message;
-  document.querySelector(".error-message").classList.remove("hide");
-}
-
-// function hideErrorMessage() {
-//   document.querySelector(".error-message").textContent = "";
-//   document.querySelector(".error-message").classList.add("hide");
-// }

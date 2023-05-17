@@ -1,6 +1,7 @@
 
 import { getMembers, createMember, updateMember, deleteMember } from "./rest-service.js";
-import { isActive, isInCompetionen, checkSwimteam, sortBySelected, controlDiscipline } from "./helpers.js";
+import { isActive, isInCompetionen, checkSwimteam, controlDiscipline } from "./helpers.js";
+import { sortBySelected } from "./sort.js";
 
 window.addEventListener("load", initApp);
 
@@ -85,10 +86,12 @@ discipline
   document.querySelector("#dialog-create-member").close();
   form.reset();
   refreshTable();
+  document.querySelector("#dialog-success").showModal();
+  setTimeout(()=>document.querySelector("#dialog-success").close(), 1500);
   } else {
-  document.querySelector("#error-message-create").classList.remove("hidden");
-  console.log(response.status, response.statusText);
-  showErrorMessage("Der skete en fejl. Udfyld venligst alle felter.");
+  document.querySelector("#dialog-error").showModal();
+  setTimeout(() => document.querySelector("#dialog-error").close(), 3000);
+
   }
 }
 
@@ -133,10 +136,11 @@ async function updateMemberClicked(event){
   if (response.ok) {
     document.querySelector("#dialog-update-member").close();
     refreshTable();
+    document.querySelector("#dialog-success").showModal();
+    setTimeout(() => document.querySelector("#dialog-success").close(), 1500);
   } else {
-    console.log(response.status, response.statusText);
-    showErrorMessage("Der skete en fejl. Udfyld venligst alle felter.");
-    event.target.parentNode.close();
+   document.querySelector("#dialog-error").showModal();
+   setTimeout(() => document.querySelector("#dialog-error").close(), 3000);
   }
 }
 
@@ -176,8 +180,11 @@ async function deleteMemberConfirm(memberObject) {
   if (response.ok) {
     refreshTable();
     showDeleteFeedback();
+    document.querySelector("#dialog-success").showModal();
+    setTimeout(() => document.querySelector("#dialog-success").close(), 1500);
   } else {
-    document.querySelector("#dialog-failed-to-update").showModal();
+    document.querySelector("#dialog-error").showModal();
+    setTimeout(() => document.querySelector("#dialog-error").close(), 3000);
   }
 }
 
@@ -244,13 +251,3 @@ function showMemberInfo(memberObject){
   document.querySelector("#button-close-info").addEventListener("click", () => modal.close());
 }
 
-function showErrorMessage(message){
-  document.querySelector("#dialog-failed-to-update").showModal;
-  document.querySelector(".error-message").textContent = message;
-  document.querySelector(".error-message").classList.remove("hide");
-}
-
-function hideErrorMessage(){
-  document.querySelector(".error-message").textContent = "";
-  document.querySelector(".error-message").classList.add("hide");
-}
