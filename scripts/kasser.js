@@ -13,7 +13,7 @@ async function initApp(){
 
    refreshTable();
   
-  // document.querySelector("#table-name").addEventListener("click", sortByName)
+ 
   document.querySelector("#nav-betalt").addEventListener("click", () =>{ 
   document.querySelector("#data-table").setAttribute("filterOption", "paid");
   refreshTable();
@@ -59,9 +59,9 @@ async function refreshTable(){
   const sortedList = sortBySelected(filteredList);
 
   updateMemberTable(sortedList);
-  document.querySelector("#total-debt").textContent = totalDebt(memberList);
-  document.querySelector("#total-income").textContent = totalIncome(memberList);
-  document.querySelector("#current-income").textContent = totalIncome(memberList) - totalDebt(memberList) ;
+  document.querySelector("#total-debt").textContent = `${totalDebt(memberList)}kr`;
+  document.querySelector("#total-income").textContent = `${totalIncome(memberList)}kr`;
+  document.querySelector("#current-income").textContent = `${totalIncome(memberList) - totalDebt(memberList)}kr` ;
 }
 
 async function updateMemberTable(members){
