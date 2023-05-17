@@ -20,7 +20,6 @@ async function getUserByUsername(username) {
       }
     }
   }
-
   return null;
 }
 
@@ -35,7 +34,6 @@ async function getResults() {
   const data = await response.json();
   return prepareData(data);
 }
-
   
 async function createMember(name, age, debt, competition, email, tlf, active, discipline) {
     const newMember = {name, age, debt, competition, email, tlf, active, discipline};
@@ -61,13 +59,13 @@ async function createResult(
     {
       method: "POST",
       body: JSON.stringify({
-        placering: placering,
-        dato: dato,
-        discipline: discipline,
-        noter: noter,
-        stævne: stævne,
-        svømmer: svømmer,
-        tid: tid,
+      placering: placering,
+      dato: dato,
+      discipline: discipline,
+      noter: noter,
+      stævne: stævne,
+      svømmer: svømmer,
+      tid: tid,
       }),
     }
   );
@@ -100,7 +98,6 @@ async function updateResult(id, placering,
   stævne,
   svømmer,
   tid){
-    
     const resultToUpdate = {
       placering: placering,
       dato: dato,
@@ -110,13 +107,12 @@ async function updateResult(id, placering,
       svømmer: svømmer,
       tid: tid,
     };
-   
     const response = await fetch(`${endpoint}/resultater/${id}.json`, {
       method: "PUT",
       body: JSON.stringify(resultToUpdate),
     });
     return response;
-  }
+}
 
 async function deleteMember(memberObject) {
   const id = memberObject.id;
