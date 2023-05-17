@@ -339,6 +339,16 @@ border-color: black;
 
 }
 
+ #member-modal .modal-info-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  #member-modal .modal-info-container ul li {
+    font-weight: bold;
+    margin-bottom: 25px;
+  }
+
 
 
 label {
