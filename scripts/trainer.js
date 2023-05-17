@@ -95,6 +95,7 @@ document.querySelector("#table-options").addEventListener("click", ()=> {
   document.querySelector("#data-table").setAttribute("sortOption", "discipline");
   refreshTableMembers();
 });
+
 }
 
 function showTeams(){
