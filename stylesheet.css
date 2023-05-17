@@ -12,7 +12,13 @@
 .hidden{
   display: none;
 }
+img{
+  margin-top: 2vh;
+  position: relative;
+  left: -30vw;
+  width: 70px;
 
+}
 body {
   background-color: var(--light-blue);
   margin: 0;
