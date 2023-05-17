@@ -166,9 +166,7 @@ function showCompetetionMember(member){
  if(member.age < 18){
     document.querySelector("#unge-hold-body").insertAdjacentHTML("beforeend",html);
  } else { 
-  document
-    .querySelector("#senior-hold-body")
-    .insertAdjacentHTML("beforeend", html);
+  document.querySelector("#senior-hold-body").insertAdjacentHTML("beforeend", html);
   }
 }
 
@@ -183,10 +181,7 @@ function showResults(resultList){
       showResult(result);
     }
   } else {
-    document
-      .querySelector("#results-table-body")
-      .insertAdjacentHTML(
-        "beforeend",
+    document.querySelector("#results-table-body").insertAdjacentHTML("beforeend",
         /*html*/ ` <h2>Der er ingen resultater her</h2>`
       );
   }
