@@ -386,6 +386,11 @@ border-color: black;
   }
 
 
+#dialog-update-result, #dialog-create-result{
+  width: 100vw;
+
+}
+
 
 label {
   padding: 15px;
@@ -393,6 +398,10 @@ label {
 
 dialog {
   background-color: var(--light-teal);
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.4);
 }
 
 input {
@@ -477,14 +486,14 @@ position: relative;
 top: -10px; 
 }
 
-/*  Chromium */
+/* Removes arrows on number input for Chromium */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-/* Firefox */
+/* Removes arrows on number input for Firefox */
 input[type=number] {
   -moz-appearance: textfield;
   appearance: textfield;
