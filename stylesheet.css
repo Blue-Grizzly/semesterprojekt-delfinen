@@ -422,6 +422,14 @@ form {
   color: black;
 }
 
+#button-restance{
+display: grid;
+grid-template-columns: 1fr 1fr;
+grid-template-rows: auto;
+column-gap: 1vw;
+row-gap: 1vh;
+}
+
 .login-grid{
   display: grid;
   grid-template-columns: auto;
@@ -439,9 +447,7 @@ textarea {
   margin: 15px;
 }
 
-#cancel-restance-change-button{
-  margin-bottom: 15px;
-}
+
 
 #search-error-msg {
   background-color: #00000085;
@@ -454,6 +460,17 @@ textarea {
   position: relative;
   top: -10px; 
 }
+
+#cancel-restance-change-button{
+ background-color: rgb(220, 87, 87);
+}
+
+
+#cancel-restance-change-button:hover{
+background-color: var(--dark-red);
+}
+
+
 
 #cancelDelete {
 position: relative;
