@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="stylesheet.css">
-  <link rel="shortcut icon" href="images/delfin.jpg" type="image/x-icon">
-  <title>Svømmeklubben Delfinen</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylesheet.css" />
+    <link rel="shortcut icon" href="images/delfin.jpg" type="image/x-icon" />
+    <title>Svømmeklubben Delfinen</title>
+  </head>
 
- <body>
-
+  <body>
     <header>
-      <h3 class="header1">Svømmeklubben Delfinen</h3> 
+      <h3 class="header1">Svømmeklubben Delfinen</h3>
       <h3 class="header2">Velkommen</h3>
       <div class="header-btns">
         <button id="nav-hold">Hold</button>
@@ -24,54 +23,51 @@
       </div>
     </header>
 
-<div id="data-table" >
-  <div class="team-grid-container">
-    <h2>Junior</h2>
-    <h2>Senior</h2>
-   <table id="unge-hold-table">
-      <tr>
-        <th id="table-name-junior">Navn</th>
-        <th id="table-age-junior">Alder</th>
-        <th id="table-discipline-junior">Discipliner</th>
-      </tr>
-      <tbody id="unge-hold-body"></tbody>
-     
-    </table>
-    
-  <table id="senior-hold-table">
-      <tr>
-        <th id="table-name-senior">Navn</th>
-        <th id="table-age-senior">Alder</th>
-        <th id="table-discipline-senior">Discipliner</th>
-      </tr>
-      <tbody id="senior-hold-body"></tbody>
-      
-    </table>
-  </div>
-</div>
-  
-  <div id="results-table-wrapper">
-    <div class="results-table-grid">
-      <h2>Resultater</h2>
-      <table id="results-table">
-        <thead>
+    <div id="data-table">
+      <div class="team-grid-container">
+        <h2>Junior</h2>
+        <h2>Senior</h2>
+        <table id="unge-hold-table">
           <tr>
-            <th id="table-place">Placering</th>
-            <th id="table-date">Dato</th>
-            <th id="table-discipline">Disciplin</th>
-            <th id="table-note">Noter</th>
-            <th id="table-event">Stævne</th>
-            <th id="table-swimmer">Svømmer</th>
-            <th id="table-time">Tid</th>
-            <th id="table-options">Opdater</th>
-            <th>Slet</th>
+            <th id="table-name-junior">Navn</th>
+            <th id="table-age-junior">Alder</th>
+            <th id="table-discipline-junior">Discipliner</th>
           </tr>
-        </thead>
-        <tbody id="results-table-body"></tbody>
-      </table>
+          <tbody id="unge-hold-body"></tbody>
+        </table>
+
+        <table id="senior-hold-table">
+          <tr>
+            <th id="table-name-senior">Navn</th>
+            <th id="table-age-senior">Alder</th>
+            <th id="table-discipline-senior">Discipliner</th>
+          </tr>
+          <tbody id="senior-hold-body"></tbody>
+        </table>
+      </div>
     </div>
-  </div>
-  
+
+    <div id="results-table-wrapper">
+      <div class="results-table-grid">
+        <h2>Resultater</h2>
+        <table id="results-table">
+          <thead>
+            <tr>
+              <th id="table-place">Placering</th>
+              <th id="table-date">Dato</th>
+              <th id="table-discipline">Disciplin</th>
+              <th id="table-note">Noter</th>
+              <th id="table-event">Stævne</th>
+              <th id="table-swimmer">Svømmer</th>
+              <th id="table-time">Tid</th>
+              <th id="table-options">Opdater</th>
+              <th>Slet</th>
+            </tr>
+          </thead>
+          <tbody id="results-table-body"></tbody>
+        </table>
+      </div>
+    </div>
 
     <dialog id="Resultater-modal">
       <h3 id="result-info"></h3>
@@ -137,13 +133,20 @@
               size="50"
           /></label>
           <label for="discipline"
-            >Disciplin<input
-              type="text"
+            >Disciplin
+            <select
               name="discipline"
               id="discipline"
-              placeholder="Disciplin"
-              size="50"
-          /></label>
+              
+              
+            >
+              <option value="" selected>Ingen</option>
+              <option value="Bryst">Bryst</option>
+              <option value="Crawl">Crawl</option>
+              <option value="Ryg Crawl">Ryg Crawl</option>
+              <option value="Butterfly">Butterfly</option>
+            </select>
+            </label>
           <label for="noter"
             >Noter<input type="text" id="noter" placeholder="Noter" size="50"
           /></label>
@@ -192,17 +195,17 @@
       <p id="dialog-delete-feedback-message">Resultat slettet</p>
     </dialog>
 
-  <dialog id="dialog-failed-to-update">
-    <p>Medlem blev ikke opdateret</p>
-    <button class="btn-cancel">Luk</button>
-  </dialog>
+    <dialog id="dialog-failed-to-update">
+      <p>Medlem blev ikke opdateret</p>
+      <button class="btn-cancel">Luk</button>
+    </dialog>
 
-  <dialog id="dialog-failed-to-create">
-    <p>Resultat blev ikke oprettet</p>
-    <button class="btn-cancel">Luk</button>
-  </dialog>
+    <dialog id="dialog-failed-to-create">
+      <p>Resultat blev ikke oprettet</p>
+      <button class="btn-cancel">Luk</button>
+    </dialog>
 
-  <script src="scripts/Trainer.js" type="module"></script>
+    <script src="scripts/Trainer.js" type="module"></script>
 
     <footer>
       <button class="log-off-btn">Log af</button>

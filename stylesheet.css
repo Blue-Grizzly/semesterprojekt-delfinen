@@ -24,7 +24,6 @@ h1 {
   color: var(--dark-blue);
 }
 
-
 .login-grid {
   display: block;
   align-content: center;
@@ -36,29 +35,28 @@ h1 {
   width: 50vw;
   height: 50vh;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-
-  }
+}
   
-  .login-head { grid-area: 1 / 2 / 2 / 4;}
-  .login { 
-    grid-area: 2 / 2 / 5 / 4; 
-  }
+.login-head {grid-area: 1 / 2 / 2 / 4;}
 
-  .login input{
-    padding: 15px;
-    margin-bottom: 20px;
-  }
-.login button{
+.login { 
+  grid-area: 2 / 2 / 5 / 4; 
+}
+
+.login input {
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.login button {
   padding: 25px;
   border: 2px solid var(--dark-blue);
   max-width: 300px;
 }
 
-#login-error{
+#login-error {
   color: var(--dark-red);
 }
-
-
 
 button {
   font-weight: 300;
@@ -88,26 +86,31 @@ header {
   margin-bottom: 20px;
   }
   
-  .header1 { grid-area: 1 / 1 / 2 / 3; 
+.header1 { grid-area: 1 / 1 / 2 / 3; 
   margin: auto;
   padding: 15px;
 }
-  .header2 { grid-area: 1 / 5 / 2 / 7; 
+
+.header2 { grid-area: 1 / 5 / 2 / 7; 
   text-align: right;
   margin: auto;
   padding: 15px;
 }
-  .button1 { 
-      grid-area: 2 / 1 / 3 / 3;
-      margin-bottom: 15px; }
-  .button2 { 
-      grid-area: 2 / 3 / 3 / 5; 
-      margin-bottom: 15px;}
-  .button3 { 
-      grid-area: 2 / 5 / 3 / 7; 
-      margin-bottom: 15px;}
 
-footer{
+.button1 { 
+  grid-area: 2 / 1 / 3 / 3;
+  margin-bottom: 15px;}
+
+.button2 { 
+  grid-area: 2 / 3 / 3 / 5; 
+  margin-bottom: 15px;}
+
+.button3 { 
+  grid-area: 2 / 5 / 3 / 7; 
+  margin-bottom: 15px;
+}
+
+footer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-columns: auto;
@@ -120,16 +123,13 @@ footer{
   width: 100%;
 }
 
+.log-off-btn {grid-area: 1 / 3 / 1;}
 
-.log-off-btn{ grid-area: 1 / 3 / 1;}
-footer p{
+footer p {
   grid-area: 1 / 1 / 1;
 }
 
-
-
-
-.kasser-grid-container{
+.kasser-grid-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -139,16 +139,10 @@ footer p{
 }
 
 .grid-item1 { grid-area: 1 / 1 / 4 / 4; }
-.grid-item2 { 
-  grid-area: 1 / 4 / 2 / 6; 
-  text-align: center;
-}
-.grid-item3 { 
-  grid-area: 3 / 4 / 3 / 6; 
-  text-align: center;
-} 
+.grid-item2 { grid-area: 1 / 4 / 2 / 6; text-align: center;}
+.grid-item3 { grid-area: 3 / 4 / 3 / 6; text-align: center;} 
 
-.header-btns{
+.header-btns {
   grid-area: 2 / 1 / 3 / 7;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -156,15 +150,13 @@ footer p{
   grid-column-gap: 10px;
 }
 
-
-.team-grid-container{
+.team-grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
-
 }
 
-#formand-grid-container{
+#formand-grid-container {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
@@ -172,33 +164,32 @@ footer p{
 
 }
 
-.results-table-grid{
+.results-table-grid {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
 }
 
- h2{
+ h2 {
   text-align: center;
 }
 
-table{
+table {
   border-collapse: collapse;
   margin: 25px;
   font-size: 0.9em;
   font-family: sans-serif;
   min-width: 400px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-  
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); 
 }
 
-thead tr{
+thead tr {
   background-color: var(--dark-blue);
   color: var(--light-blue);
   text-align: left;
 }
 
-th, td{
+th, td {
   padding: 12px 15px;
   text-align: center;
 }
@@ -211,35 +202,33 @@ tbody tr:nth-of-type(even) {
   background-color: var(--light-teal);
 }
 
-
 tbody tr:last-of-type {
   border-bottom: 2px solid var(--dark-blue);
 }
 
-.top-five tr:nth-of-type(-n+5){
+.top-five tr:nth-of-type(-n+5) {
   background-color: rgb(47, 255, 168);
 }
 
-
-.dialog-head{
+.dialog-head {
   margin-bottom: 30px;
   text-align: center;
 }
-.member-grid-container{
+
+.member-grid-container {
   display: grid;;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   justify-items: center;
 }
 
-#member-modal{
+#member-modal {
   width: 40vw;
   border: 2px solid var(--dark-blue);   
   background-color: var(--white-blue);
-
 }
 
-.modal-info-container{
+.modal-info-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
@@ -247,40 +236,41 @@ tbody tr:last-of-type {
   padding: 20px;
 }
 
-
-.dialog-form{
+.dialog-form {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: auto;
   grid-column-gap: 15px;
   grid-row-gap: 15px;
-  }
+}
   
-  .label1 { grid-area: 2 / 1 / 3 / 3; }
-  .input1 { grid-area: 2 / 2 / 3 / 6; }
-  .label2 { grid-area: 2 / 7 / 3 / 8; }
-  .input2 { grid-area: 2 / 8 / 3 / 11; }
-  .label3 { grid-area: 3 / 1 / 4 / 3; }
-  .input3 { grid-area: 3 / 2 / 4 / 6; }
-  .label4 { grid-area: 3 / 7 / 4 / 8; }
-  .input4 { grid-area: 3 / 8 / 4 / 11; }
-  .label5 { grid-area: 4 / 1 / 5 / 3; }
-  .input5 { grid-area: 4 / 2 / 5 / 6; }
-  .label6 { grid-area: 4 / 7 / 5 / 8; }
-  .input6 { grid-area: 4 / 8 / 5 / 11; }
-  .label7 { grid-area: 5 / 1 / 6 / 3; }
-  .input7 { grid-area: 5 / 2 / 6 / 6; }
-  .label8 { grid-area: 5 / 8 / 6 / 7;}
-  .input8 { grid-area: 5 / 8 / 6 / 11;}
+  
+.label1 { grid-area: 2 / 1 / 3 / 3; }
+.input1 { grid-area: 2 / 2 / 3 / 6; }
+.label2 { grid-area: 2 / 7 / 3 / 8; }
+.input2 { grid-area: 2 / 8 / 3 / 11; }
+.label3 { grid-area: 3 / 1 / 4 / 3; }
+.input3 { grid-area: 3 / 2 / 4 / 6; }
+.label4 { grid-area: 3 / 7 / 4 / 8; }
+.input4 { grid-area: 3 / 8 / 4 / 11; }
+.label5 { grid-area: 4 / 1 / 5 / 3; }
+.input5 { grid-area: 4 / 2 / 5 / 6; }
+.label6 { grid-area: 4 / 7 / 5 / 8; }
+.input6 { grid-area: 4 / 8 / 5 / 11; }
+.label7 { grid-area: 5 / 1 / 6 / 3; }
+.input7 { grid-area: 5 / 2 / 6 / 6; }
+.label8 { grid-area: 5 / 8 / 6 / 7;}
+.input8 { grid-area: 5 / 8 / 6 / 11;}
 
-  .btn-confirm { grid-area: 7 / 3 / 8 / 6; }
-  .btn-cancel { grid-area: 7 / 6 / 8 / 9; } 
+.btn-confirm { grid-area: 7 / 3 / 8 / 6; }
+.btn-cancel { grid-area: 7 / 6 / 8 / 9; } 
 
 
-label{
+label {
   padding: 15px;
 }
-dialog{
+
+dialog {
   background-color: var(--white-blue);
 }
 
@@ -291,11 +281,11 @@ input {
   padding: 15px;
 }
 
-input:valid, select:valid{
+input:valid, select:valid {
   background-color: var(--light-teal);
 }
 
-input:invalid, select:invalid{
+input:invalid, select:invalid {
   background-color: var(--light-red);
 }
 
@@ -306,11 +296,11 @@ select {
   color: var(--dark-blue);
 }
 
-:disabled{
+:disabled {
   background-color: var(--grey-blue);
 }
 
-form{
+form {
   color: var(--dark-blue);
 }
 
@@ -335,6 +325,7 @@ textarea{
 #cancel-restance-change-button{
   margin-bottom: 15px;
 }
+
 #search-error-msg {
   background-color: #00000085;
   text-align: center;
@@ -346,4 +337,9 @@ textarea{
   width: 100%;
   max-width: 342px;
   padding: 1em;
+}
+
+#cancel-delete-result {
+  position: relative;
+  top: -10px; 
 }
