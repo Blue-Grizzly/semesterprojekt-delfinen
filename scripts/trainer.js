@@ -8,7 +8,7 @@ let lastTime = 0;
 
 window.addEventListener("load", initApp);
 
-async function initApp() {
+async function initApp(){
   refreshTableMembers();
   document.querySelector("#create-result").addEventListener("click", showCreateForm);
   document.querySelector(".log-off-btn").addEventListener("click", () => (window.location.href = "index.html"));
@@ -172,7 +172,7 @@ function showCompetetionMember(member){
   }
 }
 
-function showResults(resultList) {
+function showResults(resultList){
 
   document.querySelector("#results-table-body").innerHTML = "";
   document.querySelector("#data-table").classList.add("hidden");
@@ -192,7 +192,7 @@ function showResults(resultList) {
   }
 }
 
-function showResult(result) {
+function showResult(result){
   const html = /*html*/`
       <tr>
         <td>${result.placering}</td>
@@ -211,13 +211,13 @@ function showResult(result) {
   document.querySelector("#results-table-body tr:last-child #btn-update").addEventListener("click", () => updateClicked(result));
 }
 
-function showCreateForm() {
+function showCreateForm(){
   document.querySelector("#dialog-create-result").showModal();
   document.querySelector("#form-create-result").addEventListener("submit", createResultClicked);
   document.querySelector("#cancel-create").addEventListener("click", createCancelClicked);
 }
 
-async function createResultClicked(event) {
+async function createResultClicked(event){
   event.preventDefault();
   const form = document.querySelector("#form-create-result");
   const placering = form.placering.value;
@@ -248,13 +248,13 @@ async function createResultClicked(event) {
   }
 }
 
-function createCancelClicked(event) {
+function createCancelClicked(event){
   event.preventDefault();
   document.querySelector("#form-create-result").reset();
   document.querySelector("#dialog-create-result").close();
 }
 
-async function updateResultClicked(event) {
+async function updateResultClicked(event){
   event.preventDefault();
   const form = document.querySelector("#form-update-result");
 
@@ -289,7 +289,7 @@ async function updateResultClicked(event) {
   }
 }
 
-function updateClicked(resultObject) {
+function updateClicked(resultObject){
   const updateForm = document.querySelector("#form-update-result");
 
   updateForm.placering.value = resultObject.placering;
@@ -305,24 +305,24 @@ function updateClicked(resultObject) {
   document.querySelector("#cancel-update").addEventListener("click", dialogUpdateCancel);
 }
 
-function dialogUpdateCancel(event) {
+function dialogUpdateCancel(event){
   event.preventDefault();
   document.querySelector("#dialog-update-result").close();
 }
 
-function deleteResultClicked(resultObject) {
+function deleteResultClicked(resultObject){
   document.querySelector("#dialog-delete-result-title").textContent = resultObject.name;
   document.querySelector("#dialog-delete-result").showModal();
   document.querySelector("#form-delete-result").addEventListener("submit", () => deleteResultConfirm(resultObject));
   document.querySelector("#cancel-delete-result").addEventListener("click", (event) => cancelDeleteResult(event));
 }
 
-function cancelDeleteResult(event) {
+function cancelDeleteResult(event){
   event.preventDefault();
   document.querySelector("#dialog-delete-result").close();
 }
 
-async function deleteResultConfirm(resultObject) {
+async function deleteResultConfirm(resultObject){
   const response = await deleteResult(resultObject);
 
   if (response.ok) {
@@ -333,7 +333,7 @@ async function deleteResultConfirm(resultObject) {
   }
 }
 
-function showErrorMessage(message) {
+function showErrorMessage(message){
   document.querySelector("#dialog-failed-to-create").showModal();
   document.querySelector(".error-message").textContent = message;
   document.querySelector(".error-message").classList.remove("hide");

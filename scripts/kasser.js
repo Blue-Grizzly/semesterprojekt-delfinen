@@ -7,7 +7,7 @@ window.addEventListener("load", initApp);
 let memberList = [];
 let lastTime = 0;
 
-async function initApp() {
+async function initApp(){
 
    refreshTable();
   
@@ -51,7 +51,7 @@ async function getAllMembers(){
     return memberList;
 }
 
-async function refreshTable() {
+async function refreshTable(){
   await getAllMembers();
   const filteredList = filterMembersDebt(memberList);
   const sortedList = sortBySelected(filteredList);
@@ -60,12 +60,9 @@ async function refreshTable() {
   document.querySelector("#total-debt").textContent = totalDebt(memberList);
   document.querySelector("#total-income").textContent = totalIncome(memberList);
   document.querySelector("#current-income").textContent = totalIncome(memberList) - totalDebt(memberList) ;
-
-
 }
 
-
-async function updateMemberTable(members) {
+async function updateMemberTable(members){
   if (members.length > 0) {
     document.querySelector("#overview-table-kasser").innerHTML = "";
     for (const member of members) {
@@ -82,7 +79,7 @@ async function updateMemberTable(members) {
   }
 }
 
-function showMember(member) {
+function showMember(member){
   document.querySelector("#overview-table-kasser").insertAdjacentHTML(
     "beforeend",
     /*html*/ `
@@ -97,7 +94,7 @@ function showMember(member) {
   document.querySelector("#overview-table-kasser tr:last-child .btn-change-restance").addEventListener("click", () => updateRestanceClicked(member));
 }
 
-function updateRestanceClicked(member) {
+function updateRestanceClicked(member){
   const updateForm = document.querySelector("#form-change-restance");
   
   updateForm.debt.value = member.debt;
@@ -109,14 +106,12 @@ function updateRestanceClicked(member) {
   updateForm.setAttribute("name", member.name);
   updateForm.setAttribute("data-id", member.id);
   document.querySelector("#dialog-change-restance").showModal();
-  document.querySelector("#dialog-change-restance-title"
-  ).textContent = `Ændr resistance for: ${member.name}`;
-
+  document.querySelector("#dialog-change-restance-title").textContent = `Ændr resistance for: ${member.name}`;
   document.querySelector("#cancel-restance-change-button").addEventListener("click", cancelResistanceChange);
   document.querySelector("#form-change-restance").addEventListener("submit", updateRestanceAccept);
 }
 
-async function updateRestanceAccept(event) {
+async function updateRestanceAccept(event){
   event.preventDefault();
 
   const form = document.querySelector("#form-change-restance");

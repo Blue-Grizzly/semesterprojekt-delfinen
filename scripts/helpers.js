@@ -37,15 +37,15 @@ function sortBySelectedResults(list){
     return list.sort((a, b) =>  a.placering - b.placering);
   } else if(selectedSort === "Date"){
     return list.sort((a, b) =>  b.dato - a.dato);
-  } else if (selectedSort === "Discipline"){
+  } else if(selectedSort === "Discipline"){
     return list.sort((a, b) => a.discipline.localeCompare(b.discipline));
-  }else if(selectedSort === "Note"){
+  } else if(selectedSort === "Note"){
     return list.sort((a, b) => a.noter.localeCompare(b.noter));
-  }else if(selectedSort === "Event"){
+  } else if(selectedSort === "Event"){
     return  list.sort((a, b) => a.stævne.localeCompare(b.stævne));
-  }else if(selectedSort === "Swimmer"){
+  } else if(selectedSort === "Swimmer"){
     return list.sort((a, b) => a.svømmer.localeCompare(b.svømmer));
-  }else if(selectedSort === "Time"){
+  } else if(selectedSort === "Time"){
     return list.sort((a, b) =>  a.tid - b.tid);
   } else {
     return list
@@ -58,9 +58,9 @@ const selectedFilter = document.querySelector("#results-table").getAttribute("fi
     return list.filter((result) => result.discipline == "Bryst");
   } else if(selectedFilter === "Crawl"){
     return list.filter((result) => result.discipline == "Crawl");
-  } else if (selectedFilter === "Ryg"){
+  } else if(selectedFilter === "Ryg"){
     return list.filter((result) => result.discipline == "Ryg");
-  }else if(selectedFilter === "Butterfly"){
+  } else if(selectedFilter === "Butterfly"){
     return list.filter((result) => result.discipline == "Butterfly");
   } else {
     return list
@@ -82,11 +82,11 @@ function sortBySelected(members){
   const selectedSort = document.querySelector("#data-table").getAttribute("sortOption");
   if(selectedSort === "name"){
   return members.sort((a, b) => a.name.localeCompare(b.name));
-  } else if (selectedSort === "debt"){
+  } else if(selectedSort === "debt"){
     return  members.sort((a, b) =>  b.debt - a.debt );
-  } else if (selectedSort === "membership"){
+  } else if(selectedSort === "membership"){
     return members.sort((a, b) => b.active.localeCompare(a.active));
-  } else if (selectedSort === "age"){
+  } else if(selectedSort === "age"){
     return members.sort((a, b) => a.age - b.age); 
   } else {
     return members;
@@ -120,7 +120,7 @@ function totalDebt(list){
   return debtTotal;
 }    
 
-function isActive(member) {
+function isActive(member){
   if (member.active == "true") {
     return `Aktiv`;
   } else {
@@ -128,7 +128,7 @@ function isActive(member) {
   }
 }
 
-function isInCompetionen(member) {
+function isInCompetionen(member){
   if (member.competition === "true") {
     return `Konkurrencesvømmer`;
   } else {

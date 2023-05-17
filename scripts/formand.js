@@ -7,19 +7,17 @@ window.addEventListener("load", initApp);
 let memberList = [];  
 let lastTime = 0;
 
-async function initApp() {
+async function initApp(){
   memberList = await getMembers();
   refreshTable();
   document.querySelector("#nytmedlem").addEventListener("click", showCreateForm);
   document.querySelector("#refresh").addEventListener("click", refreshTable);
   document.querySelector(".log-off-btn").addEventListener("click",()=>window.location.href="index.html")
-
   document.querySelector("#table-name").addEventListener("click", ()=>{
   document.querySelector("#data-table").setAttribute("sortOption", "name");
   console.log("name")
   refreshTable();    
   } );
-
   document.querySelector("#table-age").addEventListener("click", ()=> {
   document.querySelector("#data-table").setAttribute("sortOption", "age");
   console.log("age")
@@ -31,13 +29,11 @@ async function initApp() {
   console.log("membership")
   refreshTable();
   } );
-
   document.querySelector("#table-options").addEventListener("click", ()=>{
   document.querySelector("#data-table").removeAttribute("sortOption");
   console.log("all")
   refreshTable();
   });
-
   document.querySelector("#competition").addEventListener("change", event => controlDiscipline(event));
   document.querySelector("#competition-update").addEventListener("change", event => controlDiscipline(event));
 }
@@ -50,19 +46,19 @@ async function getAllMembers(){
     return memberList;
 }
 
-async function refreshTable() {
+async function refreshTable(){
   await getAllMembers();
   const sortedList = sortBySelected(memberList);
   showMembers(sortedList);
 }
 
-function showCreateForm() {
+function showCreateForm(){
   document.querySelector("#dialog-create-member").showModal();
   document.querySelector("#form-create-member").addEventListener("submit", createMemberClicked);
   document.querySelector("#cancel-create").addEventListener("click", createCancelClicked);
 }
 
-async function createMemberClicked(event) {
+async function createMemberClicked(event){
 
 event.preventDefault();
 const form = document.querySelector("#form-create-member");
@@ -96,19 +92,19 @@ discipline
   }
 }
 
-function createCancelClicked(event) {
+function createCancelClicked(event){
   event.preventDefault();
   document.querySelector("#form-create-member").reset();
   document.querySelector("#dialog-create-member").close();
 }
 
-function cancelUpdate(event) {
+function cancelUpdate(event){
   event.preventDefault();
   document.querySelector("#form-update-member").reset();
   document.querySelector("#dialog-update-member").close();
 }
 
-async function updateMemberClicked(event) {
+async function updateMemberClicked(event){
   event.preventDefault();
   const form = document.querySelector("#form-update-member");
 
@@ -144,7 +140,7 @@ async function updateMemberClicked(event) {
   }
 }
 
-function updateClicked(memberObject) {
+function updateClicked(memberObject){
   const updateForm = document.querySelector("#form-update-member");
 
   updateForm.active.value = memberObject.active;
@@ -161,7 +157,7 @@ function updateClicked(memberObject) {
   document.querySelector("#cancel-update").addEventListener("click", cancelUpdate);
 }
 
-function deleteMemberClicked(memberObject) {
+function deleteMemberClicked(memberObject){
   console.log(memberObject);
   document.querySelector("#dialog-delete-member-title").textContent = memberObject.name;
   document.querySelector("#dialog-delete-member").showModal();
@@ -169,7 +165,7 @@ function deleteMemberClicked(memberObject) {
   document.querySelector("#cancelDelete").addEventListener("click", (event) => cancelDeleteMember(event));
 }
 
-function cancelDeleteMember(event) {
+function cancelDeleteMember(event){
   event.preventDefault();
   document.querySelector("#dialog-delete-member").close();
 }
@@ -185,7 +181,7 @@ async function deleteMemberConfirm(memberObject) {
   }
 }
 
-function showDeleteFeedback() {
+function showDeleteFeedback(){
   const dialog = document.getElementById("dialog-delete-feedback");
   const dialogMessage = document.getElementById(
     "dialog-delete-feedback-message"
@@ -199,7 +195,7 @@ function showDeleteFeedback() {
   }
 }
 
-function showMembers(memberList) {
+function showMembers(memberList){
   document.querySelector("#memberTable").innerHTML = "";
   if (memberList.length !== 0) {
     for (const member of memberList) {
@@ -215,7 +211,7 @@ function showMembers(memberList) {
   }
 }
 
-function showMember(memberObject) {
+function showMember(memberObject){
   const html = /*html*/ `
     <tr class="clickable">    
       <td>${memberObject.name}</td>
@@ -234,7 +230,7 @@ function showMember(memberObject) {
   document.querySelector("#memberTable tr:last-child .btn-update").addEventListener("click", () => updateClicked(memberObject));
 }
 
-function showMemberInfo(memberObject) {
+function showMemberInfo(memberObject){
   const modal = document.querySelector("#member-modal");
   modal.querySelector("#member-active").textContent = isActive(memberObject);
   modal.querySelector("#member-competition").textContent = isInCompetionen(memberObject);
@@ -248,13 +244,13 @@ function showMemberInfo(memberObject) {
   document.querySelector("#button-close-info").addEventListener("click", () => modal.close());
 }
 
-function showErrorMessage(message) {
+function showErrorMessage(message){
   document.querySelector("#dialog-failed-to-update").showModal;
   document.querySelector(".error-message").textContent = message;
   document.querySelector(".error-message").classList.remove("hide");
 }
 
-function hideErrorMessage() {
+function hideErrorMessage(){
   document.querySelector(".error-message").textContent = "";
   document.querySelector(".error-message").classList.add("hide");
 }
