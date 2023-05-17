@@ -180,9 +180,9 @@ footer p {
   grid-template-rows: auto;
 }
 
- /* h2 {
+.data-header{
   text-align: center;
-} */
+}
 
 table {
   border-collapse: collapse;
