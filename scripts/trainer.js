@@ -1,17 +1,6 @@
 
-import {
-  createResult,
-  getResults,
-  deleteResult,
-  updateResult,
-  getMembers
-} from "./rest-service.js";
-
-import {
-  filterByDiscipline,
-  sortBySelectedResults,
-  sortBySelected  
-} from "./helpers.js";
+import { createResult, getResults, deleteResult, updateResult, getMembers } from "./rest-service.js";
+import { filterByDiscipline, sortBySelectedResults, sortBySelected } from "./helpers.js";
 
 let resultsList = [];
 let memberList =[];
@@ -21,24 +10,13 @@ window.addEventListener("load", initApp);
 
 async function initApp() {
   refreshTableMembers();
-
-  document
-    .querySelector("#create-result")
-    .addEventListener("click", showCreateForm);
-
-  document
-    .querySelector(".log-off-btn")
-    .addEventListener("click", () => (window.location.href = "index.html"));
-
+  document.querySelector("#create-result").addEventListener("click", showCreateForm);
+  document.querySelector(".log-off-btn").addEventListener("click", () => (window.location.href = "index.html"));
   document.querySelector("#nav-hold").addEventListener("click", showTeams);
-
-document
-  .querySelector("#nav-bryst")
-  .addEventListener("click", () => {
+  document.querySelector("#nav-bryst").addEventListener("click", () => {
   document.querySelector("#results-table").setAttribute("filterOption", "Bryst");
   refreshTableResults();
 });
-
 document.querySelector("#table-place").addEventListener("click", ()=> {
   document.querySelector("#results-table").setAttribute("sortOption", "Place");
   document.querySelector("#results-table-body").classList.remove("top-five");
@@ -79,49 +57,42 @@ document.querySelector("#table-options").addEventListener("click", ()=> {
   document.querySelector("#results-table-body").classList.remove("top-five");
   refreshTableResults();
 });
-
   document.querySelector("#nav-crawl").addEventListener("click", () => {
-    document.querySelector("#results-table").setAttribute("filterOption", "Crawl");
-    refreshTableResults();
-    });
-
-document.querySelector("#nav-ryg").addEventListener("click", () => {
+  document.querySelector("#results-table").setAttribute("filterOption", "Crawl");
+  refreshTableResults();
+});
+  document.querySelector("#nav-ryg").addEventListener("click", () => {
   document.querySelector("#results-table").setAttribute("filterOption", "Ryg");
   refreshTableResults();
-  });
-
+});
   document.querySelector("#nav-butterfly").addEventListener("click", () => {
-    document.querySelector("#results-table").setAttribute("filterOption", "Butterfly");
-    refreshTableResults();
-  });
-
+  document.querySelector("#results-table").setAttribute("filterOption", "Butterfly");
+  refreshTableResults();
+});
   document.querySelector("#table-name-junior").addEventListener("click", ()=>{
-    document.querySelector("#data-table").setAttribute("sortOption", "name");
-    refreshTableMembers();    
-  });
+  document.querySelector("#data-table").setAttribute("sortOption", "name");
+  refreshTableMembers();    
+});
   document.querySelector("#table-name-senior").addEventListener("click", ()=>{
-    document.querySelector("#data-table").setAttribute("sortOption", "name");
-    refreshTableMembers();    
-  });
-
+  document.querySelector("#data-table").setAttribute("sortOption", "name");
+  refreshTableMembers();    
+});
   document.querySelector("#table-age-junior").addEventListener("click", ()=> {
-    document.querySelector("#data-table").setAttribute("sortOption", "age");
-    refreshTableMembers();
-  });
+  document.querySelector("#data-table").setAttribute("sortOption", "age");
+  refreshTableMembers();
+});
   document.querySelector("#table-age-senior").addEventListener("click", ()=> {
-    document.querySelector("#data-table").setAttribute("sortOption", "age");
-    refreshTableMembers();
-  });
-
+  document.querySelector("#data-table").setAttribute("sortOption", "age");
+  refreshTableMembers();
+});
   document.querySelector("#table-discipline-junior").addEventListener("click", ()=> {
-    document.querySelector("#data-table").setAttribute("sortOption", "discipline");
-    refreshTableMembers();
-  });
+  document.querySelector("#data-table").setAttribute("sortOption", "discipline");
+  refreshTableMembers();
+});
   document.querySelector("#table-discipline-senior").addEventListener("click", ()=> {
-    document.querySelector("#data-table").setAttribute("sortOption", "discipline");
-    refreshTableMembers();
-  });
-
+  document.querySelector("#data-table").setAttribute("sortOption", "discipline");
+  refreshTableMembers();
+});
 }
 
 function showTeams(){
@@ -146,19 +117,16 @@ async function getAllResults(){
     return resultsList;
 }
 
-async function refreshTableMembers() {
+async function refreshTableMembers(){
   await getAllMembers();
   const sortedList = sortBySelected(memberList);
-
   showCompetitionMembers(sortedList);
 }
 
-async function refreshTableResults() {
+async function refreshTableResults(){
   await getAllResults();
-
   const filteredList = filterByDiscipline(resultsList);
   const sortedList = sortBySelectedResults(filteredList);
-
   showResults(sortedList);
 }
 
@@ -166,24 +134,21 @@ function showCompetitionMembers(list){
   document.querySelector("#senior-hold-body").innerHTML = "";
   document.querySelector("#unge-hold-body").innerHTML = "";
   document.querySelector("#results-table-wrapper").classList.add("hidden");
-   document.querySelector("#create-select-swimmer").innerHTML = "";
-   document.querySelector("#update-select-swimmer").innerHTML = "";
-
-    for (const member of list) {
-      if(member.competition == "true"){
-        showCompetetionMember(member);
-         addMemberAsOption(member);
-      }
+  document.querySelector("#create-select-swimmer").innerHTML = "";
+  document.querySelector("#update-select-swimmer").innerHTML = "";
+  for (const member of list) {
+    if(member.competition == "true"){
+      showCompetetionMember(member);
+      addMemberAsOption(member);
     }
+  }
 }
-
 
 function addMemberAsOption(member){
   
 const html = /*html*/`
 <option value="${member.name}">${member.name}</option>
 `  
-
 document.querySelector("#create-select-swimmer").insertAdjacentHTML("beforeend",html);
 document.querySelector("#update-select-swimmer").insertAdjacentHTML("beforeend", html);
 }
@@ -241,25 +206,15 @@ function showResult(result) {
         <td><button id="btn-delete">Slet</button></td>
       </tr>
     `;
-  document
-    .querySelector("#results-table-body")
-    .insertAdjacentHTML("beforeend", html);
-  document
-    .querySelector("#results-table-body tr:last-child #btn-delete")
-    .addEventListener("click", () => deleteResultClicked(result));
-  document
-    .querySelector("#results-table-body tr:last-child #btn-update")
-    .addEventListener("click", () => updateClicked(result));
+  document.querySelector("#results-table-body").insertAdjacentHTML("beforeend", html);
+  document.querySelector("#results-table-body tr:last-child #btn-delete").addEventListener("click", () => deleteResultClicked(result));
+  document.querySelector("#results-table-body tr:last-child #btn-update").addEventListener("click", () => updateClicked(result));
 }
 
 function showCreateForm() {
   document.querySelector("#dialog-create-result").showModal();
-  document
-    .querySelector("#form-create-result")
-    .addEventListener("submit", createResultClicked);
-  document
-    .querySelector("#cancel-create")
-    .addEventListener("click", createCancelClicked);
+  document.querySelector("#form-create-result").addEventListener("submit", createResultClicked);
+  document.querySelector("#cancel-create").addEventListener("click", createCancelClicked);
 }
 
 async function createResultClicked(event) {
@@ -347,9 +302,7 @@ function updateClicked(resultObject) {
   updateForm.setAttribute("data-id", resultObject.id);
   document.querySelector("#dialog-update-result").showModal();
   updateForm.addEventListener("submit", updateResultClicked);
-  document
-    .querySelector("#cancel-update")
-    .addEventListener("click", dialogUpdateCancel);
+  document.querySelector("#cancel-update").addEventListener("click", dialogUpdateCancel);
 }
 
 function dialogUpdateCancel(event) {
@@ -358,15 +311,10 @@ function dialogUpdateCancel(event) {
 }
 
 function deleteResultClicked(resultObject) {
-  document.querySelector("#dialog-delete-result-title").textContent =
-    resultObject.name;
+  document.querySelector("#dialog-delete-result-title").textContent = resultObject.name;
   document.querySelector("#dialog-delete-result").showModal();
-  document
-    .querySelector("#form-delete-result")
-    .addEventListener("submit", () => deleteResultConfirm(resultObject));
-  document
-    .querySelector("#cancel-delete-result")
-    .addEventListener("click", (event) => cancelDeleteResult(event));
+  document.querySelector("#form-delete-result").addEventListener("submit", () => deleteResultConfirm(resultObject));
+  document.querySelector("#cancel-delete-result").addEventListener("click", (event) => cancelDeleteResult(event));
 }
 
 function cancelDeleteResult(event) {

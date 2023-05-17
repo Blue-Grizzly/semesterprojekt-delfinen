@@ -1,5 +1,5 @@
 
-function prepareData(dataObject) {
+function prepareData(dataObject){
   const memberArray = [];
   for (const key in dataObject) {
   const memberObject = dataObject[key];
@@ -10,11 +10,11 @@ function prepareData(dataObject) {
 }
   
 function checkMembership(member){
-    if(member.active === true){
-        if(member.motionist === true){
-            return `Motionist`;
-        } else {
-            return `Konkurrence`;
+  if(member.active === true){
+    if(member.motionist === true){
+      return `Motionist`;
+      } else {
+        return `Konkurrence`;
         }
     } else { 
     return `Passiv`;
@@ -65,18 +65,17 @@ const selectedFilter = document.querySelector("#results-table").getAttribute("fi
   } else {
     return list
   }
-
 }
 
 function filterMembersDebt(members){
   const selectedFilter = document.querySelector("#data-table").getAttribute("filterOption");
     if(selectedFilter == "paid"){
   return members.filter((member) => member.debt == "0");
-    }else if(selectedFilter == "unpaid"){
+    } else if (selectedFilter == "unpaid"){
       return members.filter((member) => member.debt != "0");
-    } else{
+    } else {
       return members;
-    }
+  }
 }
 
 function sortBySelected(members){
@@ -89,18 +88,18 @@ function sortBySelected(members){
     return members.sort((a, b) => b.active.localeCompare(a.active));
   } else if (selectedSort === "age"){
     return members.sort((a, b) => a.age - b.age); 
-  } else{
+  } else {
     return members;
   }
 }
 
 function totalIncome(list){
   let incomeTotal = 0;
-      for(let i=0; i < list.length; i++){
-        const memberGroup = checkAgeGroup(list[i]);
+    for(let i=0; i < list.length; i++){
+      const memberGroup = checkAgeGroup(list[i]);
       if(list[i].active == "true"){ 
-          if(memberGroup.toUpperCase() === "SENIOR"){
-            incomeTotal += 1600;
+        if(memberGroup.toUpperCase() === "SENIOR"){
+          incomeTotal += 1600;
           } else if(memberGroup.toUpperCase() === "SENIORPLUS"){
             incomeTotal += 1200;
           } else {
@@ -108,7 +107,7 @@ function totalIncome(list){
           }
       } else {
         incomeTotal += 500;
-    } 
+    }
   }
   return incomeTotal;
 }   
@@ -153,7 +152,7 @@ function controlDiscipline(event){
   if (event.target.value === "true"){
     document.querySelector("#discipline").disabled = false;
     document.querySelector("#discipline-update").disabled = false;
-  } else{
+  } else {
     document.querySelector("#discipline-update").disabled = true;
     document.querySelector("#discipline").disabled = true;
     document.querySelector("#discipline-update").value = "";

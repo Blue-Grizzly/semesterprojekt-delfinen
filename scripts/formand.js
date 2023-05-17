@@ -1,11 +1,5 @@
 
-import {
-  getMembers,
-  createMember,
-  updateMember,
-  deleteMember,
-} from "./rest-service.js";
-
+import { getMembers, createMember, updateMember, deleteMember } from "./rest-service.js";
 import { isActive, isInCompetionen, checkSwimteam, sortBySelected, controlDiscipline } from "./helpers.js";
 
 window.addEventListener("load", initApp);
@@ -21,27 +15,27 @@ async function initApp() {
   document.querySelector(".log-off-btn").addEventListener("click",()=>window.location.href="index.html")
 
   document.querySelector("#table-name").addEventListener("click", ()=>{
-    document.querySelector("#data-table").setAttribute("sortOption", "name");
-    console.log("name")
-    refreshTable();    
+  document.querySelector("#data-table").setAttribute("sortOption", "name");
+  console.log("name")
+  refreshTable();    
   } );
 
   document.querySelector("#table-age").addEventListener("click", ()=> {
-    document.querySelector("#data-table").setAttribute("sortOption", "age");
-    console.log("age")
-    refreshTable();
+  document.querySelector("#data-table").setAttribute("sortOption", "age");
+  console.log("age")
+  refreshTable();
   });
 
   document.querySelector("#table-membership").addEventListener("click", ()=> {
-    document.querySelector("#data-table").setAttribute("sortOption", "membership");
-    console.log("membership")
-    refreshTable();
+  document.querySelector("#data-table").setAttribute("sortOption", "membership");
+  console.log("membership")
+  refreshTable();
   } );
 
   document.querySelector("#table-options").addEventListener("click", ()=>{
-    document.querySelector("#data-table").removeAttribute("sortOption");
-    console.log("all")
-    refreshTable();
+  document.querySelector("#data-table").removeAttribute("sortOption");
+  console.log("all")
+  refreshTable();
   });
 
   document.querySelector("#competition").addEventListener("change", event => controlDiscipline(event));
@@ -64,12 +58,8 @@ async function refreshTable() {
 
 function showCreateForm() {
   document.querySelector("#dialog-create-member").showModal();
-  document
-    .querySelector("#form-create-member")
-    .addEventListener("submit", createMemberClicked);
-  document
-    .querySelector("#cancel-create")
-    .addEventListener("click", createCancelClicked);
+  document.querySelector("#form-create-member").addEventListener("submit", createMemberClicked);
+  document.querySelector("#cancel-create").addEventListener("click", createCancelClicked);
 }
 
 async function createMemberClicked(event) {
@@ -167,25 +157,16 @@ function updateClicked(memberObject) {
   updateForm.discipline.value = memberObject.discipline;
   updateForm.setAttribute("data-id", memberObject.id);
   document.querySelector("#dialog-update-member").showModal();
-  document
-    .querySelector("#form-update-member")
-    .addEventListener("submit", updateMemberClicked);
-  document
-    .querySelector("#cancel-update")
-    .addEventListener("click", cancelUpdate);
+  document.querySelector("#form-update-member").addEventListener("submit", updateMemberClicked);
+  document.querySelector("#cancel-update").addEventListener("click", cancelUpdate);
 }
 
 function deleteMemberClicked(memberObject) {
   console.log(memberObject);
-  document.querySelector("#dialog-delete-member-title").textContent =
-    memberObject.name;
+  document.querySelector("#dialog-delete-member-title").textContent = memberObject.name;
   document.querySelector("#dialog-delete-member").showModal();
-  document
-    .querySelector("#form-delete-member")
-    .addEventListener("submit", () => deleteMemberConfirm(memberObject));
-  document
-    .querySelector("#cancelDelete")
-    .addEventListener("click", (event) => cancelDeleteMember(event));
+  document.querySelector("#form-delete-member").addEventListener("submit", () => deleteMemberConfirm(memberObject));
+  document.querySelector("#cancelDelete").addEventListener("click", (event) => cancelDeleteMember(event));
 }
 
 function cancelDeleteMember(event) {
@@ -248,24 +229,16 @@ function showMember(memberObject) {
     </tr>
   `;
   document.querySelector("#memberTable").insertAdjacentHTML("beforeend", html);
-  document
-    .querySelector("#memberTable tr:last-child .btn-info")
-    .addEventListener("click", () => showMemberInfo(memberObject));
-  document
-    .querySelector("#memberTable tr:last-child .btn-delete")
-    .addEventListener("click", () => deleteMemberClicked(memberObject));
-  document
-    .querySelector("#memberTable tr:last-child .btn-update")
-    .addEventListener("click", () => updateClicked(memberObject));
+  document.querySelector("#memberTable tr:last-child .btn-info").addEventListener("click", () => showMemberInfo(memberObject));
+  document.querySelector("#memberTable tr:last-child .btn-delete").addEventListener("click", () => deleteMemberClicked(memberObject));
+  document.querySelector("#memberTable tr:last-child .btn-update").addEventListener("click", () => updateClicked(memberObject));
 }
 
 function showMemberInfo(memberObject) {
   const modal = document.querySelector("#member-modal");
   modal.querySelector("#member-active").textContent = isActive(memberObject);
-  modal.querySelector("#member-competition").textContent =
-    isInCompetionen(memberObject);
-  modal.querySelector("#member-swimteam").textContent =
-    checkSwimteam(memberObject);
+  modal.querySelector("#member-competition").textContent = isInCompetionen(memberObject);
+  modal.querySelector("#member-swimteam").textContent = checkSwimteam(memberObject);
   modal.querySelector("#member-age").textContent = memberObject.age;
   modal.querySelector("#member-debt").textContent = memberObject.debt;
   modal.querySelector("#member-email").textContent = memberObject.email;
