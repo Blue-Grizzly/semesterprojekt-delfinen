@@ -13,8 +13,6 @@ import {
   sortBySelected  
 } from "./helpers.js";
 
-
-
 let resultsList = [];
 let memberList =[];
 let lastTime = 0;
@@ -40,7 +38,6 @@ document
   document.querySelector("#results-table").setAttribute("filterOption", "Bryst");
   refreshTableResults();
 });
-
 
 document.querySelector("#table-place").addEventListener("click", ()=> {
   document.querySelector("#results-table").setAttribute("sortOption", "Place");
@@ -93,13 +90,10 @@ document.querySelector("#nav-ryg").addEventListener("click", () => {
   refreshTableResults();
   });
 
-  
-
   document.querySelector("#nav-butterfly").addEventListener("click", () => {
     document.querySelector("#results-table").setAttribute("filterOption", "Butterfly");
     refreshTableResults();
   });
-
 
   document.querySelector("#table-name-junior").addEventListener("click", ()=>{
     document.querySelector("#data-table").setAttribute("sortOption", "name");
@@ -152,14 +146,12 @@ async function getAllResults(){
     return resultsList;
 }
 
-
 async function refreshTableMembers() {
   await getAllMembers();
   const sortedList = sortBySelected(memberList);
 
   showCompetitionMembers(sortedList);
 }
-
 
 async function refreshTableResults() {
   await getAllResults();
@@ -170,8 +162,6 @@ async function refreshTableResults() {
   showResults(sortedList);
 }
 
-
-
 function showCompetitionMembers(list){
   document.querySelector("#senior-hold-body").innerHTML = "";
   document.querySelector("#unge-hold-body").innerHTML = "";
@@ -181,9 +171,7 @@ function showCompetitionMembers(list){
       if(member.competition == "true"){
         showCompetetionMember(member);
       }
-      
     }
-  
 }
 
 function showCompetetionMember(member){
@@ -198,22 +186,18 @@ function showCompetetionMember(member){
     `;
  if(member.age < 18){
     document.querySelector("#unge-hold-body").insertAdjacentHTML("beforeend",html);
- }
-  else{ 
-
+ } else { 
   document
     .querySelector("#senior-hold-body")
     .insertAdjacentHTML("beforeend", html);
   }
 }
 
-
 function showResults(resultList) {
 
   document.querySelector("#results-table-body").innerHTML = "";
-
   document.querySelector("#data-table").classList.add("hidden");
-   document.querySelector("#results-table-wrapper").classList.remove("hidden");
+  document.querySelector("#results-table-wrapper").classList.remove("hidden");
  
   if (resultList.length !== 0) {
     for (const result of resultList) {
