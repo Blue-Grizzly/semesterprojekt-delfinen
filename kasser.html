@@ -11,6 +11,15 @@
 
 <body>
 
+    <header>
+        <img src="images/delfin logo.png" class="header-img">
+        <h2 class="header-title">Svømmeklubben Delfinen</h2>
+        <h2 class="header-page">Kasserer</h2>
+        <button id="nav-betalt" class="header-btn1">Betalt</button>
+        <button id="nav-restance" class="header-btn2">Restance</button>
+        <button id="nav-all" class="header-btn3">Alle</button>
+    </header>
+
     <dialog id="dialog-change-restance">
         <form id="form-change-restance" method="dialog">
         <p id="dialog-change-restance-title"></p>
@@ -31,14 +40,7 @@
 
         </form>
     </dialog>
-    <header>
-        <img src="images/delfin logo.png" class="header-img">
-        <h2 class="header-title">Svømmeklubben Delfinen</h2>
-        <h2 class="header-page">Kasserer</h2>
-        <button id="nav-betalt" class="header-btn1"><h2>Betalt</h2></button>
-        <button id="nav-restance" class="header-btn2"><h2>Restance</h2></button>
-        <button id="nav-all" class="header-btn3"><h2>Alle</h2></button>
-    </header>
+
 
     <div class="kasser-grid-container">     
         <table id="data-table" class="grid-item1">
@@ -52,8 +54,8 @@
         </table>
 
         <div class="income-grid">
-            <h3 >Total forventet indkomst: </h3><h3 id="total-income"></h3>
-            <h3 class="green">Nuværende indkomst: </h3><h3 id="current-income" class="green"></h3>
+            <h3 class="green">Total forventet indkomst: </h3><h3 id="total-income" class="green"></h3>
+            <h3 >Nuværende indkomst: </h3><h3 id="current-income" ></h3>
             <h3 class="red">Total restance: </h3><h3 id="total-debt" class="red"></h3>
         </div>
 
