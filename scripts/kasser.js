@@ -59,6 +59,9 @@ async function refreshTable() {
   updateMemberTable(sortedList);
   document.querySelector("#total-debt").textContent = totalDebt(memberList);
   document.querySelector("#total-income").textContent = totalIncome(memberList);
+  document.querySelector("#current-income").textContent = totalIncome(memberList) - totalDebt(memberList) ;
+
+
 }
 
 
