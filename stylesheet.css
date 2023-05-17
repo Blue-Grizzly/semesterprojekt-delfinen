@@ -386,6 +386,11 @@ border-color: black;
   }
 
 
+#dialog-update-result, #dialog-create-result{
+  width: 100vw;
+
+}
+
 
 label {
   padding: 15px;
@@ -393,7 +398,6 @@ label {
 
 dialog {
   background-color: var(--light-teal);
-  width: 100vw;
 }
 
 input {
