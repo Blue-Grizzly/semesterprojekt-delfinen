@@ -92,7 +92,6 @@ header {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  column-gap: 40px;
   background-color: var(--dark-blue);
   color: var(--white-blue);
   padding-bottom: 15px;
@@ -145,9 +144,6 @@ footer {
 .log-off-btn:hover{
   background-color: var(--dark-red);
 }
-
-
-
 
 
 footer p {

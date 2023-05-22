@@ -80,11 +80,13 @@ function checkSwimteam(member){
   if(member.active == "true"){
     if(member.competition == "true"){
       if(member.age >= 18){
-        return `Hold 1`
+        return `Senior`;
       }
     } else {
-      return `Hold 2`
+      return `Junior`;
     }
+  } else{
+    return `Motionist`;
   }
 }
 

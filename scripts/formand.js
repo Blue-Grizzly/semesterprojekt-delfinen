@@ -241,7 +241,11 @@ function showMemberInfo(memberObject){
   const modal = document.querySelector("#member-modal");
   modal.querySelector("#member-active").textContent = isActive(memberObject);
   modal.querySelector("#member-competition").textContent = isInCompetionen(memberObject);
-  modal.querySelector("#member-swimteam").textContent = checkSwimteam(memberObject);
+    if(memberObject.competition == "true"){
+  modal.querySelector("#member-swimteam").textContent = `Svømmehold ${checkSwimteam(memberObject)}`;
+    } else{
+      modal.querySelector("#member-swimteam").textContent = "";
+    }
   modal.querySelector("#member-age").textContent = memberObject.age;
   modal.querySelector("#member-debt").textContent = memberObject.debt;
   modal.querySelector("#member-email").textContent = memberObject.email;
