@@ -20,6 +20,7 @@ function filterMembersDebt(members) {
     .querySelector("#data-table")
     .getAttribute("filterOption");
   if (selectedFilter == "paid") {
+    //must be == because you want both the number and the string to be accepted
     return members.filter((member) => member.debt == "0");
   } else if (selectedFilter == "unpaid") {
     return members.filter((member) => member.debt != "0");
