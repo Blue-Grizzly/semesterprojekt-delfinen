@@ -2,6 +2,7 @@
 import { createResult, getResults, deleteResult, updateResult, getMembers } from "./rest-service.js";
 import { sortBySelectedResults, sortBySelected } from "./sort.js";
 import { filterByDiscipline } from "./filter.js";
+import { setActiveView } from "./helpers.js";
 
 
 let resultsList = [];
@@ -14,7 +15,10 @@ async function initApp(){
   refreshTableMembers();
   document.querySelector("#create-result").addEventListener("click", showCreateForm);
   document.querySelector(".log-off-btn").addEventListener("click", () => (window.location.href = "index.html"));
-  document.querySelector("#nav-hold").addEventListener("click", showTeams);
+  document.querySelector("#nav-hold").addEventListener("click", event =>{
+  showTeams();
+  setActiveView(event);
+});
 
  
 document.querySelector("#table-place").addEventListener("click", ()=> {
@@ -57,24 +61,28 @@ document.querySelector("#table-options").addEventListener("click", ()=> {
   document.querySelector("#results-table-body").classList.remove("top-five");
   refreshTableResults();
 });
-  document.querySelector("#nav-bryst").addEventListener("click", () => {
+  document.querySelector("#nav-bryst").addEventListener("click", event => {
   document.querySelector("#results-table").setAttribute("filterOption", "Bryst");
   document.querySelector("#results-table-body").classList.remove("top-five");
+  setActiveView(event);
   refreshTableResults();
 });
-  document.querySelector("#nav-crawl").addEventListener("click", () => {
+  document.querySelector("#nav-crawl").addEventListener("click", event => {
   document.querySelector("#results-table").setAttribute("filterOption", "Crawl");
   document.querySelector("#results-table-body").classList.remove("top-five");
+  setActiveView(event);
   refreshTableResults();
 });
-  document.querySelector("#nav-ryg").addEventListener("click", () => {
+  document.querySelector("#nav-ryg").addEventListener("click", event => {
   document.querySelector("#results-table").setAttribute("filterOption", "Ryg");
   document.querySelector("#results-table-body").classList.remove("top-five");
+  setActiveView(event);
   refreshTableResults();
 });
-  document.querySelector("#nav-butterfly").addEventListener("click", () => {
+  document.querySelector("#nav-butterfly").addEventListener("click", event => {
   document.querySelector("#results-table").setAttribute("filterOption", "Butterfly");
   document.querySelector("#results-table-body").classList.remove("top-five");
+  setActiveView(event);
   refreshTableResults();
 });
   document.querySelector("#table-name-junior").addEventListener("click", ()=>{
@@ -339,4 +347,5 @@ async function deleteResultConfirm(resultObject){
     setTimeout(() => document.querySelector("#dialog-error").close(), 3000);
   }
 }
+
 

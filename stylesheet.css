@@ -527,3 +527,9 @@ button:hover{
   color: black;
 }
 
+
+.active{
+  background-color: #03f76c;
+  color: black;
+  border: 3px solid black;
+}
