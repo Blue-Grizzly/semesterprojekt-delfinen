@@ -100,4 +100,12 @@ function controlDiscipline(event){
   }
 }
 
-export {prepareData, checkMembership, checkAgeGroup, totalDebt, totalIncome, isActive, isInCompetionen, checkSwimteam, controlDiscipline};
+function setActiveView(event){
+ const buttons = document.querySelectorAll("header button");
+  for(const button of buttons){
+    button.classList.remove("active");
+  }
+  event.target.classList.add("active");
+}
+
+export {prepareData, checkMembership, checkAgeGroup, totalDebt, totalIncome, isActive, isInCompetionen, checkSwimteam, controlDiscipline, setActiveView};

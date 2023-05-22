@@ -1,6 +1,6 @@
 
 import { getMembers, updateRestance } from "./rest-service.js";
-import { checkAgeGroup, totalIncome, totalDebt, isActive } from "./helpers.js";
+import { checkAgeGroup, totalIncome, totalDebt, isActive, setActiveView } from "./helpers.js";
 import { filterMembersDebt } from "./filter.js";
 import { sortBySelected } from "./sort.js";
 
@@ -14,17 +14,20 @@ async function initApp(){
    refreshTable();
   
  
-  document.querySelector("#nav-betalt").addEventListener("click", () =>{ 
+  document.querySelector("#nav-betalt").addEventListener("click", event =>{ 
   document.querySelector("#data-table").setAttribute("filterOption", "paid");
   refreshTable();
+  setActiveView(event);
   });
-  document.querySelector("#nav-restance").addEventListener("click", () => {   
+  document.querySelector("#nav-restance").addEventListener("click", event => {   
   document.querySelector("#data-table").setAttribute("filterOption", "unpaid");
   refreshTable();
+  setActiveView(event);
   });
-  document.querySelector("#nav-all").addEventListener("click", () =>{
+  document.querySelector("#nav-all").addEventListener("click", event =>{
   document.querySelector("#data-table").removeAttribute("filterOption");
   refreshTable();
+  setActiveView(event);
   });
   document.querySelector("#table-name").addEventListener("click", ()=>{
   document.querySelector("#data-table").setAttribute("sortOption", "name");
