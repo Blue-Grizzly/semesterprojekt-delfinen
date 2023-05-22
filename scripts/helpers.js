@@ -10,11 +10,11 @@ function prepareData(dataObject){
 }
   
 function checkMembership(member){
-  if(member.active === true){
-    if(member.motionist === true){
-      return `Motionist`;
+  if(member.active == "true"){
+    if(member.competition == "true"){
+      return `Konkurrence`;
       } else {
-        return `Konkurrence`;
+        return `Motionist`;
         }
     } else { 
     return `Passiv`;

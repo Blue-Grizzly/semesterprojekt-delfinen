@@ -9,8 +9,7 @@ async function getUserByUsername(username){
     `${endpoint}/users.json`
   );
   const users = await response.json();
-  console.log("users");
-  console.log(users);
+
   if (users) {
     const keys = Object.keys(users);
     for (let i = 0; i < keys.length; i++) {

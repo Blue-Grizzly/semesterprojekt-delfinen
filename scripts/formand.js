@@ -13,7 +13,7 @@ async function initApp(){
   refreshTable();
   document.querySelector("#nytmedlem").addEventListener("click", showCreateForm);
   document.querySelector("#refresh").addEventListener("click", refreshTable);
-  document.querySelector(".log-off-btn").addEventListener("click",()=>window.location.href="index.html")
+  document.querySelector(".log-off-btn").addEventListener("click",()=>window.location.href="index.html");
   document.querySelector("#table-name").addEventListener("click", ()=>{
   document.querySelector("#data-table").setAttribute("sortOption", "name");
   console.log("name")
