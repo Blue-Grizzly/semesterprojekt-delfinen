@@ -345,7 +345,11 @@ border-color: black;
 
 }
 
-
+.btn-restance-confirm{
+  color: white;
+  background-color: rgb(59, 183, 55);
+  border-color: black; 
+}
 
 .btn-cancel {
 
