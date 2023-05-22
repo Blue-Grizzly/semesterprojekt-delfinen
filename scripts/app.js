@@ -10,12 +10,12 @@ function initApp() {
 function redirectToUserPage(userType){
   if (userType === "admin") {
     window.location.href = "formand.html";
-  } else if (userType === "kasser") {
-    window.location.href = "kasser.html";
+  } else if (userType === "kasserer") {
+    window.location.href = "kasserer.html";
   } else if (userType === "træner") {
     window.location.href = "traener.html";
   } else {
-    alert("Invalid userType");
+    document.querySelector("#login-error").textContent =  `Forkert brugernavn eller password!`;
   }
 }
 
