@@ -403,6 +403,7 @@ border-color: black;
 }
 
 #cancelDelete:hover{
+  color:black;
   background-color: #03f76c;
 }
 
@@ -420,6 +421,11 @@ color: white;
 background-color: rgb(220, 87, 87);
 border-color: black;
 
+}
+
+#button-close-info:hover{
+  color:black;
+  background-color: var(--dark-red);
 }
 
  #member-modal .modal-info-container ul {
