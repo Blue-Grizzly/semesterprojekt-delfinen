@@ -44,6 +44,7 @@ function totalIncome(list){
             incomeTotal += 1200;
           } else {
             incomeTotal += 1000;
+            // incomeTotal= incomeTotal + 1000;
           }
       } else {
         incomeTotal += 500;
