@@ -365,10 +365,20 @@ border-color: black;
   background-color: rgb(59, 183, 55);
   border-color: black; 
 }
+
+#cancel-delete-result:hover{
+   background-color: #03f76c;
+  color: black;
+
+}
 .ja-btn{
   color: black;
   background-color: rgb(220, 87, 87);
   border-color: black; 
+}
+
+.ja-btn:hover{
+  background-color: var(--dark-red);
 }
 
 .delete-members{
@@ -377,11 +387,20 @@ border-color: black;
   border-color: black; 
 }
 
+.delete-members:hover{
+  background-color: var(--dark-red);
+}
+
 #cancelDelete{
   color: white;
   background-color: rgb(59, 183, 55);
   border-color: black; 
 
+}
+
+#cancelDelete:hover{
+  color:black;
+  background-color: #03f76c;
 }
 
 
@@ -398,6 +417,11 @@ color: white;
 background-color: rgb(220, 87, 87);
 border-color: black;
 
+}
+
+#button-close-info:hover{
+  color:black;
+  background-color: var(--dark-red);
 }
 
  #member-modal .modal-info-container ul {

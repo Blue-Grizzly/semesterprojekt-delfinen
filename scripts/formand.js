@@ -247,7 +247,7 @@ function showMemberInfo(memberObject){
       modal.querySelector("#member-swimteam").textContent = "";
     }
   modal.querySelector("#member-age").textContent = memberObject.age;
-  modal.querySelector("#member-debt").textContent = memberObject.debt;
+  modal.querySelector("#member-debt").textContent = `${memberObject.debt}kr`;
   modal.querySelector("#member-email").textContent = memberObject.email;
   modal.querySelector("#member-name").textContent = memberObject.name;
   modal.querySelector("#member-tlf").textContent = memberObject.tlf;
