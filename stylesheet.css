@@ -210,6 +210,18 @@ footer p {
   margin-bottom: 10vh;
 
 }
+#formand-delete-buttons{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  column-gap: 1vw;
+}
+#delete-results-buttons{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  column-gap: 1vw;
+}
 
 .results-table-grid {
   display: grid;
@@ -333,6 +345,12 @@ border-color: black;
 
 }
 
+.btn-restance-confirm{
+  color: white;
+  background-color: rgb(59, 183, 55);
+  border-color: black; 
+}
+
 .btn-cancel {
 
   color: black;
@@ -346,17 +364,28 @@ border-color: black;
 
 }
 
-
-.ja-btn{
+#cancel-delete-result{
   color: white;
   background-color: rgb(59, 183, 55);
   border-color: black; 
 }
+.ja-btn{
+  color: black;
+  background-color: rgb(220, 87, 87);
+  border-color: black; 
+}
 
 .delete-members{
+  color: black;
+  background-color: rgb(220, 87, 87);
+  border-color: black; 
+}
+
+#cancelDelete{
   color: white;
   background-color: rgb(59, 183, 55);
-  border-color: black;  
+  border-color: black; 
+
 }
 
 
@@ -465,10 +494,7 @@ textarea {
 
 
 
-#cancel-delete-result {
-  position: relative;
-  top: -10px; 
-}
+
 
 #cancel-restance-change-button{
  background-color: rgb(220, 87, 87);
@@ -481,10 +507,7 @@ background-color: var(--dark-red);
 
 
 
-#cancelDelete {
-position: relative;
-top: -10px; 
-}
+
 
 /* Removes arrows on number input for Chromium */
 input::-webkit-outer-spin-button,
