@@ -1,7 +1,6 @@
+
 function sortBySelectedResults(list) {
-  const selectedSort = document
-    .querySelector("#results-table")
-    .getAttribute("sortOption");
+  const selectedSort = document.querySelector("#results-table").getAttribute("sortOption");
   if (selectedSort === "Place") {
     return list.sort((a, b) => a.placering - b.placering);
   } else if (selectedSort === "Date") {
@@ -22,9 +21,7 @@ function sortBySelectedResults(list) {
 }
 
 function sortBySelected(members) {
-  const selectedSort = document
-    .querySelector("#data-table")
-    .getAttribute("sortOption");
+  const selectedSort = document.querySelector("#data-table").getAttribute("sortOption");
   if (selectedSort === "name") {
     return members.sort((a, b) => a.name.localeCompare(b.name));
   } else if (selectedSort === "debt") {

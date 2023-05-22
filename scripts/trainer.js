@@ -4,12 +4,10 @@ import { sortBySelectedResults, sortBySelected } from "./sort.js";
 import { filterByDiscipline } from "./filter.js";
 import { setActiveView } from "./helpers.js";
 
-
 let resultsList = [];
 let memberList =[];
 let lastTimeMember = 0;
 let lastTimeResult = 0;
-
 
 window.addEventListener("load", initApp);
 
@@ -21,8 +19,6 @@ async function initApp(){
   showTeams();
   setActiveView(event);
 });
-
- 
 document.querySelector("#table-place").addEventListener("click", ()=> {
   document.querySelector("#results-table").setAttribute("sortOption", "Place");
   document.querySelector("#results-table-body").classList.remove("top-five");
@@ -111,7 +107,6 @@ document.querySelector("#table-options").addEventListener("click", ()=> {
   document.querySelector("#data-table").setAttribute("sortOption", "discipline");
   refreshTableMembers();
 });
-
 }
 
 function showTeams(){
@@ -169,7 +164,7 @@ function addMemberAsOption(member){
   
 const html = /*html*/`
 <option value="${member.name}">${member.name}</option>
-`  
+`
 document.querySelector("#create-select-swimmer").insertAdjacentHTML("beforeend",html);
 document.querySelector("#update-select-swimmer").insertAdjacentHTML("beforeend", html);
 }
@@ -242,21 +237,12 @@ async function createResultClicked(event){
   const svømmer = form.svømmer.value;
   const tid = form.tid.value;
 
-  const response = await createResult(
-    placering,
-    dato,
-    discipline,
-    noter,
-    stævne,
-    svømmer,
-    tid
-  );
+  const response = await createResult(placering, dato, discipline, noter, stævne, svømmer, tid);
   if (response.ok) {
     document.querySelector("#dialog-create-result").close();
     form.reset();
     document.querySelector("#dialog-success").showModal();
     setTimeout(() => document.querySelector("#dialog-success").close(), 1500);
-
     refreshTableResults();
   } else {
     document.querySelector("#dialog-error").showModal();
@@ -284,16 +270,7 @@ async function updateResultClicked(event){
 
   const id = form.getAttribute("data-id");
 
-  const response = await updateResult(
-    id,
-    placering,
-    dato,
-    discipline,
-    noter,
-    stævne,
-    svømmer,
-    tid
-  );
+  const response = await updateResult(id, placering, dato, discipline, noter, stævne, svømmer, tid);
   if (response.ok) {
     document.querySelector("#dialog-update-result").close();
     refreshTableResults();
@@ -351,5 +328,3 @@ async function deleteResultConfirm(resultObject){
     setTimeout(() => document.querySelector("#dialog-error").close(), 3000);
   }
 }
-
-

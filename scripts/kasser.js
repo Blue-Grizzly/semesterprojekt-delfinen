@@ -10,9 +10,7 @@ let memberList = [];
 let lastTime = 0;
 
 async function initApp(){
-
-   refreshTable();
-  
+  refreshTable();
  
   document.querySelector("#nav-betalt").addEventListener("click", event =>{ 
   document.querySelector("#data-table").setAttribute("filterOption", "paid");

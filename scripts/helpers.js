@@ -31,8 +31,6 @@ function checkAgeGroup(member){
     }
 }
 
-
-
 function totalIncome(list){
   let incomeTotal = 0;
     for(let i=0; i < list.length; i++){
@@ -86,7 +84,6 @@ function checkSwimteam(member){
       return `Junior`;
   }
 }
-
 
 function controlDiscipline(event){
   //Prevents user from setting a discipline for a member that is not a competition swimmer.

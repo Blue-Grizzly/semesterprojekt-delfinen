@@ -1,7 +1,6 @@
+
 function filterByDiscipline(list) {
-  const selectedFilter = document
-    .querySelector("#results-table")
-    .getAttribute("filterOption");
+  const selectedFilter = document.querySelector("#results-table").getAttribute("filterOption");
   if (selectedFilter === "Bryst") {
     return list.filter((result) => result.discipline == "Bryst");
   } else if (selectedFilter === "Crawl") {

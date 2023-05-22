@@ -38,15 +38,7 @@ async function createMember(name, age, debt, competition, email, tlf, active, di
     return response;
 }
 
-async function createResult(
-  placering,
-  dato,
-  discipline,
-  noter,
-  stævne,
-  svømmer,
-  tid
-){
+async function createResult(placering, dato, discipline, noter, stævne, svømmer, tid){
   const response = await fetch(
     `${endpoint}/resultater.json`,
     {
@@ -84,13 +76,7 @@ async function updateMember(id, active, age, debt, email, competition, name, tlf
   return response;
 }
 
-async function updateResult(id, placering,
-  dato,
-  discipline,
-  noter,
-  stævne,
-  svømmer,
-  tid){
+async function updateResult(id, placering, dato, discipline, noter, stævne, svømmer, tid){
     const resultToUpdate = {
       placering: placering,
       dato: dato,
@@ -123,16 +109,7 @@ async function deleteResult(resultObject){
   return response;
 }
 
-async function updateRestance(
-  id,
-  active,
-  age,
-  debt,
-  email,
-  competition,
-  name,
-  tlf
-){
+async function updateRestance(id, active, age, debt, email, competition, name, tlf){
   const restanceToUpdate = {
     active: active,
     age: age,

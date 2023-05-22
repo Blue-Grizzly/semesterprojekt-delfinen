@@ -11,24 +11,20 @@ let lastTime = 0;
 async function initApp(){
   refreshTable();
   document.querySelector("#nytmedlem").addEventListener("click", showCreateForm);
-
   document.querySelector("#refresh").addEventListener("click", refreshTable);
-
   document.querySelector(".log-off-btn").addEventListener("click",()=>window.location.href="index.html");
-
   document.querySelector("#table-name").addEventListener("click", ()=>{
   document.querySelector("#data-table").setAttribute("sortOption", "name");
   refreshTable();    
-  } );
+  });
   document.querySelector("#table-age").addEventListener("click", ()=> {
   document.querySelector("#data-table").setAttribute("sortOption", "age");
   refreshTable();
   });
-
   document.querySelector("#table-membership").addEventListener("click", ()=> {
   document.querySelector("#data-table").setAttribute("sortOption", "membership");
   refreshTable();
-  } );
+  });
   document.querySelector("#table-options").addEventListener("click", ()=>{
   document.querySelector("#data-table").removeAttribute("sortOption");
   refreshTable();
@@ -185,7 +181,6 @@ async function deleteMemberConfirm(memberObject) {
   }
 }
 
-
 function showMembers(memberList){
   document.querySelector("#memberTable").innerHTML = "";
   if (memberList.length !== 0) {
@@ -226,7 +221,7 @@ function showMemberInfo(memberObject){
   document.querySelector("#member-competition").textContent = isInCompetionen(memberObject);
     if(memberObject.competition == "true"){
   document.querySelector("#member-swimteam").textContent = `Svømmehold ${checkSwimteam(memberObject)}`;
-    } else{
+    } else {
       document.querySelector("#member-swimteam").textContent = "";
     }
   document.querySelector("#member-age").textContent = memberObject.age;
@@ -237,4 +232,3 @@ function showMemberInfo(memberObject){
   document.querySelector("#member-modal").showModal();
   document.querySelector("#button-close-info").addEventListener("click", () =>  document.querySelector("#member-modal").close());
 }
-
