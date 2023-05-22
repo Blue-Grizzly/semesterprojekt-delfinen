@@ -51,6 +51,7 @@ async function initApp(){
 async function getAllMembers(){
   const now = Date.now();
     if( now - lastTime > 10000 || memberList.length === 0 ){
+      lastTime = Date.now();
       memberList = await getMembers();
     }
     return memberList;

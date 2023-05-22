@@ -7,7 +7,9 @@ import { setActiveView } from "./helpers.js";
 
 let resultsList = [];
 let memberList =[];
-let lastTime = 0;
+let lastTimeMember = 0;
+let lastTimeResult = 0;
+
 
 window.addEventListener("load", initApp);
 
@@ -120,7 +122,8 @@ function showTeams(){
 
 async function getAllMembers(){
   const now = Date.now();
-    if( now - lastTime > 10000 || memberList.length === 0 ){
+    if( now - lastTimeMember > 10000 || memberList.length === 0 ){
+      lastTimeMember = Date.now();
       memberList = await getMembers();
     }
     return memberList;
@@ -128,7 +131,8 @@ async function getAllMembers(){
 
 async function getAllResults(){
   const now = Date.now();
-    if( now - lastTime > 10000 || resultsList.length === 0 ){
+    if( now - lastTimeResult > 10000 || resultsList.length === 0 ){
+      lastTimeResult = Date.now();
       resultsList = await getResults();
     }
     return resultsList;
