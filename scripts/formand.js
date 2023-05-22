@@ -161,11 +161,10 @@ function updateClicked(memberObject){
 }
 
 function deleteMemberClicked(memberObject){
-  console.log(memberObject);
   document.querySelector("#dialog-delete-member-title").textContent = memberObject.name;
   document.querySelector("#dialog-delete-member").showModal();
   document.querySelector("#form-delete-member").addEventListener("submit", () => deleteMemberConfirm(memberObject));
-  document.querySelector("#cancelDelete").addEventListener("click", (event) => cancelDeleteMember(event));
+  document.querySelector("#cancelDelete").addEventListener("click", cancelDeleteMember);
 }
 
 function cancelDeleteMember(event){
@@ -178,7 +177,6 @@ async function deleteMemberConfirm(memberObject) {
 
   if (response.ok) {
     refreshTable();
-    showDeleteFeedback();
     document.querySelector("#dialog-success").showModal();
     setTimeout(() => document.querySelector("#dialog-success").close(), 1500);
   } else {
@@ -187,19 +185,6 @@ async function deleteMemberConfirm(memberObject) {
   }
 }
 
-function showDeleteFeedback(){
-  const dialog = document.getElementById("dialog-delete-feedback");
-  const dialogMessage = document.getElementById(
-    "dialog-delete-feedback-message"
-  );
-  dialogMessage.textContent;
-  dialog.showModal();
-  setTimeout(closeDialog, 1000);
-
-  function closeDialog() {
-    dialog.close();
-  }
-}
 
 function showMembers(memberList){
   document.querySelector("#memberTable").innerHTML = "";
@@ -221,13 +206,13 @@ function showMember(memberObject){
   const html = /*html*/ `
     <tr class="clickable">    
       <td>${memberObject.name}</td>
-        <td>${isActive(memberObject)}, ${isInCompetionen(memberObject)}</td>
-        <td>${memberObject.age}</td>
-        <td class="member-option-buttons">
+      <td>${isActive(memberObject)}, ${isInCompetionen(memberObject)}</td>
+      <td>${memberObject.age}</td>
+      <td class="member-option-buttons">
         <button class="btn-info">Info</button>
         <button class="btn-update">Opdater</button>
         <button class="btn-delete">Slet</button>
-        </td>
+      </td>
     </tr>
   `;
   document.querySelector("#memberTable").insertAdjacentHTML("beforeend", html);
@@ -237,20 +222,19 @@ function showMember(memberObject){
 }
 
 function showMemberInfo(memberObject){
-  const modal = document.querySelector("#member-modal");
-  modal.querySelector("#member-active").textContent = isActive(memberObject);
-  modal.querySelector("#member-competition").textContent = isInCompetionen(memberObject);
+  document.querySelector("#member-active").textContent = isActive(memberObject);
+  document.querySelector("#member-competition").textContent = isInCompetionen(memberObject);
     if(memberObject.competition == "true"){
-  modal.querySelector("#member-swimteam").textContent = `Svømmehold ${checkSwimteam(memberObject)}`;
+  document.querySelector("#member-swimteam").textContent = `Svømmehold ${checkSwimteam(memberObject)}`;
     } else{
-      modal.querySelector("#member-swimteam").textContent = "";
+      document.querySelector("#member-swimteam").textContent = "";
     }
-  modal.querySelector("#member-age").textContent = memberObject.age;
-  modal.querySelector("#member-debt").textContent = `${memberObject.debt}kr`;
-  modal.querySelector("#member-email").textContent = memberObject.email;
-  modal.querySelector("#member-name").textContent = memberObject.name;
-  modal.querySelector("#member-tlf").textContent = memberObject.tlf;
-  modal.showModal();
-  document.querySelector("#button-close-info").addEventListener("click", () => modal.close());
+  document.querySelector("#member-age").textContent = memberObject.age;
+  document.querySelector("#member-debt").textContent = `${memberObject.debt}kr`;
+  document.querySelector("#member-email").textContent = memberObject.email;
+  document.querySelector("#member-name").textContent = memberObject.name;
+  document.querySelector("#member-tlf").textContent = memberObject.tlf;
+  document.querySelector("#member-modal").showModal();
+  document.querySelector("#button-close-info").addEventListener("click", () =>  document.querySelector("#member-modal").close());
 }
 

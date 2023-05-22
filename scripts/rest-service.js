@@ -5,21 +5,16 @@ const endpoint =
   "https://delfinen-database-default-rtdb.europe-west1.firebasedatabase.app";
 
 async function getUserByUsername(username){
-  const response = await fetch(
-    `${endpoint}/users.json`
-  );
-  const users = await response.json();
-  if (users) {
-    const keys = Object.keys(users);
-    for (let i = 0; i < keys.length; i++) {
-      const key = keys[i];
-      if (users[key].username === username){
-        return users[key];
+  const response = await fetch(`${endpoint}/users.json`);
+  const data = await response.json();
+  const users =  prepareData(data);
+    for(const user of users){
+      if(user.username === username){
+        return user;
       }
     }
+   return null;
   }
-  return null;
-}
 
 async function getMembers(){
   const response = await fetch(`${endpoint}/medlemmer.json`);
