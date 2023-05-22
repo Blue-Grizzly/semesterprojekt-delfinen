@@ -77,20 +77,19 @@ function isInCompetionen(member){
 }
 
 function checkSwimteam(member){
-  if(member.active == "true"){
-    if(member.competition == "true"){
+  if(member.active == "true" && member.competition == "true"){
       if(member.age >= 18){
         return `Senior`;
       }
     } else {
       return `Junior`;
-    }
-  } else{
-    return `Motionist`;
   }
 }
 
+
 function controlDiscipline(event){
+  //Prevents user from setting a discipline for a member that is not a competition swimmer.
+  //And likewise enables the option for competition swimmers
   if (event.target.value === "true"){
     document.querySelector("#discipline").disabled = false;
     document.querySelector("#discipline-update").disabled = false;
@@ -103,6 +102,7 @@ function controlDiscipline(event){
 }
 
 function setActiveView(event){
+  // Loops through all buttons and removes the "active" class for all. Then adds the active class to the clicked button.
  const buttons = document.querySelectorAll("header button");
   for(const button of buttons){
     button.classList.remove("active");

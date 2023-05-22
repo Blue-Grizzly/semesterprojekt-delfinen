@@ -9,30 +9,28 @@ let memberList = [];
 let lastTime = 0;
 
 async function initApp(){
-  memberList = await getMembers();
   refreshTable();
   document.querySelector("#nytmedlem").addEventListener("click", showCreateForm);
+
   document.querySelector("#refresh").addEventListener("click", refreshTable);
+
   document.querySelector(".log-off-btn").addEventListener("click",()=>window.location.href="index.html");
+
   document.querySelector("#table-name").addEventListener("click", ()=>{
   document.querySelector("#data-table").setAttribute("sortOption", "name");
-  console.log("name")
   refreshTable();    
   } );
   document.querySelector("#table-age").addEventListener("click", ()=> {
   document.querySelector("#data-table").setAttribute("sortOption", "age");
-  console.log("age")
   refreshTable();
   });
 
   document.querySelector("#table-membership").addEventListener("click", ()=> {
   document.querySelector("#data-table").setAttribute("sortOption", "membership");
-  console.log("membership")
   refreshTable();
   } );
   document.querySelector("#table-options").addEventListener("click", ()=>{
   document.querySelector("#data-table").removeAttribute("sortOption");
-  console.log("all")
   refreshTable();
   });
   document.querySelector("#competition").addEventListener("change", event => controlDiscipline(event));
@@ -42,6 +40,7 @@ async function initApp(){
 async function getAllMembers(){
   const now = Date.now();
     if( now - lastTime > 10000 || memberList.length === 0 ){
+      lastTime = Date.now();
       memberList = await getMembers();
     }
     return memberList;
