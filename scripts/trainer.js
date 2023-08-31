@@ -85,7 +85,7 @@ document.querySelector("#table-options").addEventListener("click", ()=> {
 });
   document.querySelector("#table-name-junior").addEventListener("click", ()=>{
   document.querySelector("#data-table").setAttribute("sortOption", "name");
-  refreshTableMembers();    
+  refreshTableMembers();
 });
   document.querySelector("#table-name-senior").addEventListener("click", ()=>{
   document.querySelector("#data-table").setAttribute("sortOption", "name");
